@@ -22,9 +22,9 @@
             padding-top: 50px;
         }
 
-        .main{
-            margin-left: 400px;
-        }
+        /*.main{*/
+        /*    margin-left: 400px;*/
+        /*}*/
 
         .sidenav > a {
             padding: 6px 6px 6px 32px;
