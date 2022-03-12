@@ -12,7 +12,31 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
+/*
+ * Main Pages Routes
+ */
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/home', function () {
+    return view('home');
+});
+
+Route::get('/planning', function () {
+    return view('planning');
+});
+
+Route::get('/guests', function () {
+    return view('guests');
+});
+
+Route::get('/vendors', function () {
+    return view('vendors');
+});
+
+Route::get('/account', function () {
+    return view('account');
 });

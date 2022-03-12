@@ -2,7 +2,7 @@
 <project version="4">
   <component name="SshConfigs">
     <configs>
-      <sshConfig authType="PASSWORD" host="php.scweb.ca" id="55ad5de6-bf8c-4f93-913a-b08c42d84983" port="22" nameFormat="DESCRIPTIVE" username="oyousef" />
+      <sshConfig authType="PASSWORD" host="php.scweb.ca" id="e16ddc46-64e7-4843-9224-b07a7c876781" port="22" nameFormat="DESCRIPTIVE" username="oyousef" />
     </configs>
   </component>
 </project>

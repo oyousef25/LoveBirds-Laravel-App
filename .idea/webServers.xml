@@ -2,8 +2,8 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
-      <webServer id="0885fdc2-25e8-4eb6-8054-88ca81090814" name="scweb">
-        <fileTransfer rootFolder="/home/oyousef" accessType="SFTP" host="php.scweb.ca" port="22" sshConfigId="55ad5de6-bf8c-4f93-913a-b08c42d84983" sshConfig="oyousef@php.scweb.ca:22 password">
+      <webServer id="f58beec5-6f12-433c-99fa-cbefd75548de" name="scweb">
+        <fileTransfer rootFolder="/home/oyousef" accessType="SFTP" host="php.scweb.ca" port="22" sshConfigId="e16ddc46-64e7-4843-9224-b07a7c876781" sshConfig="oyousef@php.scweb.ca:22 password">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
           </advancedOptions>
