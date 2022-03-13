@@ -15,6 +15,14 @@ use Illuminate\Support\Facades\Route;
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 /*
+ * Planning Routes
+ */
+//All Tasks(index)
+Route::get('planning', 'TaskController@index')->name('planning.index');
+//Task details(show)
+Route::get('planning/{task}', 'TaskController@show')->name('planning.show');
+
+/*
  * Main Pages Routes
  */
 Route::get('/', function () {
@@ -25,9 +33,9 @@ Route::get('/home', function () {
     return view('home');
 });
 
-Route::get('/planning', function () {
-    return view('planning');
-});
+//Route::get('/planning', function () {
+//    return view('planning');
+//});
 
 Route::get('/guests', function () {
     return view('guests');
@@ -40,3 +48,7 @@ Route::get('/vendors', function () {
 Route::get('/account', function () {
     return view('account');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
