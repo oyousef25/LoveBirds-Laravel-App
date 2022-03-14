@@ -19,4 +19,18 @@ class TaskController extends Controller
     public function show(Task $task){
         return view('planning.show', compact("task"));
     }
+
+    //Create a new task
+    public function create(){
+        return view('planning.create');
+    }
+
+    //Storing a new task
+    public function store(Request $request){
+        $task = new Task($request->all());
+        $task->user_id = 1;
+        $task->save();
+        //Task::create($task);
+        return redirect('planning');
+    }
 }

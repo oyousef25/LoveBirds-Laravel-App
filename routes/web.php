@@ -17,6 +17,10 @@ Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 /*
  * Planning Routes
  */
+//Create a new task
+Route::get('planning/create', 'TaskController@create')->name('planning.create');
+//Create a new task
+Route::post('planning', 'TaskController@store')->name('planning.store');
 //All Tasks(index)
 Route::get('planning', 'TaskController@index')->name('planning.index');
 //Task details(show)

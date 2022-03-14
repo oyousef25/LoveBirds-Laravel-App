@@ -18,11 +18,43 @@
         }
 
         .main {
+            width: 500px;
+            min-height: 150px;
+            margin: 45px;
             flex-basis: 80%;
+            border: 1px solid #eaecee;
+            border-radius: 8px;
+            transition: all 0.25s ease;
+            overflow: hidden;
+            cursor: pointer;
+            text-align: center;
+            font-size: 20px;
+        }
+
+        .task-header {
+            padding: 15px;
+            font-size: 25px;
+            font-weight: bold;
+            background-color: #92dfd8;
         }
 
         .side-nav {
             flex-basis: 20%;
+        }
+
+        .title{
+            margin-top: 25px;
+            margin-bottom: 5px;
+            font-size: 18px;
+            color: #92dfd8;
+        }
+
+        .task-actions{
+            margin-top: 35px;
+        }
+
+        .task-actions div{
+            margin: 15px;
         }
     </style>
 </head>
@@ -33,9 +65,27 @@
 </div>
 
 <div class="main">
-    Task Title: {{$task->task_title}}<br><br>
-    Description: {{$task->task_description}}<br><br>
-    Due Date: {{$task->due_date}}<br><br>
+    <div class="task-header"> Omar's Task</div>
+    <div class="task-title">
+        <div class="title title-label">Task</div>
+        <div>{{$task->task_title}}</div>
+    </div>
+    <div class="task-date">
+        <div class="title date-label">Due Date</div>
+        <div>{{$task->due_date}}</div>
+    </div>
+    <div class="task-description">
+        <div class="title description-label">Description</div>
+        <div> {{$task->task_description}}</div>
+    </div>
+    <div class="task-cost">
+        <div class="title cost-label">Cost</div>
+        <div> {{$task->task_price}}</div>
+    </div>
+    <div class="task-actions">
+        <div><button class="btn bg-danger">Delete</button></div>
+        <div><button class="btn bg-success">Complete</button></div>
+    </div>
 </div>
 
 </body>
