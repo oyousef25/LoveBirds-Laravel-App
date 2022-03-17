@@ -17,14 +17,16 @@ Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 /*
  * Planning Routes
  */
-//Create a new task
-Route::get('planning/create', 'TaskController@create')->name('planning.create');
-//Create a new task
-Route::post('planning', 'TaskController@store')->name('planning.store');
 //Edit an existing task
-Route::get('planning/{task}/edit', 'TaskController@edit')->name('planning.edit');
+Route::delete('planning/{task}', 'TaskController@destroy')->name('planning.destroy');
 //Update an existing task
 Route::patch('planning/{task}', 'TaskController@update')->name('planning.update');
+//Create a new task
+Route::get('planning/create', 'TaskController@create')->name('planning.create');
+//Edit an existing task
+Route::get('planning/{task}/edit', 'TaskController@edit')->name('planning.edit');
+//Create a new task
+Route::post('planning', 'TaskController@store')->name('planning.store');
 //All Tasks(index)
 Route::get('planning', 'TaskController@index')->name('planning.index');
 //Task details(show)

@@ -48,4 +48,9 @@ class TaskController extends Controller
 
         return redirect('planning');
     }
+
+    public function destroy($task){
+        Task::destroy($task);
+        return redirect('planning');
+    }
 }
