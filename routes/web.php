@@ -21,6 +21,10 @@ Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 Route::get('planning/create', 'TaskController@create')->name('planning.create');
 //Create a new task
 Route::post('planning', 'TaskController@store')->name('planning.store');
+//Edit an existing task
+Route::get('planning/{task}/edit', 'TaskController@edit')->name('planning.edit');
+//Update an existing task
+Route::patch('planning/{task}', 'TaskController@update')->name('planning.update');
 //All Tasks(index)
 Route::get('planning', 'TaskController@index')->name('planning.index');
 //Task details(show)

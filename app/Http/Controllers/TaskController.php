@@ -33,4 +33,19 @@ class TaskController extends Controller
         //Task::create($task);
         return redirect('planning');
     }
+
+    //Editing an existing task
+    public function edit($task){
+        $task = Task::findOrFail($task);
+        return view('planning.edit', compact("task"));
+    }
+
+    //Updating an existing task
+    public function update(Request $request, $task){
+        $formData = $request->all();
+        $task = Task::findOrFail($task);
+        $task->update($formData);
+
+        return redirect('planning');
+    }
 }
