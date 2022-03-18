@@ -34,6 +34,12 @@
         <label for="guest_relationship">Due Date</label>
         <input name="guest_relationship" type="text" class="form-control" id="guest_relationship" placeholder="YYYY-MM-DD">
     </div>
+
+    <div class="form-group">
+        <label for="status_id">Due Date</label>
+        <input name="status_id" type="text" class="form-control" id="status_id" placeholder="YYYY-MM-DD">
+    </div>
+
     <div class="form-group">
         <label for="email_address">Assigned User</label>
         <input name="email_address" type="text" class="form-control" id="email_address" placeholder="Choose One">
