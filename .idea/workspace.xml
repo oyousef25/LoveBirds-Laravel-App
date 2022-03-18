@@ -149,7 +149,7 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/images" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/guests" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -159,6 +159,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Omar-\OneDrive\Documents\GitHub\LoveBirds-Laravel-App\resources\views\guests" />
       <recent name="C:\Users\Omar-\OneDrive\Documents\GitHub\LoveBirds-Laravel-App\resources\images" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
