@@ -149,12 +149,21 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/images" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Omar-\OneDrive\Documents\GitHub\LoveBirds-Laravel-App\resources\images" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Omar-\OneDrive\Documents\GitHub\LoveBirds-Laravel-App\public" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
@@ -171,7 +180,8 @@
       <option name="presentableId" value="Default" />
       <updated>1647039473223</updated>
       <workItem from="1647039476064" duration="4200000" />
-      <workItem from="1647552555544" duration="4768000" />
+      <workItem from="1647552555544" duration="8373000" />
+      <workItem from="1647562236130" duration="2669000" />
     </task>
     <servers />
   </component>

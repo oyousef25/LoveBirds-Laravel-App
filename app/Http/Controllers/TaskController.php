@@ -8,6 +8,12 @@ use Illuminate\Http\Request;
 
 class TaskController extends Controller
 {
+    public function __construct()
+    {
+        //Forcing the user to login before they can access any of the controller's routes
+        $this->middleware('auth');
+    }
+
     //All tasks
     public function index(){
         $tasks = Task::get();

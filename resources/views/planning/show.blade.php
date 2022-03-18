@@ -12,11 +12,6 @@
             overflow: hidden;
         }
 
-        body > div {
-            width: 100px;
-            margin: 10px;
-        }
-
         .main {
             width: 500px;
             min-height: 150px;
@@ -29,6 +24,7 @@
             cursor: pointer;
             text-align: center;
             font-size: 20px;
+            box-shadow: 0 2rem 2rem 0 rgba(0, 0, 0, 0.1);
         }
 
         .task-header {
@@ -53,9 +49,43 @@
             margin-top: 35px;
         }
 
-        .task-actions div{
-            margin: 15px;
+        .modal-header{
+            background-color: #92dfd8;
         }
+
+        .modal-title{
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        .task-actions{
+            width: 800px;
+            margin: 30px auto 30px auto;
+            color: white;
+        }
+
+        .task-actions button{
+            padding: 16px;
+            width: 300px;
+            margin: 4px;
+        }
+
+        .modal-footer{
+            display: flex;
+            flex-wrap: nowrap;
+            overflow: hidden;
+            width: 400px;
+            margin: 0 auto;
+            color: white;
+        }
+
+        .modal-footer button, .modal-footer input{
+            padding: 16px;
+            width: 150px;
+            margin: 16px;
+            outline: none;
+        }
+
     </style>
 </head>
 <body>
@@ -65,7 +95,13 @@
 </div>
 
 <div class="main">
-    <div class="task-header"> Omar's Task</div>
+    <div class="task-header">
+        Omar's Task
+        <link src="{{asset("./images/ic_edit.png")}}"/>
+{{--        <button type="button" class="carousel-control-next-icon">--}}
+{{--            <span aria-hidden="true">&times;</span>--}}
+{{--        </button>--}}
+    </div>
     <div class="task-title">
         <div class="title title-label">Task</div>
         <div>{{$task->task_title}}</div>
@@ -83,10 +119,8 @@
         <div> {{$task->task_price}}</div>
     </div>
     <div class="task-actions">
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-            Delete
-        </button>
-        <div><button class="btn bg-success">Complete</button></div>
+        <button type="button" class="btn" data-toggle="modal" data-target="#exampleModal" style="background-color: #ff8585">Delete</button>
+        <div><button class="btn" style="background-color: #95e28e">Complete</button></div>
     </div>
 
     <!-- Modal -->
@@ -94,20 +128,17 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                    <h5 class="modal-title" id="exampleModalLabel">Deletion Confirmation</h5>
                 </div>
                 <div class="modal-body">
-                    ...
+                    Are you sure you want to delete the task "{{$task->task_title}}"
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" style="background-color: #ff8585" class="btn" data-dismiss="modal">Cancel</button>
                     <form method="post" action="{{action('TaskController@destroy', $task->id)}}">
                         {{method_field('DELETE')}}
                         {{csrf_field()}}
-                        <div><input type="submit" value="Delete" class="btn bg-danger"></div>
+                        <div><input type="submit" style="background-color: #95e28e" value="Confirm" class="btn"></div>
                     </form>
                 </div>
             </div>
