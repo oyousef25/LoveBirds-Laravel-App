@@ -19,6 +19,11 @@ class GuestController extends Controller
         return view('guests.index', compact("guests"));
     }
 
+    //A task details
+    public function show(Guest $guest){
+        return view('guests.show', compact("guest"));
+    }
+
     //Create a new task
     public function create(){
         return view('guests.create');
@@ -45,6 +50,12 @@ class GuestController extends Controller
         $guest = Guest::findOrFail($guest);
         $guest->update($formData);
 
+        return redirect('guests');
+    }
+
+    //Delete a guest
+    public function destroy($guest){
+        Guest::destroy($guest);
         return redirect('guests');
     }
 }

@@ -103,20 +103,20 @@
 {{--        </button>--}}
     </div>
     <div class="task-title">
-        <div class="title title-label">Task</div>
-        <div>{{$task->task_title}}</div>
+        <div class="title title-label">Full Name</div>
+        <div>{{$guest->first_name}} {{$guest->last_name}}</div>
     </div>
     <div class="task-date">
-        <div class="title date-label">Due Date</div>
-        <div>{{$task->due_date}}</div>
+        <div class="title date-label">Relationship</div>
+        <div>{{$guest->guest_relationship}}</div>
     </div>
     <div class="task-description">
-        <div class="title description-label">Description</div>
-        <div> {{$task->task_description}}</div>
+        <div class="title description-label">E-mail Address</div>
+        <div> {{$guest->email_address}}</div>
     </div>
     <div class="task-cost">
-        <div class="title cost-label">Cost</div>
-        <div> {{$task->task_price}}</div>
+        <div class="title cost-label">Phone Number</div>
+        <div> {{$guest->phone_number}}</div>
     </div>
     <div class="task-actions">
         <button type="button" class="btn" data-toggle="modal" data-target="#exampleModal" style="background-color: #ff8585">Delete</button>
@@ -131,11 +131,11 @@
                     <h5 class="modal-title" id="exampleModalLabel">Deletion Confirmation</h5>
                 </div>
                 <div class="modal-body">
-                    Are you sure you want to delete the task "{{$task->task_title}}"
+                    Are you sure you want to delete the guest "{{$guest->first_name}} {{$guest->last_name}}"
                 </div>
                 <div class="modal-footer">
                     <button type="button" style="background-color: #ff8585" class="btn" data-dismiss="modal">Cancel</button>
-                    <form method="post" action="{{action('TaskController@destroy', $task->id)}}">
+                    <form method="post" action="{{action('GuestController@destroy', $guest->id)}}">
                         {{method_field('DELETE')}}
                         {{csrf_field()}}
                         <div><input type="submit" style="background-color: #95e28e" value="Confirm" class="btn"></div>
