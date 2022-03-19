@@ -99,8 +99,8 @@
         <div class="task-container">
             <a href="{{action('GuestController@show', $guest->id)}}">
                 <div class="task-item">
-                    <div class="guest-name">{{$guest->first_name}}</div>
-                    <div class="guest-relationship">Due by {{$guest->guest_relationship}}</div>
+                    <div class="guest-name">{{$guest->first_name}} {{$guest->last_name}}</div>
+                    <div class="guest-relationship">Relationship: {{$guest->guest_relationship}}</div>
                 </div>
             </a>
         </div>

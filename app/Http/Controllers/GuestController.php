@@ -32,4 +32,19 @@ class GuestController extends Controller
         //Task::create($task);
         return redirect('guests');
     }
+
+    //Editing an existing task
+    public function edit($guest){
+        $guest = Guest::findOrFail($guest);
+        return view('guests.edit', compact("guest"));
+    }
+
+    //Updating an existing task
+    public function update(Request $request, $guest){
+        $formData = $request->all();
+        $guest = Guest::findOrFail($guest);
+        $guest->update($formData);
+
+        return redirect('guests');
+    }
 }

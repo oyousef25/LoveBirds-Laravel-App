@@ -22,33 +22,33 @@
 <form method="POST" action="{{ action('GuestController@store') }}">
     {{ csrf_field() }}
     <div class="form-group">
-        <label for="first_name">Title</label>
+        <label for="first_name">First Name</label>
         <input name="first_name" type="text" class="form-control" id="first_name"
                placeholder="Task Title">
     </div>
     <div class="form-group">
-        <label for="last_name">Description</label>
+        <label for="last_name">Last Name</label>
         <input name="last_name" type="text" class="form-control" id="last_name" placeholder="Task Description">
     </div>
     <div class="form-group">
-        <label for="guest_relationship">Due Date</label>
+        <label for="guest_relationship">Relationship</label>
         <input name="guest_relationship" type="text" class="form-control" id="guest_relationship" placeholder="YYYY-MM-DD">
     </div>
 
     <div class="form-group">
-        <label for="status_id">Due Date</label>
+        <label for="status_id">Status</label>
         <input name="status_id" type="text" class="form-control" id="status_id" placeholder="YYYY-MM-DD">
     </div>
 
     <div class="form-group">
-        <label for="email_address">Assigned User</label>
+        <label for="email_address">E-mail Address</label>
         <input name="email_address" type="text" class="form-control" id="email_address" placeholder="Choose One">
     </div>
     <div class="form-group">
-        <label for="phone_number">Task Price</label>
+        <label for="phone_number">Phone Number</label>
         <input name="phone_number" type="text" class="form-control" id="phone_number" placeholder="e.g 22.00, 25, 76.00, etc">
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary">Add Guest</button>
 </form>
 </body>
 </html>
