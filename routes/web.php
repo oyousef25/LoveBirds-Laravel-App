@@ -33,6 +33,24 @@ Route::get('planning', 'TaskController@index')->name('planning.index');
 Route::get('planning/{task}', 'TaskController@show')->name('planning.show');
 
 /*
+ * Guests Routes
+ */
+//Edit an existing task
+Route::delete('guests/{guest}', 'GuestController@destroy')->name('guests.destroy');
+//Update an existing task
+Route::patch('guests/{guest}', 'GuestController@update')->name('guests.update');
+//Create a new task
+Route::get('guests/create', 'GuestController@create')->name('guests.create');
+//Edit an existing task
+Route::get('guests/{guest}/edit', 'GuestController@edit')->name('guests.edit');
+//Create a new task
+Route::post('guests', 'GuestController@store')->name('guests.store');
+//All Tasks(index)
+Route::get('guests', 'GuestController@index')->name('guests.index');
+//Task details(show)
+Route::get('guests/{guest}', 'GuestController@show')->name('guests.show');
+
+/*
  * Main Pages Routes
  */
 Route::get('/', function () {
@@ -43,22 +61,4 @@ Route::get('/home', function () {
     return view('home');
 });
 
-//Route::get('/planning', function () {
-//    return view('planning');
-//});
-
-Route::get('/guests', function () {
-    return view('guests');
-});
-
-Route::get('/vendors', function () {
-    return view('vendors');
-});
-
-Route::get('/account', function () {
-    return view('account');
-});
-
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
