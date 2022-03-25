@@ -6,7 +6,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <style>
-        body a {
+        a, a:hover, a:link, a:active, a:visited {
+            text-underline: none;
             text-decoration: none;
         }
 
@@ -44,18 +45,11 @@
             flex-basis: 20%;
         }
 
-        .task-title {
+        .guest-name {
             font-size: 20px;
         }
 
-        .task-price {
-            font-size: 18px;
-            text-align: right;
-            font-weight: bold;
-            margin-right: 10px;
-        }
-
-        .task-date {
+        .guest-relationship {
             color: #525252;
             font-size: 15px;
         }
@@ -100,7 +94,7 @@
             <a href="{{action('GuestController@show', $guest->id)}}">
                 <div class="task-item">
                     <div class="guest-name">{{$guest->first_name}} {{$guest->last_name}}</div>
-                    <div class="guest-relationship">Relationship: {{$guest->guest_relationship}}</div>
+                    <div class="guest-relationship">{{$relationships_table->where('id', $guest->guest_relationship)->pluck('relationship_value')->first()}}</div>
                 </div>
             </a>
         </div>

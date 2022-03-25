@@ -108,7 +108,7 @@
     </div>
     <div class="task-date">
         <div class="title date-label">Relationship</div>
-        <div>{{$guest->guest_relationship}}</div>
+        <div>{{$relationships_table->where('id', $guest->guest_relationship)->pluck('relationship_value')->first()}}</div>
     </div>
     <div class="task-description">
         <div class="title description-label">E-mail Address</div>
@@ -119,8 +119,8 @@
         <div> {{$guest->phone_number}}</div>
     </div>
     <div class="task-actions">
-        <button type="button" class="btn" data-toggle="modal" data-target="#exampleModal" style="background-color: #ff8585">Delete</button>
-        <div><button class="btn" style="background-color: #95e28e">Complete</button></div>
+        <button type="button" class="btn" data-toggle="modal" data-target="#exampleModal" style="background-color: #ff8585">Remove Guest</button>
+        <div><button class="btn" style="background-color: #95e28e">Contact Guest</button></div>
     </div>
 
     <!-- Modal -->

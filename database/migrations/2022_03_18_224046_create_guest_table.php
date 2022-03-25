@@ -17,10 +17,10 @@ class CreateGuestTable extends Migration
             $table->id();
             $table->string('first_name');
             $table->string('last_name');
-            $table->string('guest_relationship');
+            $table->bigInteger('guest_relationship')->unsigned()->default('1');
             $table->string('email_address');
             $table->string('phone_number');
-            $table->bigInteger('status_id')->unsigned();
+            $table->bigInteger('status_id')->unsigned()->default('1');
             $table->bigInteger('user_id')->unsigned();
             $table->timestamps();
         });

@@ -18,7 +18,7 @@
     </style>
 </head>
 <body>
-<h1>New Task</h1>
+<h1>New Guest</h1>
 <form method="POST" action="{{ action('GuestController@store') }}">
     {{ csrf_field() }}
     <div class="form-group">
@@ -31,8 +31,16 @@
         <input name="last_name" type="text" class="form-control" id="last_name" placeholder="Task Description">
     </div>
     <div class="form-group">
-        <label for="guest_relationship">Relationship</label>
-        <input name="guest_relationship" type="text" class="form-control" id="guest_relationship" placeholder="YYYY-MM-DD">
+        <div class="dropdown">
+            <label for="guest_relationship">Relationship</label>
+            <select class="form-control" name="test" id="guest_relationship">
+                @foreach ($relationships as $relationship)
+                    <option id="relationship">
+                        {{ $relationship->relationship_value }}
+                    </option>
+                @endforeach
+            </select>
+        </div>
     </div>
 
     <div class="form-group">
@@ -46,7 +54,8 @@
     </div>
     <div class="form-group">
         <label for="phone_number">Phone Number</label>
-        <input name="phone_number" type="text" class="form-control" id="phone_number" placeholder="e.g 22.00, 25, 76.00, etc">
+        <input name="phone_number" type="text" class="form-control" id="phone_number"
+               placeholder="e.g 22.00, 25, 76.00, etc">
     </div>
     <button type="submit" class="btn btn-primary">Add Guest</button>
 </form>
