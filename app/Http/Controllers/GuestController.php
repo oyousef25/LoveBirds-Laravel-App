@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 
 class GuestController extends Controller
 {
+    //The user must be logged in to access this page
     public function __construct(){
         //Forcing the user to login before they can access any of the controller's routes
         $this->middleware('auth');
