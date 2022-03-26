@@ -18,36 +18,24 @@
     </style>
 </head>
 <body>
-<h1>edit Guest</h1>
+<h1>Edit Vendor</h1>
 <form method="POST" action="{{ action('CustomVendorController@update', $vendor->id) }}">
     {{method_field('PATCH')}}
     {{ csrf_field() }}
     <div class="form-group">
-        <label for="first_name">First Name</label>
-        <input name="first_name" type="text" class="form-control" id="first_name"
-               placeholder="e.g john, omar, alex" value="{{$vendor->first_name}}">
+        <label for="vendor_name">Vendor Name</label>
+        <input name="vendor_name" type="text" class="form-control" id="vendor_name"
+               placeholder="e.g john, omar, alex" value="{{$vendor->vendor_name}}">
     </div>
     <div class="form-group">
-        <label for="last_name">Last Name</label>
-        <input name="last_name" type="text" class="form-control" id="last_name"
-               placeholder="e.g doe, yousef, anderson" value="{{$vendor->last_name}}">
+        <label for="vendor_description">Vendor Description</label>
+        <input name="vendor_description" type="text" class="form-control" id="vendor_description"
+               placeholder="e.g doe, yousef, anderson" value="{{$vendor->vendor_description}}">
     </div>
     <div class="form-group">
-        <label for="guest_relationship">Relationship</label>
-        <input name="guest_relationship" type="text" class="form-control" id="guest_relationship"
-               placeholder="YYYY-MM-DD" value="{{$vendor->guest_relationship}}">
-    </div>
-
-    <div class="form-group">
-        <label for="status_id">Status</label>
-        <input name="status_id" type="text" class="form-control" id="status_id"
-               placeholder="YYYY-MM-DD" value="{{$vendor->status_id}}">
-    </div>
-
-    <div class="form-group">
-        <label for="email_address">E-mail Address</label>
-        <input name="email_address" type="text" class="form-control" id="email_address"
-               placeholder="Choose One" value="{{$vendor->email_address}}">
+        <label for="job_title">Job Title</label>
+        <input name="job_title" type="text" class="form-control" id="job_title"
+               placeholder="YYYY-MM-DD" value="{{$vendor->job_title}}">
     </div>
     <div class="form-group">
         <label for="phone_number">Phone Number</label>

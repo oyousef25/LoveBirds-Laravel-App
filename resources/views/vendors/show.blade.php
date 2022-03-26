@@ -103,24 +103,24 @@
 {{--        </button>--}}
     </div>
     <div class="task-title">
-        <div class="title title-label">Full Name</div>
-        <div>{{$vendor->first_name}} {{$vendor->last_name}}</div>
+        <div class="title title-label">Vendor</div>
+        <div>{{$vendor->vendor_name}}</div>
     </div>
     <div class="task-date">
-        <div class="title date-label">Relationship</div>
-        <div>{{$relationships_table->where('id', $vendor->guest_relationship)->pluck('relationship_value')->first()}}</div>
+        <div class="title date-label">Description</div>
+        <div>{{$vendor->vendor_description}}</div>
     </div>
     <div class="task-description">
-        <div class="title description-label">E-mail Address</div>
-        <div> {{$vendor->email_address}}</div>
+        <div class="title description-label">Job Title</div>
+        <div> {{$vendor->job_title}}</div>
     </div>
     <div class="task-cost">
         <div class="title cost-label">Phone Number</div>
         <div> {{$vendor->phone_number}}</div>
     </div>
     <div class="task-actions">
-        <button type="button" class="btn" data-toggle="modal" data-target="#exampleModal" style="background-color: #ff8585">Remove Guest</button>
-        <div><button class="btn" style="background-color: #95e28e">Contact Guest</button></div>
+        <button type="button" class="btn" data-toggle="modal" data-target="#exampleModal" style="background-color: #ff8585">Delete Vendor</button>
+        <div><button class="btn" style="background-color: #95e28e">Contact Vendor</button></div>
     </div>
 
     <!-- Modal -->
@@ -131,7 +131,7 @@
                     <h5 class="modal-title" id="exampleModalLabel">Deletion Confirmation</h5>
                 </div>
                 <div class="modal-body">
-                    Are you sure you want to delete the guest "{{$vendor->first_name}} {{$vendor->last_name}}"
+                    Are you sure you want to delete the vendor "{{$vendor->vendor_name}}"
                 </div>
                 <div class="modal-footer">
                     <button type="button" style="background-color: #ff8585" class="btn" data-dismiss="modal">Cancel</button>

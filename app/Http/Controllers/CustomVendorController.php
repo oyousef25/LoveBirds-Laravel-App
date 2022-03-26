@@ -36,7 +36,6 @@ class CustomVendorController extends Controller
         $vendor = new CustomVendor($request->all());
         $vendor->user_id = 1;
         $vendor->save();
-        //Task::create($task);
         return redirect('vendors');
     }
 
