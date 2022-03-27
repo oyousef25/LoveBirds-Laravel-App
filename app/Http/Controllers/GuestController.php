@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Guest;
 use App\Relationship;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class GuestController extends Controller
@@ -17,7 +18,7 @@ class GuestController extends Controller
 
     //All tasks
     public function index(){
-        $guests = Guest::get();
+        $guests = Guest::paginate(7);
 
         $relationships_table = DB::table('relationships');
 
@@ -26,14 +27,16 @@ class GuestController extends Controller
 
     //A task details
     public function show(Guest $guest){
-        $relationships_table = DB::table('relationships');
+        //Finding the relationship value and passing it to the view
+        $relationship = Relationship::findOrFail($guest->guest_relationship);
+        $relationship_value = $relationship->relationship_value;
 
-        return view('guests.show', compact("guest", "relationships_table"));
+        return view('guests.show', compact("guest", "relationship_value"));
     }
 
     //Create a new task
     public function create(){
-        $relationships = Relationship::get();
+        $relationships = Relationship::all()->pluck('relationship_value', 'id');
 
         return view('guests.create', compact("relationships"));
     }
@@ -41,8 +44,7 @@ class GuestController extends Controller
     //Storing a new task
     public function store(Request $request){
         $task = new Guest($request->all());
-        $task->user_id = 1;
-        $task->guest_relationship = 2;
+        $task->user_id = auth()->user()->id;
         $task->save();
         return redirect('guests');
     }

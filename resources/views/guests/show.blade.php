@@ -108,7 +108,7 @@
     </div>
     <div class="task-date">
         <div class="title date-label">Relationship</div>
-        <div>{{$relationships_table->where('id', $guest->guest_relationship)->pluck('relationship_value')->first()}}</div>
+        <div>{{$relationship_value}}</div>
     </div>
     <div class="task-description">
         <div class="title description-label">E-mail Address</div>
