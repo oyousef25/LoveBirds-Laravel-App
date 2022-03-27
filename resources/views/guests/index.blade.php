@@ -99,6 +99,8 @@
             </a>
         </div>
     @endforeach
+
+    {{$guests->links()}}
 </div>
 </body>
 </html>

@@ -33,11 +33,9 @@
     <div class="form-group">
         <div class="dropdown">
             <label for="guest_relationship">Relationship</label>
-            <select class="form-control" name="test" id="guest_relationship">
-                @foreach ($relationships as $relationship)
-                    <option id="relationship">
-                        {{ $relationship->relationship_value }}
-                    </option>
+            <select class="form-control" name="guest_relationship">
+                @foreach ($relationships as $id => $relationship)
+                    <option value="{{$id}}">{{$relationship}}</option>
                 @endforeach
             </select>
         </div>
