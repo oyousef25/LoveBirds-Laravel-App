@@ -94,7 +94,8 @@
             <a href="{{action('GuestController@show', $guest->id)}}">
                 <div class="task-item">
                     <div class="guest-name">{{$guest->first_name}} {{$guest->last_name}}</div>
-                    <div class="guest-relationship">{{$relationships_table->where('id', $guest->guest_relationship)->pluck('relationship_value')->first()}}</div>
+                    <div class="guest-relationship">
+                        {{App\Relationship::find($guest->guest_relationship)->relationship_value}}</div>
                 </div>
             </a>
         </div>

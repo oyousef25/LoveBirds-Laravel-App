@@ -18,7 +18,7 @@ class GuestController extends Controller
 
     //All tasks
     public function index(){
-        $guests = Guest::paginate(3);
+        $guests = Guest::paginate(7);
 
         $relationships_table = DB::table('relationships');
 
@@ -27,9 +27,11 @@ class GuestController extends Controller
 
     //A task details
     public function show(Guest $guest){
-        $relationships_table = DB::table('relationships');
+        //Finding the relationship value and passing it to the view
+        $relationship = Relationship::findOrFail($guest->guest_relationship);
+        $relationship_value = $relationship->relationship_value;
 
-        return view('guests.show', compact("guest", "relationships_table"));
+        return view('guests.show', compact("guest", "relationship_value"));
     }
 
     //Create a new task
