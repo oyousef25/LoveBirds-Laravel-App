@@ -51,6 +51,24 @@ Route::get('guests', 'GuestController@index')->name('guests.index');
 Route::get('guests/{guest}', 'GuestController@show')->name('guests.show');
 
 /*
+ * Custom Vendors Routes
+ */
+//Edit an existing vendor
+Route::delete('vendors/{vendor}', 'CustomVendorController@destroy')->name('vendors.destroy');
+//Update an existing vendor
+Route::patch('vendors/{vendor}', 'CustomVendorController@update')->name('vendors.update');
+//Create a new vendor
+Route::get('vendors/create', 'CustomVendorController@create')->name('vendors.create');
+//Edit an existing vendor
+Route::get('vendors/{vendor}/edit', 'CustomVendorController@edit')->name('vendors.edit');
+//Create a new vendor
+Route::post('vendors', 'CustomVendorController@store')->name('vendors.store');
+//All vendors(index)
+Route::get('vendors', 'CustomVendorController@index')->name('vendors.index');
+//Vendor details(show)
+Route::get('vendors/{vendor}', 'CustomVendorController@show')->name('vendors.show');
+
+/*
  * Main Pages Routes
  */
 Route::get('/', function () {
