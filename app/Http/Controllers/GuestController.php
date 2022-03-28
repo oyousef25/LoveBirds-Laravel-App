@@ -18,7 +18,7 @@ class GuestController extends Controller
 
     //All tasks
     public function index(){
-        $guests = Guest::paginate(7);
+        $guests = Guest::paginate(8);
 
         $relationships_table = DB::table('relationships');
 

@@ -17,14 +17,19 @@
             min-height: 150px;
             margin: 45px;
             flex-basis: 80%;
-            border: 1px solid #eaecee;
-            border-radius: 8px;
-            transition: all 0.25s ease;
             overflow: hidden;
             cursor: pointer;
             text-align: center;
             font-size: 20px;
-            box-shadow: 0 2rem 2rem 0 rgba(0, 0, 0, 0.1);
+        }
+
+        .guest-box {
+            width: 75%;
+            margin: 0 auto;
+            padding-bottom: 25px;
+            border: 1px solid #eaecee;
+            border-radius: 8px;
+            box-shadow: 0 0.5rem 0.5rem 0 rgba(0, 0, 0, 0.1);
         }
 
         .task-header {
@@ -38,39 +43,44 @@
             flex-basis: 20%;
         }
 
-        .title{
+        .title {
             margin-top: 25px;
             margin-bottom: 5px;
             font-size: 18px;
             color: #92dfd8;
         }
 
-        .task-actions{
+        .task-actions {
             margin-top: 35px;
         }
 
-        .modal-header{
+        .modal-header {
             background-color: #92dfd8;
         }
 
-        .modal-title{
+        .modal-title {
             font-weight: bold;
             font-size: 20px;
         }
 
-        .task-actions{
-            width: 800px;
-            margin: 30px auto 30px auto;
+        .task-actions {
+            width: 100%;
+            margin: 0 auto;
             color: white;
         }
 
-        .task-actions button{
+        .actions-container{
+            width: 100%;
+           margin: 30px auto 30px auto;
+        }
+
+        .task-actions button {
             padding: 16px;
             width: 300px;
             margin: 4px;
         }
 
-        .modal-footer{
+        .modal-footer {
             display: flex;
             flex-wrap: nowrap;
             overflow: hidden;
@@ -79,7 +89,7 @@
             color: white;
         }
 
-        .modal-footer button, .modal-footer input{
+        .modal-footer button, .modal-footer input {
             padding: 16px;
             width: 150px;
             margin: 16px;
@@ -95,36 +105,50 @@
 </div>
 
 <div class="main">
-    <div class="task-header">
-        Omar's Task
-        <link src="{{asset("./images/ic_edit.png")}}"/>
-{{--        <button type="button" class="carousel-control-next-icon">--}}
-{{--            <span aria-hidden="true">&times;</span>--}}
-{{--        </button>--}}
+    <div>
+        <img src="public/images/ic_edit.png"/>
     </div>
-    <div class="task-title">
-        <div class="title title-label">Full Name</div>
-        <div>{{$guest->first_name}} {{$guest->last_name}}</div>
+    <div class="guest-box align-items-center">
+        <div class="task-header">
+            Guest Information
+            <link src="{{asset("./images/ic_edit.png")}}"/>
+            {{--        <button type="button" class="carousel-control-next-icon">--}}
+            {{--            <span aria-hidden="true">&times;</span>--}}
+            {{--        </button>--}}
+        </div>
+        <div class="task-title">
+            <div class="title title-label">Full Name</div>
+            <div>{{$guest->first_name}} {{$guest->last_name}}</div>
+        </div>
+        <div class="task-date">
+            <div class="title date-label">Relationship</div>
+            <div>{{$relationship_value}}</div>
+        </div>
+        <div class="task-description">
+            <div class="title description-label">E-mail Address</div>
+            <div> {{$guest->email_address}}</div>
+        </div>
+        <div class="task-cost">
+            <div class="title cost-label">Phone Number</div>
+            <div> {{$guest->phone_number}}</div>
+        </div>
     </div>
-    <div class="task-date">
-        <div class="title date-label">Relationship</div>
-        <div>{{$relationship_value}}</div>
-    </div>
-    <div class="task-description">
-        <div class="title description-label">E-mail Address</div>
-        <div> {{$guest->email_address}}</div>
-    </div>
-    <div class="task-cost">
-        <div class="title cost-label">Phone Number</div>
-        <div> {{$guest->phone_number}}</div>
-    </div>
-    <div class="task-actions">
-        <button type="button" class="btn" data-toggle="modal" data-target="#exampleModal" style="background-color: #ff8585">Remove Guest</button>
-        <div><button class="btn" style="background-color: #95e28e">Contact Guest</button></div>
+    <div class="actions-container align-items-center">
+        <div class="row task-actions">
+            <div class="col-sm-6">
+                <button type="button" class="btn" data-toggle="modal" data-target="#exampleModal"
+                        style="background-color: #ff8585">Remove Guest
+                </button>
+            </div>
+            <div class="col-sm-6">
+                <button class="btn" style="background-color: #95e28e">Contact Guest</button>
+            </div>
+        </div>
     </div>
 
     <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -134,7 +158,8 @@
                     Are you sure you want to delete the guest "{{$guest->first_name}} {{$guest->last_name}}"
                 </div>
                 <div class="modal-footer">
-                    <button type="button" style="background-color: #ff8585" class="btn" data-dismiss="modal">Cancel</button>
+                    <button type="button" style="background-color: #ff8585" class="btn" data-dismiss="modal">Cancel
+                    </button>
                     <form method="post" action="{{action('GuestController@destroy', $guest->id)}}">
                         {{method_field('DELETE')}}
                         {{csrf_field()}}

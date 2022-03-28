@@ -77,6 +77,10 @@
             transition: all 0.25s ease;
             z-index: 1;
         }
+
+        .pagination-links {
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -91,18 +95,7 @@
 
 <div class="main">
     @foreach($guests as $guest)
-        <div class="row">
-            <div class="col-sm-6 task-container">
-                <a href="{{action('GuestController@show', $guest->id)}}">
-                    <div class="task-item">
-                        <div><img src="public/images/ic_edit.png"></div>
-                        <div class="guest-name">{{$guest->first_name}} {{$guest->last_name}}</div>
-                        <div class="guest-relationship">
-                            {{App\Relationship::find($guest->guest_relationship)->relationship_value}}</div>
-                    </div>
-                </a>
-            </div>
-
+        <div class="row-cols-2">
             <div class="col-sm-6 task-container">
                 <a href="{{action('GuestController@show', $guest->id)}}">
                     <div class="task-item">
@@ -115,8 +108,9 @@
             </div>
         </div>
     @endforeach
-
-    {{$guests->links()}}
+    <div class="row pagination-links">
+        {{$guests->links()}}
+    </div>
 </div>
 </body>
 </html>
