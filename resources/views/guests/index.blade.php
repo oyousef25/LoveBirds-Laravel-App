@@ -34,6 +34,7 @@
             cursor: pointer;
             margin-top: 40px;
             padding: 10px;
+            text-align: center;
         }
 
         .task-item:hover {
@@ -90,14 +91,28 @@
 
 <div class="main">
     @foreach($guests as $guest)
-        <div class="task-container">
-            <a href="{{action('GuestController@show', $guest->id)}}">
-                <div class="task-item">
-                    <div class="guest-name">{{$guest->first_name}} {{$guest->last_name}}</div>
-                    <div class="guest-relationship">
-                        {{App\Relationship::find($guest->guest_relationship)->relationship_value}}</div>
-                </div>
-            </a>
+        <div class="row">
+            <div class="col-sm-6 task-container">
+                <a href="{{action('GuestController@show', $guest->id)}}">
+                    <div class="task-item">
+                        <div><img src="public/images/ic_edit.png"></div>
+                        <div class="guest-name">{{$guest->first_name}} {{$guest->last_name}}</div>
+                        <div class="guest-relationship">
+                            {{App\Relationship::find($guest->guest_relationship)->relationship_value}}</div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-sm-6 task-container">
+                <a href="{{action('GuestController@show', $guest->id)}}">
+                    <div class="task-item">
+                        <div><img src="public/images/ic_edit.png"></div>
+                        <div class="guest-name">{{$guest->first_name}} {{$guest->last_name}}</div>
+                        <div class="guest-relationship">
+                            {{App\Relationship::find($guest->guest_relationship)->relationship_value}}</div>
+                    </div>
+                </a>
+            </div>
         </div>
     @endforeach
 
