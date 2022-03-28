@@ -11,6 +11,10 @@
             text-decoration: none;
         }
 
+        span{
+            right: 10px;
+        }
+
         body {
             display: flex;
             flex-wrap: nowrap;
@@ -93,6 +97,7 @@
         <div class="task-container">
             <a href="{{action('CustomVendorController@show', $vendor->id)}}">
                 <div class="task-item">
+                        <span aria-hidden="true">&times;</span>
                     <div class="guest-name">{{$vendor->vendor_name}}</div>
                     <div class="guest-relationship">{{$vendor->job_title}}</div>
                 </div>

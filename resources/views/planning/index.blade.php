@@ -10,18 +10,24 @@
             text-decoration: none;
         }
 
-        body {
+        .container {
             display: flex;
-            flex-wrap: nowrap;
         }
 
-        body > div {
-            width: 100px;
-            margin: 10px;
+        .side-nav{
+            height: 100%;
+            width: 20%;
+            box-shadow: inset 0 0 5px lightgray;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            padding-top: 50px;
         }
 
         .main {
-            flex-basis: 80%;
+            width: 60%;
+            background-color: white;
         }
 
         .task-item {
@@ -38,10 +44,6 @@
         .task-item:hover {
             transform: translate3d(0, -5px, 0);
             box-shadow: 0 2rem 5rem 0 rgba(0, 0, 0, 0.1);
-        }
-
-        .side-nav {
-            flex-basis: 20%;
         }
 
         .task-title {
@@ -90,22 +92,24 @@
         <div class="nav-button new-post-button">+</div>
     </a>
 </div>
-<div class="side-nav">
-    @include('partials.navigation')
-</div>
+<div class="container">
+    <div class="item side-nav">
+        @include('partials.navigation')
+    </div>
 
-<div class="main">
-    @foreach($tasks as $task)
-        <div class="task-container">
-            <a href="{{action('TaskController@show', $task->id)}}">
-                <div class="task-item">
-                    <div class="task-title">{{$task->task_title}}</div>
-                    <div class="task-price">${{$task->task_price}} ></div>
-                    <div class="task-date">Due by {{$task->due_date}}</div>
-                </div>
-            </a>
-        </div>
-    @endforeach
+    <div class="item main">
+        @foreach($tasks as $task)
+            <div class="task-container">
+                <a href="{{action('TaskController@show', $task->id)}}">
+                    <div class="task-item">
+                        <div class="task-title">{{$task->task_title}}</div>
+                        <div class="task-price">${{$task->task_price}} ></div>
+                        <div class="task-date">Due by {{$task->due_date}}</div>
+                    </div>
+                </a>
+            </div>
+        @endforeach
+    </div>
 </div>
 </body>
 </html>
