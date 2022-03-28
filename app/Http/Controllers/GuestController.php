@@ -51,8 +51,10 @@ class GuestController extends Controller
 
     //Editing an existing task
     public function edit($guest){
+        $relationships = Relationship::all()->pluck('relationship_value', 'id');
+
         $guest = Guest::findOrFail($guest);
-        return view('guests.edit', compact("guest"));
+        return view('guests.edit', compact("guest", "relationships"));
     }
 
     //Updating an existing task

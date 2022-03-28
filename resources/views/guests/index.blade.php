@@ -42,7 +42,7 @@
         }
 
         .side-nav {
-            flex-basis: 20%;
+            flex-basis: 30%;
         }
 
         .guest-name {

@@ -10,24 +10,22 @@
             text-decoration: none;
         }
 
-        .container {
+        body {
             display: flex;
+            flex-wrap: nowrap;
         }
 
-        .side-nav{
-            height: 100%;
-            width: 20%;
-            box-shadow: inset 0 0 5px lightgray;
-            position: fixed;
-            z-index: 1;
-            top: 0;
-            left: 0;
-            padding-top: 50px;
+        body > div {
+            width: 100px;
+            margin: 10px;
         }
 
         .main {
-            width: 60%;
-            background-color: white;
+            flex-basis: 80%;
+        }
+
+        .side-nav {
+            flex-basis: 30%;
         }
 
         .task-item {
@@ -92,24 +90,22 @@
         <div class="nav-button new-post-button">+</div>
     </a>
 </div>
-<div class="container">
-    <div class="item side-nav">
-        @include('partials.navigation')
-    </div>
+<div class="item side-nav">
+    @include('partials.navigation')
+</div>
 
-    <div class="item main">
-        @foreach($tasks as $task)
-            <div class="task-container">
-                <a href="{{action('TaskController@show', $task->id)}}">
-                    <div class="task-item">
-                        <div class="task-title">{{$task->task_title}}</div>
-                        <div class="task-price">${{$task->task_price}} ></div>
-                        <div class="task-date">Due by {{$task->due_date}}</div>
-                    </div>
-                </a>
-            </div>
-        @endforeach
-    </div>
+<div class="item main">
+    @foreach($tasks as $task)
+        <div class="task-container">
+            <a href="{{action('TaskController@show', $task->id)}}">
+                <div class="task-item">
+                    <div class="task-title">{{$task->task_title}}</div>
+                    <div class="task-price">${{$task->task_price}} ></div>
+                    <div class="task-date">Due by {{$task->due_date}}</div>
+                </div>
+            </a>
+        </div>
+    @endforeach
 </div>
 </body>
 </html>
