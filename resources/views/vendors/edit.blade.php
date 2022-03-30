@@ -5,15 +5,35 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Roboto Slab' rel='stylesheet'>
 
     <style>
         body {
+            font-family: 'Roboto Slab';
             width: 900px;
             margin: 0 auto;
         }
 
         h1 {
+            font-size: 25px;
+            font-weight: bold;
             text-align: center;
+        }
+
+        label {
+            color: #61d2c6;
+        }
+
+        .form-control {
+            height: 45px;
+            /*box-shadow: 0 1rem 2rem 0 rgba(0, 0, 0, 0.1);*/
+        }
+
+        button {
+            height: 45px;
+            width: 100%;
+            color: white;
+            background-color: #ff8585;
         }
     </style>
 </head>
@@ -23,26 +43,26 @@
     {{method_field('PATCH')}}
     {{ csrf_field() }}
     <div class="form-group">
-        <label for="vendor_name">Vendor Name</label>
+        <label for="vendor_name">Vendor</label>
         <input name="vendor_name" type="text" class="form-control" id="vendor_name"
-               placeholder="e.g john, omar, alex" value="{{$vendor->vendor_name}}">
+               placeholder="Enter the name of the vendor(ie. Omar)" value="{{$vendor->vendor_name}}">
     </div>
     <div class="form-group">
-        <label for="vendor_description">Vendor Description</label>
+        <label for="vendor_description">Description</label>
         <input name="vendor_description" type="text" class="form-control" id="vendor_description"
-               placeholder="e.g doe, yousef, anderson" value="{{$vendor->vendor_description}}">
-    </div>
-    <div class="form-group">
-        <label for="job_title">Job Title</label>
-        <input name="job_title" type="text" class="form-control" id="job_title"
-               placeholder="YYYY-MM-DD" value="{{$vendor->job_title}}">
+               placeholder="Enter a description" value="{{$vendor->vendor_description}}">
     </div>
     <div class="form-group">
         <label for="phone_number">Phone Number</label>
         <input name="phone_number" type="text" class="form-control" id="phone_number"
-               placeholder="" value="{{$vendor->phone_number}}">
+               placeholder="(123)456-7890" value="{{$vendor->phone_number}}">
     </div>
-    <button type="submit" class="btn btn-primary">Save Changes</button>
+    <div class="form-group">
+        <label for="job_title">Job Title</label>
+        <input name="job_title" type="text" class="form-control" id="job_title"
+               placeholder="Enter the job title(ie. barber)" value="{{$vendor->job_title}}">
+    </div>
+    <button type="submit" class="btn">Save Changes</button>
 </form>
 @if($errors->any())
     @foreach($errors->all() as $error)

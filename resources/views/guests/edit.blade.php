@@ -5,20 +5,40 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Roboto Slab' rel='stylesheet'>
 
     <style>
         body {
+            font-family: 'Roboto Slab';
             width: 900px;
             margin: 0 auto;
         }
 
         h1 {
+            font-size: 25px;
+            font-weight: bold;
             text-align: center;
+        }
+
+        label {
+            color: #61d2c6;
+        }
+
+        .form-control {
+            height: 45px;
+            /*box-shadow: 0 1rem 2rem 0 rgba(0, 0, 0, 0.1);*/
+        }
+
+        button {
+            height: 45px;
+            width: 100%;
+            color: white;
+            background-color: #ff8585;
         }
     </style>
 </head>
 <body>
-<h1>edit Guest</h1>
+<h1>Edit Guest</h1>
 <form method="POST" action="{{ action('GuestController@update', $guest->id) }}">
     {{method_field('PATCH')}}
     {{ csrf_field() }}
@@ -33,28 +53,27 @@
                placeholder="e.g doe, yousef, anderson" value="{{$guest->last_name}}">
     </div>
     <div class="form-group">
-        <label for="guest_relationship">Relationship</label>
-        <input name="guest_relationship" type="text" class="form-control" id="guest_relationship"
-               placeholder="YYYY-MM-DD" value="{{$guest->guest_relationship}}">
-    </div>
-
-    <div class="form-group">
-        <label for="status_id">Status</label>
-        <input name="status_id" type="text" class="form-control" id="status_id"
-               placeholder="YYYY-MM-DD" value="{{$guest->status_id}}">
+        <div class="dropdown">
+            <label for="guest_relationship">Relationship</label>
+            <select class="form-control" name="guest_relationship">
+                @foreach ($relationships as $id => $relationship)
+                    <option value="{{$id}}">{{$relationship}}</option>
+                @endforeach
+            </select>
+        </div>
     </div>
 
     <div class="form-group">
         <label for="email_address">E-mail Address</label>
         <input name="email_address" type="text" class="form-control" id="email_address"
-               placeholder="Choose One" value="{{$guest->email_address}}">
+               placeholder="email@example.com" value="{{$guest->email_address}}">
     </div>
     <div class="form-group">
         <label for="phone_number">Phone Number</label>
         <input name="phone_number" type="text" class="form-control" id="phone_number"
-               placeholder="" value="{{$guest->phone_number}}">
+               placeholder="(123)456-7890" value="{{$guest->phone_number}}">
     </div>
-    <button type="submit" class="btn btn-primary">Save Changes</button>
+    <button type="submit" class="btn">Save Changes</button>
 </form>
 @if($errors->any())
     @foreach($errors->all() as $error)

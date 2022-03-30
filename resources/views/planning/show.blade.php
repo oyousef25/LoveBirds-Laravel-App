@@ -116,7 +116,7 @@
     </div>
     <div class="task-cost">
         <div class="title cost-label">Cost</div>
-        <div> {{$task->task_price}}</div>
+        <div>${{$task->task_price}}</div>
     </div>
     <div class="task-actions">
         <button type="button" class="btn" data-toggle="modal" data-target="#exampleModal" style="background-color: #ff8585">Delete</button>

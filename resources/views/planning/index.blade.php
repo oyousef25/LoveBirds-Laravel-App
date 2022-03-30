@@ -24,6 +24,10 @@
             flex-basis: 80%;
         }
 
+        .side-nav {
+            flex-basis: 30%;
+        }
+
         .task-item {
             border: 1px solid #eaecee;
             border-radius: 8px;
@@ -38,10 +42,6 @@
         .task-item:hover {
             transform: translate3d(0, -5px, 0);
             box-shadow: 0 2rem 5rem 0 rgba(0, 0, 0, 0.1);
-        }
-
-        .side-nav {
-            flex-basis: 20%;
         }
 
         .task-title {
@@ -90,11 +90,11 @@
         <div class="nav-button new-post-button">+</div>
     </a>
 </div>
-<div class="side-nav">
+<div class="item side-nav">
     @include('partials.navigation')
 </div>
 
-<div class="main">
+<div class="item main">
     @foreach($tasks as $task)
         <div class="task-container">
             <a href="{{action('TaskController@show', $task->id)}}">

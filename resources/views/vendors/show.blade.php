@@ -13,7 +13,6 @@
         }
 
         .main {
-            width: 500px;
             min-height: 150px;
             margin: 45px;
             flex-basis: 80%;
@@ -96,7 +95,7 @@
 
 <div class="main">
     <div class="task-header">
-        Omar's Task
+        Vendor Details
         <link src="{{asset("./images/ic_edit.png")}}"/>
 {{--        <button type="button" class="carousel-control-next-icon">--}}
 {{--            <span aria-hidden="true">&times;</span>--}}
