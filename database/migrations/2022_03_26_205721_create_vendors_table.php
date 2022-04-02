@@ -18,7 +18,7 @@ class CreateVendorsTable extends Migration
             $table->string('vendor_name');
             $table->string('vendor_description');
             $table->string('phone_number');
-            $table->string('job_title');
+            $table->string('job_title')->nullable();
             $table->bigInteger('user_id')->unsigned();
             $table->timestamps();
         });
