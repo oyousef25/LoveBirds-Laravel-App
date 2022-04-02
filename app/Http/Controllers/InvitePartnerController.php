@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\InviteCreated;
 use App\PartnerInvite;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
 
 class InvitePartnerController extends Controller
 {
@@ -18,7 +22,7 @@ class InvitePartnerController extends Controller
         //Validating the incoming request data
         do{
             //Generate a random token
-            $token = str_random();
+            $token = Str::random(16);
 
         }//keep generating a new token if the token already exists
         while(PartnerInvite::where('token', $token)->first());
@@ -30,6 +34,7 @@ class InvitePartnerController extends Controller
         ]);
 
         //Send the email using the mail class that we created
+        Mail::to($request->get('email'))->send(new InviteCreated($invite));
 
         //redirect the user to where they came from
         return redirect()->back();
@@ -45,7 +50,7 @@ class InvitePartnerController extends Controller
         }
 
         //Created the user with the details from the invite
-        User::where('email', $invite->email)->first();
+        $user = User::where('email', $invite->email)->first();
 
         //Delete the invite record so it is not reused
         $invite->delete();
