@@ -68,6 +68,12 @@ Route::get('vendors', 'CustomVendorController@index')->name('vendors.index');
 //Vendor details(show)
 Route::get('vendors/{vendor}', 'CustomVendorController@show')->name('vendors.show');
 
+//Partner invitation routes
+Route::get('invite', 'InvitePartnerController@invite')->name('invite');
+Route::post('invite', 'InvitePartnerController@process')->name('process');
+//{token} a required parameter
+Route::get('accept/{token}', 'InvitePartnerController@accept')->name('accept');
+
 /*
  * Main Pages Routes
  */
