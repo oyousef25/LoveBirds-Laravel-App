@@ -11,6 +11,7 @@ class CustomVendor extends Model
         'vendor_name',
         'vendor_description',
         'phone_number',
-        'job_title'
+        'job_title',
+        'user_id'
     ];
 }
