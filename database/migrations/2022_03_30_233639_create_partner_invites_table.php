@@ -15,7 +15,8 @@ class CreatePartnerInvitesTable extends Migration
     {
         Schema::create('partner_invites', function (Blueprint $table) {
             $table->id();
-            $table->string('email')->unique();
+            $table->bigInteger('sender_id')->unsigned();
+            $table->string('partner_email')->unique();
             $table->string('token', 16)->unique();
             $table->timestamps();
         });

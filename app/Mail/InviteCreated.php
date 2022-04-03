@@ -15,6 +15,11 @@ class InviteCreated extends Mailable
     use Queueable, SerializesModels;
 
     /**
+     * @var PartnerInvite
+     */
+    private $invite;
+
+    /**
      * Create a new message instance.
      *
      * @return void
@@ -34,7 +39,8 @@ class InviteCreated extends Mailable
     {
         //$currentUserEmail = Auth::email();
         ///return $this->from($currentUserEmail)
+        $invite = $this->invite;
         return $this->from('omar-yousef88@hotmail.com')
-        ->view('emails.invite');
+        ->view('emails.invite', compact("invite"));
     }
 }

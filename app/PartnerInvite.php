@@ -8,7 +8,8 @@ class PartnerInvite extends Model
 {
     //
     protected $fillable = [
-        'email',
+        'sender_id',
+        'partner_email',
         'token',
     ];
 }

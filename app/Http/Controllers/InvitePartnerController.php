@@ -27,9 +27,17 @@ class InvitePartnerController extends Controller
         }//keep generating a new token if the token already exists
         while(PartnerInvite::where('token', $token)->first());
 
+        $currentUser = Auth::user();
+        $invitedUser = User::where('email', $request->get('email'));
+
+//        if ($currentUser->partner_email != null ||
+//            $invitedUser->partner_email != null){
+//
+//        }
         //Create a new invite record and store it in the partner_invites table
         $invite = PartnerInvite::create([
-            'email' => $request->get('email'),
+            'sender_id' => $currentUser->getAuthIdentifier(),
+            'partner_email' => $request->get('email'),
             'token' => $token,
         ]);
 
@@ -49,13 +57,21 @@ class InvitePartnerController extends Controller
             abort(404);
         }
 
-        //Created the user with the details from the invite
-        $user = User::where('email', $invite->email)->first();
+        //Finding both users
+        $currentUser = User::where('id', $invite->sender_id)->first();
+        $invitedUser = User::where('email', $invite->partner_email)->first();
+
+        //Assigning both users partner emails to each other
+        $currentUser->partner_email = $invitedUser->partner_email;
+        $invitedUser->partner_email = $currentUser->partner_email;
+
+        $currentUser->update(['partner_email' => $invitedUser->partner_email]);
+        $invitedUser->save();
 
         //Delete the invite record so it is not reused
         $invite->delete();
 
         //Here we will put the actions that will happen after the invitation is done successfully but for now we will prove it worked
-        return 'Good job! Invite accepted!';
+        return 'Good job! ' . $invitedUser->name . ' Invite accepted!';
     }
 }
