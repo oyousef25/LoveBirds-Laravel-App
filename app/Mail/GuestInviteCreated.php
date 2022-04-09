@@ -2,21 +2,16 @@
 
 namespace App\Mail;
 
-use App\PartnerInvite;
-use App\User;
+use App\GuestConfirmation;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Support\Facades\Auth;
 
-class InviteCreated extends Mailable
+class GuestInviteCreated extends Mailable
 {
     use Queueable, SerializesModels;
 
-    /**
-     * @var PartnerInvite
-     */
     private $invite;
 
     /**
@@ -24,7 +19,7 @@ class InviteCreated extends Mailable
      *
      * @return void
      */
-    public function __construct(PartnerInvite $invite)
+    public function __construct(GuestConfirmation $invite)
     {
         //
         $this->invite = $invite;
@@ -39,6 +34,6 @@ class InviteCreated extends Mailable
     {
         $invite = $this->invite;
         return $this->from('omar-yousef88@hotmail.com')
-        ->view('emails.invite', compact("invite"));
+            ->view('emails.confirmation', compact("invite"));
     }
 }
