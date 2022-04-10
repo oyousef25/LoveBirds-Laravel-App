@@ -74,6 +74,10 @@ Route::post('invite', 'InvitePartnerController@process')->name('process');
 //{token} a required parameter
 Route::get('accept/{token}', 'InvitePartnerController@accept')->name('accept');
 
+//Guest confirmation routes
+//{token} a required parameter
+Route::get('confirm/{token}', 'GuestConfirmationController@confirm')->name('confirm');
+
 /*
  * Main Pages Routes
  */

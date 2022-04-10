@@ -44,9 +44,12 @@ class GuestController extends Controller
 
     //Storing a new task
     public function store(Request $request){
-        $task = new Guest($request->all());
-        $task->user_id = auth()->user()->id;
-        $task->save();
+        $guest = new Guest($request->all());
+        $guest->user_id = auth()->user()->id;
+        $guest->save();
+
+        (new GuestConfirmationController)->process($guest->email_address);
+
         return redirect('guests');
     }
 

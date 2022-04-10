@@ -30,7 +30,6 @@ class InvitePartnerController extends Controller
         while (PartnerInvite::where('token', $token)->first());
 
         $currentUser = Auth::user();
-        $invitedUser = User::where('email', $request->get('email'));
 
         //Create a new invite record and store it in the partner_invites table
         $invite = PartnerInvite::create([
