@@ -33,21 +33,39 @@ Route::get('planning', 'TaskController@index')->name('planning.index');
 Route::get('planning/{task}', 'TaskController@show')->name('planning.show');
 
 /*
+ * Budget Categories Routes
+ */
+//Edit an existing category
+Route::delete('categories/{category}', 'BudgetCategoriesController@destroy')->name('categories.destroy');
+//Update an existing category
+Route::patch('categories/{category}', 'BudgetCategoriesController@update')->name('categories.update');
+//Create a new category
+Route::get('categories/create', 'BudgetCategoriesController@create')->name('categories.create');
+//Edit an existing category
+Route::get('categories/{category}/edit', 'BudgetCategoriesController@edit')->name('categories.edit');
+//Create a new category
+Route::post('categories', 'BudgetCategoriesController@store')->name('categories.store');
+//All Categories(index)
+Route::get('categories', 'BudgetCategoriesController@index')->name('categories.index');
+//Category details(show)
+Route::get('categories/{category}', 'BudgetCategoriesController@show')->name('categories.show');
+
+/*
  * Guests Routes
  */
-//Edit an existing task
+//Edit an existing guest
 Route::delete('guests/{guest}', 'GuestController@destroy')->name('guests.destroy');
-//Update an existing task
+//Update an existing guest
 Route::patch('guests/{guest}', 'GuestController@update')->name('guests.update');
 //Create a new task
 Route::get('guests/create', 'GuestController@create')->name('guests.create');
-//Edit an existing task
+//Edit an existing guest
 Route::get('guests/{guest}/edit', 'GuestController@edit')->name('guests.edit');
-//Create a new task
+//Create a new guest
 Route::post('guests', 'GuestController@store')->name('guests.store');
-//All Tasks(index)
+//All Guests(index)
 Route::get('guests', 'GuestController@index')->name('guests.index');
-//Task details(show)
+//Guest details(show)
 Route::get('guests/{guest}', 'GuestController@show')->name('guests.show');
 
 /*
