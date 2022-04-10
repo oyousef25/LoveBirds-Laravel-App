@@ -13,19 +13,21 @@ use Illuminate\Support\Str;
 class InvitePartnerController extends Controller
 {
     //show a user a form with an email field to invite a new user
-    public function invite(){
+    public function invite()
+    {
         return view('partner.invite');
     }
 
     //process the form submission and send the invite by email
-    public function process(Request $request){
+    public function process(Request $request)
+    {
         //Validating the incoming request data
-        do{
+        do {
             //Generate a random token
             $token = Str::random(16);
 
         }//keep generating a new token if the token already exists
-        while(PartnerInvite::where('token', $token)->first());
+        while (PartnerInvite::where('token', $token)->first());
 
         $currentUser = Auth::user();
 
@@ -45,19 +47,20 @@ class InvitePartnerController extends Controller
     }
 
     //here we'll look up the user by the token sent provided in the URL
-    public function accept($token){
+    public function accept($token)
+    {
         //Handling if the invite doesn't exist
-        if(!$invite = PartnerInvite::where('token', $token)->first()){
+        if (!$invite = PartnerInvite::where('token', $token)->first()) {
             //Abort the task
             abort(404);
-        }else{
+        }
+        if ($invitedUser = User::where('email', $invite->partner_email)->first()) {
             //Finding both users
             $currentUser = User::where('id', $invite->sender_id)->first();
-            $invitedUser = User::where('email', $invite->partner_email)->first();
 
             //Assigning both users partner emails to each other
-            $currentUser->partner_email = $invitedUser->partner_email;
-            $invitedUser->partner_email = $currentUser->partner_email;
+            $currentUser->partner_email = $invitedUser->email;
+            $invitedUser->partner_email = $currentUser->email;
 
             $currentUser->update(['partner_email' => $invitedUser->partner_email]);
             $invitedUser->save();
@@ -68,5 +71,6 @@ class InvitePartnerController extends Controller
             //Here we will put the actions that will happen after the invitation is done successfully but for now we will prove it worked
             return 'Good job! ' . $invitedUser->name . ' Invite accepted!';
         }
+        return "Invited user account not found!";
     }
 }
