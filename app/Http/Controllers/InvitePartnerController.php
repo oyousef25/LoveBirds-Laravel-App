@@ -50,23 +50,23 @@ class InvitePartnerController extends Controller
         if(!$invite = PartnerInvite::where('token', $token)->first()){
             //Abort the task
             abort(404);
+        }else{
+            //Finding both users
+            $currentUser = User::where('id', $invite->sender_id)->first();
+            $invitedUser = User::where('email', $invite->partner_email)->first();
+
+            //Assigning both users partner emails to each other
+            $currentUser->partner_email = $invitedUser->partner_email;
+            $invitedUser->partner_email = $currentUser->partner_email;
+
+            $currentUser->update(['partner_email' => $invitedUser->partner_email]);
+            $invitedUser->save();
+
+            //Delete the invite record so it is not reused
+            $invite->delete();
+
+            //Here we will put the actions that will happen after the invitation is done successfully but for now we will prove it worked
+            return 'Good job! ' . $invitedUser->name . ' Invite accepted!';
         }
-
-        //Finding both users
-        $currentUser = User::where('id', $invite->sender_id)->first();
-        $invitedUser = User::where('email', $invite->partner_email)->first();
-
-        //Assigning both users partner emails to each other
-        $currentUser->partner_email = $invitedUser->partner_email;
-        $invitedUser->partner_email = $currentUser->partner_email;
-
-        $currentUser->update(['partner_email' => $invitedUser->partner_email]);
-        $invitedUser->save();
-
-        //Delete the invite record so it is not reused
-        $invite->delete();
-
-        //Here we will put the actions that will happen after the invitation is done successfully but for now we will prove it worked
-        return 'Good job! ' . $invitedUser->name . ' Invite accepted!';
     }
 }

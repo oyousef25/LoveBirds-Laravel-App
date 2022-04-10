@@ -39,22 +39,22 @@ class GuestConfirmationController extends Controller
     //here we'll look up the user by the token sent provided in the URL
     public function confirm($token){
         //Handling if the invite doesn't exist
-        if(!$guest = GuestConfirmation::where('token', $token)->first()){
+        if(!$guestConfirmation = GuestConfirmation::where('token', $token)->first()){
             //Abort the task
             abort(404);
         }
+        if ($invitedGuest = Guest::where('email_address', $guestConfirmation->guest_email)->first()){
+            //Making the guest status confirmed
+            $invitedGuest->status_id = 2;
+            $invitedGuest->save();
 
-        //Finding both users
-        $invitedGuest = Guest::where('email_address', $guest->guest_email)->first();
+            //Delete the invite record so it is not reused
+            $guestConfirmation->delete();
 
-        //Making the guest status confirmed
-        $invitedGuest->status_id = 2;
-        $invitedGuest->save();
-
-        //Delete the invite record so it is not reused
-        $guest->delete();
-
-        //Here we will put the actions that will happen after the invitation is done successfully but for now we will prove it worked
-        return 'See you at the wedding day!';
+            //Here we will put the actions that will happen after the invitation is done successfully but for now we will prove it worked
+            return 'See you at the wedding day!';
+        }else{
+            return 'Guest not found';
+        }
     }
 }
