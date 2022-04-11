@@ -70,8 +70,8 @@
     </div>
     <div class="form-group">
         <div class="dropdown">
-            <label for="category_id">Category</label>
-            <select class="form-control" name="category_id">
+            <label for="budget_category_id">Category</label>
+            <select class="form-control" name="budget_category_id">
                 @foreach ($categories as $id => $category)
                     <option value="{{$id}}">{{$category}}</option>
                 @endforeach

@@ -28,7 +28,7 @@ class TaskController extends Controller
     //A task details
     public function show(Task $task){
         //Finding the task category and passing it to the view
-        $category = BudgetCategory::findOrFail($task->category_id);
+        $category = BudgetCategory::findOrFail($task->budget_category_id);
         $category_value = $category->category_name;
 
         return view('planning.show', compact("task", "category_value"));

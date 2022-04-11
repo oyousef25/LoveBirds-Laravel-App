@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\BudgetCategory;
+use App\Task;
 use Illuminate\Http\Request;
 
 class BudgetCategoriesController extends Controller
@@ -23,7 +24,8 @@ class BudgetCategoriesController extends Controller
 
     //A category details
     public function show(BudgetCategory $category){
-        return view('categories.show', compact("category"));
+        $tasks = Task::where('budget_category_id', $category->id)->first();
+        return view('categories.show', compact("category", "tasks"));
     }
 
     //Create a new category
@@ -57,6 +59,7 @@ class BudgetCategoriesController extends Controller
 
     //Delete a category
     public function destroy($category){
+        $category->tasks->delete();
         BudgetCategory::destroy($category);
         return redirect('categories');
     }

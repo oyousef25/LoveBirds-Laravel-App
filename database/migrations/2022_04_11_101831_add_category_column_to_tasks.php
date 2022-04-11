@@ -15,7 +15,7 @@ class AddCategoryColumnToTasks extends Migration
     {
         Schema::table('tasks', function (Blueprint $table) {
             //
-            $table->bigInteger('category_id')->unsigned()->default('1');
+            $table->bigInteger('budget_category_id')->unsigned()->default('1');
         });
     }
 
@@ -28,7 +28,7 @@ class AddCategoryColumnToTasks extends Migration
     {
         Schema::table('tasks', function (Blueprint $table) {
             //
-            $table->dropColumn('category_id');
+            $table->dropColumn('budget_category_id');
         });
     }
 }

@@ -17,7 +17,7 @@ class Task extends Model
         "assigned_user",
         "task_price",
         "user_id",
-        "category_id"
+        "budget_category_id"
     ];
 
     public function category(){
