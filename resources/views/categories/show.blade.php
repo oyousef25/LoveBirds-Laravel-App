@@ -105,13 +105,10 @@
 </div>
 
 <div class="main">
-    <div>
-        <img src="public/images/ic_edit.png"/>
-    </div>
     <div class="guest-box align-items-center">
         <div class="task-header">
             Category Information
-            <link src="{{asset("./images/ic_edit.png")}}"/>
+            <span><img src="{{asset('storage/images/ic_edit.png')}}" alt="Image"/></span>
             {{--        <button type="button" class="carousel-control-next-icon">--}}
             {{--            <span aria-hidden="true">&times;</span>--}}
             {{--        </button>--}}

@@ -11,4 +11,8 @@ class BudgetCategory extends Model
     protected $fillable = [
         "category_name"
     ];
+
+    public function tasks(){
+        return $this->hasMany(Task::class);
+    }
 }

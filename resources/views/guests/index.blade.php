@@ -99,7 +99,7 @@
             <div class="col-sm-6 task-container">
                 <a href="{{action('GuestController@show', $guest->id)}}">
                     <div class="task-item">
-                        <div><img src="public/images/ic_edit.png"></div>
+                        <div><img src="../../../storage/images/ic_edit.png"></div>
                         <div class="guest-name">{{$guest->first_name}} {{$guest->last_name}}</div>
                         <div class="guest-relationship">
                             {{App\Relationship::find($guest->guest_relationship)->relationship_value}}</div>

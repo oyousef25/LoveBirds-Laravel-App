@@ -18,6 +18,7 @@ class CreateTasksTable extends Migration
             $table->string('task_title');
             $table->string('task_description');
             $table->date('due_date')->nullable();
+            $table->bigInteger('category_id')->unsigned()->default('1');
             $table->bigInteger('assigned_user')->unsigned();
             $table->decimal('task_price')->nullable();
             $table->bigInteger('user_id')->unsigned();

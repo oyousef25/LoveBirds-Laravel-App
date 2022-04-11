@@ -106,7 +106,7 @@
 
 <div class="main">
     <div>
-        <img src="public/images/ic_edit.png"/>
+        <img src="../../../storage/images/ic_edit.png"/>
     </div>
     <div class="guest-box align-items-center">
         <div class="task-header">
