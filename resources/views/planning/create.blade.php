@@ -64,6 +64,16 @@
         <label for="task_price">Cost</label>
         <input name="task_price" type="text" class="form-control" id="task_price" placeholder="e.g 22.00, 25, 76.00, etc">
     </div>
+    <div class="form-group">
+        <div class="dropdown">
+            <label for="budget_category_id">Category</label>
+            <select class="form-control" name="budget_category_id">
+                @foreach ($categories as $id => $category)
+                    <option value="{{$id}}">{{$category}}</option>
+                @endforeach
+            </select>
+        </div>
+    </div>
     <button type="submit" class="btn">Create</button>
 </form>
 </body>

@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\BudgetCategory;
 use App\Task;
 use Faker\Provider\Image;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TaskController extends Controller
 {
@@ -18,18 +20,25 @@ class TaskController extends Controller
     //All tasks
     public function index(){
         $tasks = Task::get();
+        $categories = DB::table('budget_categories');
 
-        return view('planning.index', compact("tasks"));
+        return view('planning.index', compact("tasks", "categories"));
     }
 
     //A task details
     public function show(Task $task){
-        return view('planning.show', compact("task"));
+        //Finding the task category and passing it to the view
+        $category = BudgetCategory::findOrFail($task->budget_category_id);
+        $category_value = $category->category_name;
+
+        return view('planning.show', compact("task", "category_value"));
     }
 
     //Create a new task
     public function create(){
-        return view('planning.create');
+        $categories = BudgetCategory::all()->pluck('category_name', 'id');
+
+        return view('planning.create', compact("categories"));
     }
 
     //Storing a new task
@@ -44,7 +53,9 @@ class TaskController extends Controller
     //Editing an existing task
     public function edit($task){
         $task = Task::findOrFail($task);
-        return view('planning.edit', compact("task"));
+        $categories = BudgetCategory::all()->pluck('category_name', 'id');
+
+        return view('planning.edit', compact("task", "categories"));
     }
 
     //Updating an existing task

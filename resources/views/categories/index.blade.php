@@ -85,7 +85,7 @@
 </head>
 <body>
 <div class="add-post">
-    <a href="{{action('GuestController@create')}}">
+    <a href="{{action('BudgetCategoriesController@create')}}">
         <div class="nav-button new-post-button">+</div>
     </a>
 </div>
@@ -94,23 +94,20 @@
 </div>
 
 <div class="main">
-    @foreach($guests as $guest)
+    @foreach($categories as  $category)
         <div class="row-cols-2">
             <div class="col-sm-6 task-container">
-                <a href="{{action('GuestController@show', $guest->id)}}">
+                <a href="{{action('BudgetCategoriesController@show', $category->id)}}">
                     <div class="task-item">
-                        <div><img src="../../../storage/images/ic_edit.png"></div>
-                        <div class="guest-name">{{$guest->first_name}} {{$guest->last_name}}</div>
-                        <div class="guest-relationship">
-                            {{App\Relationship::find($guest->guest_relationship)->relationship_value}}</div>
+                        <div class="guest-name">{{$category->category_name}}</div>
                     </div>
                 </a>
             </div>
         </div>
     @endforeach
-    <div class="row pagination-links">
-        {{$guests->links()}}
-    </div>
+{{--    <div class="row pagination-links">--}}
+{{--        {{$categories->links()}}--}}
+{{--    </div>--}}
 </div>
 </body>
 </html>

@@ -7,9 +7,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Task extends Model
 {
-    //use SoftDeletes;
     //protected $dates = ['deleted_at'];
-    //
     protected $table = 'tasks';
 
     protected $fillable = [
@@ -18,6 +16,11 @@ class Task extends Model
         "due_date",
         "assigned_user",
         "task_price",
-        "user_id"
+        "user_id",
+        "budget_category_id"
     ];
+
+    public function category(){
+        return $this->belongsTo(BudgetCategory::class);
+    }
 }
