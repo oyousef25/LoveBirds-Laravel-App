@@ -6,14 +6,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <style>
-        body {
-            display: flex;
-            flex-wrap: nowrap;
-            overflow: hidden;
-        }
-
         .main {
-            width: 500px;
             min-height: 150px;
             margin: 45px;
             flex-basis: 80%;
@@ -24,8 +17,6 @@
         }
 
         .guest-box {
-            width: 75%;
-            margin: 0 auto;
             padding-bottom: 25px;
             border: 1px solid #eaecee;
             border-radius: 8px;
@@ -37,10 +28,6 @@
             font-size: 25px;
             font-weight: bold;
             background-color: #92dfd8;
-        }
-
-        .side-nav {
-            flex-basis: 20%;
         }
 
         .title {
@@ -69,9 +56,9 @@
             color: white;
         }
 
-        .actions-container{
+        .actions-container {
             width: 100%;
-           margin: 30px auto 30px auto;
+            margin: 30px auto 30px auto;
         }
 
         .task-actions button {
@@ -99,72 +86,78 @@
     </style>
 </head>
 <body>
-
-<div class="side-nav">
-    @include('partials.navigation')
-</div>
-
-<div class="main">
-    <div>
-        <img src="../../../storage/images/ic_edit.png"/>
-    </div>
-    <div class="guest-box align-items-center">
-        <div class="task-header">
-            Guest Information
-            <link src="{{asset("./images/ic_edit.png")}}"/>
-            {{--        <button type="button" class="carousel-control-next-icon">--}}
-            {{--            <span aria-hidden="true">&times;</span>--}}
-            {{--        </button>--}}
-        </div>
-        <div class="task-title">
-            <div class="title title-label">Full Name</div>
-            <div>{{$guest->first_name}} {{$guest->last_name}}</div>
-        </div>
-        <div class="task-date">
-            <div class="title date-label">Relationship</div>
-            <div>{{$relationship_value}}</div>
-        </div>
-        <div class="task-description">
-            <div class="title description-label">E-mail Address</div>
-            <div> {{$guest->email_address}}</div>
-        </div>
-        <div class="task-cost">
-            <div class="title cost-label">Phone Number</div>
-            <div> {{$guest->phone_number}}</div>
+<div class="row">
+    <div class="col-sm-3">
+        <div class="item side-nav">
+            @include('partials.navigation')
         </div>
     </div>
-    <div class="actions-container align-items-center">
-        <div class="row task-actions">
-            <div class="col-sm-6">
-                <button type="button" class="btn" data-toggle="modal" data-target="#exampleModal"
-                        style="background-color: #ff8585">Remove Guest
-                </button>
+    <div class="col-sm-6">
+        <div class="main">
+            <div>
+                <img src="../../../storage/images/ic_edit.png"/>
             </div>
-            <div class="col-sm-6">
-                <button class="btn" style="background-color: #95e28e">Contact Guest</button>
+            <div class="guest-box align-items-center">
+                <div class="task-header">
+                    Guest Information
+                    <link src="{{asset("./images/ic_edit.png")}}"/>
+                    {{--        <button type="button" class="carousel-control-next-icon">--}}
+                    {{--            <span aria-hidden="true">&times;</span>--}}
+                    {{--        </button>--}}
+                </div>
+                <div class="task-title">
+                    <div class="title title-label">Full Name</div>
+                    <div>{{$guest->first_name}} {{$guest->last_name}}</div>
+                </div>
+                <div class="task-date">
+                    <div class="title date-label">Relationship</div>
+                    <div>{{$relationship_value}}</div>
+                </div>
+                <div class="task-description">
+                    <div class="title description-label">E-mail Address</div>
+                    <div> {{$guest->email_address}}</div>
+                </div>
+                <div class="task-cost">
+                    <div class="title cost-label">Phone Number</div>
+                    <div> {{$guest->phone_number}}</div>
+                </div>
             </div>
-        </div>
-    </div>
+            <div class="actions-container align-items-center">
+                <div class="row task-actions">
+                    <div class="col-sm-6">
+                        <button type="button" class="btn" data-toggle="modal" data-target="#exampleModal"
+                                style="background-color: #ff8585">Remove Guest
+                        </button>
+                    </div>
+                    <div class="col-sm-6">
+                        <button class="btn" style="background-color: #95e28e">Contact Guest</button>
+                    </div>
+                </div>
+            </div>
 
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-         aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Deletion Confirmation</h5>
-                </div>
-                <div class="modal-body">
-                    Are you sure you want to delete the guest "{{$guest->first_name}} {{$guest->last_name}}"
-                </div>
-                <div class="modal-footer">
-                    <button type="button" style="background-color: #ff8585" class="btn" data-dismiss="modal">Cancel
-                    </button>
-                    <form method="post" action="{{action('GuestController@destroy', $guest->id)}}">
-                        {{method_field('DELETE')}}
-                        {{csrf_field()}}
-                        <div><input type="submit" style="background-color: #95e28e" value="Confirm" class="btn"></div>
-                    </form>
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Deletion Confirmation</h5>
+                        </div>
+                        <div class="modal-body">
+                            Are you sure you want to delete the guest "{{$guest->first_name}} {{$guest->last_name}}"
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" style="background-color: #ff8585" class="btn" data-dismiss="modal">
+                                Cancel
+                            </button>
+                            <form method="post" action="{{action('GuestController@destroy', $guest->id)}}">
+                                {{method_field('DELETE')}}
+                                {{csrf_field()}}
+                                <div><input type="submit" style="background-color: #95e28e" value="Confirm" class="btn">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

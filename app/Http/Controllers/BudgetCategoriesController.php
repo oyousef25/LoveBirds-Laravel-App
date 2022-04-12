@@ -58,9 +58,9 @@ class BudgetCategoriesController extends Controller
     }
 
     //Delete a category
-    public function destroy($category){
-        $category->tasks->delete();
-        BudgetCategory::destroy($category);
+    public function destroy(BudgetCategory $category){
+        $category->tasks()->delete();
+        $category->delete();
         return redirect('categories');
     }
 }

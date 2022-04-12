@@ -11,7 +11,7 @@
             text-decoration: none;
         }
 
-        .item {
+        .main {
             margin: 45px;
         }
 
