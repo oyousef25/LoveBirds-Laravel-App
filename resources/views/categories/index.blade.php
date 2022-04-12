@@ -11,7 +11,7 @@
             text-decoration: none;
         }
 
-        .main{
+        .main {
             margin: 5%;
         }
 
@@ -70,25 +70,28 @@
         <div class="nav-button new-post-button">+</div>
     </a>
 </div>
-<div class="side-nav">
-    @include('partials.navigation')
-</div>
-
-<div class="main">
-    @foreach($categories as  $category)
-        <div class="row-cols-2">
-            <div class="col-sm-6 task-container">
-                <a href="{{action('BudgetCategoriesController@show', $category->id)}}">
-                    <div class="task-item">
-                        <div class="guest-name">{{$category->category_name}}</div>
-                    </div>
-                </a>
-            </div>
+<div class="row">
+    <div class="col-sm-3">
+        <div class="item side-nav">
+            @include('partials.navigation')
         </div>
-    @endforeach
-{{--    <div class="row pagination-links">--}}
-{{--        {{$categories->links()}}--}}
-{{--    </div>--}}
-</div>
+    </div>
+    <div class="col-sm-6">
+        <div class="main">
+            @foreach($categories as  $category)
+                <div class="row-cols-2">
+                    <div class="col-sm-6 task-container">
+                        <a href="{{action('BudgetCategoriesController@show', $category->id)}}">
+                            <div class="task-item">
+                                <div class="guest-name">{{$category->category_name}}</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            @endforeach
+            {{--    <div class="row pagination-links">--}}
+            {{--        {{$categories->links()}}--}}
+            {{--    </div>--}}
+        </div>
 </body>
 </html>
