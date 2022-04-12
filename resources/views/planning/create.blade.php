@@ -9,6 +9,11 @@
     <link href='https://fonts.googleapis.com/css?family=Roboto Slab' rel='stylesheet'>
 
     <style>
+        a, a:link, a:hover, .card-text {
+            color: black;
+            text-decoration: none !important;
+        }
+
         body {
             font-family: 'Roboto Slab';
         }

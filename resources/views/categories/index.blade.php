@@ -6,9 +6,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <style>
-        a, a:hover, a:link, a:active, a:visited {
-            text-underline: none;
-            text-decoration: none;
+        a, a:link, a:hover, .card-text {
+            color: black;
+            text-decoration: none !important;
         }
 
         .main {

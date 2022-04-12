@@ -32,7 +32,7 @@
             background-color: #92dfd8;
         }
 
-        .task-header a{
+        .task-header a {
             right: 0;
         }
 
@@ -105,10 +105,10 @@
             </div>
             <div class="guest-box align-items-center">
                 <div class="task-header">
-                    <p>Guest Information<p>
-                    <a href="{{action('GuestController@edit', $guest->id)}}">
-                        <img src="{{asset("/images/ic_edit.png")}}"/>
-                    </a>
+                    <p>Guest Information</p>
+                        <a class="" href="{{action('GuestController@edit', $guest->id)}}">
+                            <img src="{{asset("/images/ic_edit.png")}}"/>
+                        </a>
                 </div>
                 <div class="task-title">
                     <div class="title title-label">Full Name</div>
