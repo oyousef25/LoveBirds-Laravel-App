@@ -11,8 +11,8 @@
             text-decoration: none;
         }
 
-        span {
-            right: 10px;
+        .main{
+            margin: 5%;
         }
 
         .task-item {

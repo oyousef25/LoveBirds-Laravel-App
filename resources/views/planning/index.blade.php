@@ -11,8 +11,8 @@
             text-decoration: none;
         }
 
-        .main {
-            margin: 45px;
+        .main{
+            margin: 5%;
         }
 
         .task-item {
@@ -22,7 +22,7 @@
             transition: all 0.25s ease;
             overflow: hidden;
             cursor: pointer;
-            margin: 20px 5%;
+            margin: 5% 5%;
             padding: 10px;
         }
 
@@ -77,7 +77,7 @@
             max-width: 500px;
             border: 1px solid transparent;
             border-radius: 10px;
-            margin: 25px;
+            margin: 5%;
         }
 
         .card-title {

@@ -11,6 +11,15 @@
             text-decoration: none;
         }
 
+        .main{
+            margin-top: 45px;
+        }
+
+        .header{
+            display: flex;
+            justify-content: center;
+        }
+
         .task-item {
             border: 1px solid #eaecee;
             border-radius: 8px;
@@ -62,6 +71,25 @@
         .pagination-links {
             text-align: center;
         }
+
+        .card {
+            padding: 25px;
+            background-color: #92dfd8;
+            text-align: center;
+            max-width: 500px;
+            border: 1px solid transparent;
+            border-radius: 10px;
+            margin: 25px;
+        }
+
+        .card-title {
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .card-text {
+            font-size: 20px;
+        }
     </style>
 </head>
 <body>
@@ -78,6 +106,14 @@
     </div>
     <div class="col-sm-6">
         <div class="main">
+            <div class="header">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Total Guests</h5>
+                        <p class="card-text">{{count($guests)}} Guests</p>
+                    </div>
+                </div>
+            </div>
             @foreach($guests as $guest)
                 <div class="row-cols-2">
                     <div class="col-sm-6 task-container">

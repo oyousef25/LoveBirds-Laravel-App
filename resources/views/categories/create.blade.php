@@ -10,8 +10,10 @@
     <style>
         body {
             font-family: 'Roboto Slab';
-            width: 900px;
-            margin: 0 auto;
+        }
+
+        .main{
+            margin: 45px;
         }
 
         h1 {
@@ -20,16 +22,16 @@
             text-align: center;
         }
 
-        label{
+        label {
             color: #61d2c6;
         }
 
-        .form-control{
+        .form-control {
             height: 45px;
             /*box-shadow: 0 1rem 2rem 0 rgba(0, 0, 0, 0.1);*/
         }
 
-        button{
+        button {
             height: 45px;
             width: 100%;
             color: white;
@@ -38,15 +40,31 @@
     </style>
 </head>
 <body>
-<h1>New Category</h1>
-<form method="POST" action="{{ action('BudgetCategoriesController@store') }}">
-    {{ csrf_field() }}
-    <div class="form-group">
-        <label for="category_name">Category Name</label>
-        <input name="category_name" type="text" class="form-control" id="category_name"
-               placeholder="e.g Food, Venue">
+<div class="add-post">
+    <a href="{{action('GuestController@create')}}">
+        <div class="nav-button new-post-button">+</div>
+    </a>
+</div>
+<div class="row">
+    <div class="col-sm-3">
+        <div class="item side-nav">
+            @include('partials.navigation')
+        </div>
     </div>
-    <button type="submit" class="btn">Add Category</button>
-</form>
+    <div class="col-sm-6">
+        <div class="main">
+            <h1>New Category</h1>
+            <form method="POST" action="{{ action('BudgetCategoriesController@store') }}">
+                {{ csrf_field() }}
+                <div class="form-group">
+                    <label for="category_name">Category Name</label>
+                    <input name="category_name" type="text" class="form-control" id="category_name"
+                           placeholder="e.g Food, Venue">
+                </div>
+                <button type="submit" class="btn">Add Category</button>
+            </form>
+        </div>
+    </div>
+</div>
 </body>
 </html>

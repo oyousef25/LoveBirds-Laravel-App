@@ -11,18 +11,8 @@
             text-decoration: none;
         }
 
-        body {
-            display: flex;
-            flex-wrap: nowrap;
-        }
-
-        body > div {
-            width: 100px;
-            margin: 10px;
-        }
-
-        .main {
-            flex-basis: 80%;
+        .main{
+            margin: 5%;
         }
 
         .task-item {
@@ -42,17 +32,8 @@
             box-shadow: 0 2rem 5rem 0 rgba(0, 0, 0, 0.1);
         }
 
-        .side-nav {
-            flex-basis: 30%;
-        }
-
         .guest-name {
             font-size: 20px;
-        }
-
-        .guest-relationship {
-            color: #525252;
-            font-size: 15px;
         }
 
         .task-container > a {
