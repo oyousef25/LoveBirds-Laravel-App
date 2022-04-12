@@ -119,7 +119,13 @@
                     <div class="col-sm-6 task-container">
                         <a href="{{action('GuestController@show', $guest->id)}}">
                             <div class="task-item">
-                                <div><img src="../../../storage/images/ic_edit.png"></div>
+                                @if($guest->guest_relationship == 2 || $guest->guest_relationship == 4 || $guest->guest_relationship == 7)
+                                    <div><img src="{{asset("/images/male.png")}}"></div><br>
+                                @elseif($guest->guest_relationship == 3 || $guest->guest_relationship == 5 || $guest->guest_relationship == 8)
+                                    <div><img src="{{asset("/images/female.png")}}"></div><br>
+                                @else
+                                    <div><img src="{{asset("/images/user.png")}}"></div><br>
+                                @endif
                                 <div class="guest-name">{{$guest->first_name}} {{$guest->last_name}}</div>
                                 <div class="guest-relationship">
                                     {{App\Relationship::find($guest->guest_relationship)->relationship_value}}</div>

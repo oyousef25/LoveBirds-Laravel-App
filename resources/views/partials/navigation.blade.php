@@ -71,8 +71,8 @@
 </head>
 <body>
 
-<div class="sidenav">
-    <img src=""/>
+<div class="sidenav align-items-center">
+    <img src="{{asset("/images/ic_logo.png")}}" width="75%" height="75%"/>
     <a href="{{ url('/home') }}">Home</a>
     <a href="{{ url('/planning') }}">Planning</a>
     <a href="{{ url('/guests') }}">Guests</a>
