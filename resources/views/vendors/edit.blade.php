@@ -10,8 +10,10 @@
     <style>
         body {
             font-family: 'Roboto Slab';
-            width: 900px;
-            margin: 0 auto;
+        }
+
+        .main{
+            margin: 45px;
         }
 
         h1 {
@@ -38,36 +40,47 @@
     </style>
 </head>
 <body>
-<h1>Edit Vendor</h1>
-<form method="POST" action="{{ action('CustomVendorController@update', $vendor->id) }}">
-    {{method_field('PATCH')}}
-    {{ csrf_field() }}
-    <div class="form-group">
-        <label for="vendor_name">Vendor</label>
-        <input name="vendor_name" type="text" class="form-control" id="vendor_name"
-               placeholder="Enter the name of the vendor(ie. Omar)" value="{{$vendor->vendor_name}}">
+<div class="row">
+    <div class="col-sm-3">
+        <div class="item side-nav">
+            @include('partials.navigation')
+        </div>
     </div>
-    <div class="form-group">
-        <label for="vendor_description">Description</label>
-        <input name="vendor_description" type="text" class="form-control" id="vendor_description"
-               placeholder="Enter a description" value="{{$vendor->vendor_description}}">
+    <div class="col-sm-6">
+        <div class="main">
+            <h1>Edit Vendor</h1>
+            <form method="POST" action="{{ action('CustomVendorController@update', $vendor->id) }}">
+                {{method_field('PATCH')}}
+                {{ csrf_field() }}
+                <div class="form-group">
+                    <label for="vendor_name">Vendor</label>
+                    <input name="vendor_name" type="text" class="form-control" id="vendor_name"
+                           placeholder="Enter the name of the vendor(ie. Omar)" value="{{$vendor->vendor_name}}">
+                </div>
+                <div class="form-group">
+                    <label for="vendor_description">Description</label>
+                    <input name="vendor_description" type="text" class="form-control" id="vendor_description"
+                           placeholder="Enter a description" value="{{$vendor->vendor_description}}">
+                </div>
+                <div class="form-group">
+                    <label for="phone_number">Phone Number</label>
+                    <input name="phone_number" type="text" class="form-control" id="phone_number"
+                           placeholder="(123)456-7890" value="{{$vendor->phone_number}}">
+                </div>
+                <div class="form-group">
+                    <label for="job_title">Job Title</label>
+                    <input name="job_title" type="text" class="form-control" id="job_title"
+                           placeholder="Enter the job title(ie. barber)" value="{{$vendor->job_title}}">
+                </div>
+                <button type="submit" class="btn">Save Changes</button>
+            </form>
+            @if($errors->any())
+                @foreach($errors->all() as $error)
+                    {{$error}}<br>
+                @endforeach
+            @endif
+        </div>
     </div>
-    <div class="form-group">
-        <label for="phone_number">Phone Number</label>
-        <input name="phone_number" type="text" class="form-control" id="phone_number"
-               placeholder="(123)456-7890" value="{{$vendor->phone_number}}">
-    </div>
-    <div class="form-group">
-        <label for="job_title">Job Title</label>
-        <input name="job_title" type="text" class="form-control" id="job_title"
-               placeholder="Enter the job title(ie. barber)" value="{{$vendor->job_title}}">
-    </div>
-    <button type="submit" class="btn">Save Changes</button>
-</form>
-@if($errors->any())
-    @foreach($errors->all() as $error)
-        {{$error}}<br>
-    @endforeach
-@endif
+</div>
 </body>
 </html>

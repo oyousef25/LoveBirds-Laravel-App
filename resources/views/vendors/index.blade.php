@@ -11,22 +11,8 @@
             text-decoration: none;
         }
 
-        span{
+        span {
             right: 10px;
-        }
-
-        body {
-            display: flex;
-            flex-wrap: nowrap;
-        }
-
-        body > div {
-            width: 100px;
-            margin: 10px;
-        }
-
-        .main {
-            flex-basis: 80%;
         }
 
         .task-item {
@@ -43,10 +29,6 @@
         .task-item:hover {
             transform: translate3d(0, -5px, 0);
             box-shadow: 0 2rem 5rem 0 rgba(0, 0, 0, 0.1);
-        }
-
-        .side-nav {
-            flex-basis: 30%;
         }
 
         .guest-name {
@@ -83,27 +65,35 @@
     </style>
 </head>
 <body>
+
 <div class="add-post">
     <a href="{{action('CustomVendorController@create')}}">
         <div class="nav-button new-post-button">+</div>
     </a>
 </div>
-<div class="side-nav">
-    @include('partials.navigation')
-</div>
 
-<div class="main">
-    @foreach($vendors as $vendor)
-        <div class="task-container">
-            <a href="{{action('CustomVendorController@show', $vendor->id)}}">
-                <div class="task-item">
-                        <span aria-hidden="true">&times;</span>
-                    <div class="guest-name">{{$vendor->vendor_name}}</div>
-                    <div class="guest-relationship">{{$vendor->job_title}}</div>
-                </div>
-            </a>
+<div class="row">
+    <div class="col-sm-3">
+        <div class="item side-nav">
+            @include('partials.navigation')
         </div>
-    @endforeach
+    </div>
+    <div class="col-sm-6">
+        <div class="main">
+            @foreach($vendors as $vendor)
+                <div class="task-container">
+                    <a href="{{action('CustomVendorController@show', $vendor->id)}}">
+                        <div class="task-item">
+                            <span aria-hidden="true">&times;</span>
+                            <div class="guest-name">{{$vendor->vendor_name}}</div>
+                            <div class="guest-relationship">{{$vendor->job_title}}</div>
+                        </div>
+                    </a>
+                </div>
+            @endforeach
+        </div>
+    </div>
+</div>
 </div>
 </body>
 </html>
