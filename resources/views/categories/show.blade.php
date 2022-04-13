@@ -85,8 +85,9 @@
             border-radius: 8px;
             min-height: 150px;
             transition: all 0.25s ease;
+            overflow: hidden;
             cursor: pointer;
-            margin-top: 5%;
+            margin: 5% 5%;
             padding: 10px;
         }
 
@@ -96,7 +97,7 @@
         }
 
         .task-title {
-            font-size: 20px;
+            font-size: 23px;
         }
 
         .task-price {
@@ -110,7 +111,7 @@
 
         .task-date {
             color: #525252;
-            font-size: 15px;
+            font-size: 16px;
         }
 
         .task-container > a {
