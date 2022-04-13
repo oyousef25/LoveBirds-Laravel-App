@@ -6,6 +6,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <style>
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
     </style>
 </head>
 <body>
@@ -16,10 +20,19 @@
         </div>
     </div>
     <div class="col-sm-6">
+<<<<<<< Updated upstream
         <div class="main">
             <h2>Home Page</h2>
             <p>This is the home page</p>
         </div>
 
+=======
+        <div class="main align-items-center">
+            <h2>Home Page</h2>
+            <p>This is the home page</p>
+        </div>
+    </div>
+</div>
+>>>>>>> Stashed changes
 </body>
 </html>
