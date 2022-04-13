@@ -7,17 +7,12 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <style>
         a, a:hover, a:link, a:active, a:visited {
-<<<<<<< Updated upstream
             text-underline: none;
             text-decoration: none;
         }
 
         .main {
             margin: 5%;
-=======
-            text-underline: none !important;
-            text-decoration: none !important;
->>>>>>> Stashed changes
         }
 
         .task-item {
@@ -63,6 +58,10 @@
             transition: all 0.25s ease;
             z-index: 1;
         }
+
+        .pagination-links {
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -78,11 +77,7 @@
         </div>
     </div>
     <div class="col-sm-6">
-<<<<<<< Updated upstream
         <div class="main">
-=======
-        <div class="main align-items-center">
->>>>>>> Stashed changes
             @foreach($categories as  $category)
                 <div class="row-cols-2">
                     <div class="col-sm-6 task-container">
@@ -98,10 +93,5 @@
             {{--        {{$categories->links()}}--}}
             {{--    </div>--}}
         </div>
-<<<<<<< Updated upstream
-=======
-    </div>
-</div>
->>>>>>> Stashed changes
 </body>
 </html>

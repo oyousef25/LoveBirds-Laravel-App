@@ -10,13 +10,10 @@
     <style>
         body {
             font-family: 'Roboto Slab';
-<<<<<<< Updated upstream
         }
 
         .main{
             margin: 45px;
-=======
->>>>>>> Stashed changes
         }
 
         h1 {
@@ -43,20 +40,16 @@
     </style>
 </head>
 <body>
-<<<<<<< Updated upstream
 <div class="add-post">
     <a href="{{action('GuestController@create')}}">
         <div class="nav-button new-post-button">+</div>
     </a>
 </div>
-=======
->>>>>>> Stashed changes
 <div class="row">
     <div class="col-sm-3">
         <div class="item side-nav">
             @include('partials.navigation')
         </div>
-<<<<<<< Updated upstream
     </div>
     <div class="col-sm-6">
         <div class="main">
@@ -72,23 +65,6 @@
             </form>
         </div>
     </div>
-=======
-    </div>
-    <div class="col-sm-6">
-        <div class="main align-items-center">
-            <h1>New Category</h1>
-            <form method="POST" action="{{ action('BudgetCategoriesController@store') }}">
-                {{ csrf_field() }}
-                <div class="form-group">
-                    <label for="category_name">Category Name</label>
-                    <input name="category_name" type="text" class="form-control" id="category_name"
-                           placeholder="e.g Food, Venue">
-                </div>
-                <button type="submit" class="btn">Add Category</button>
-            </form>
-        </div>
-    </div>
->>>>>>> Stashed changes
 </div>
 </body>
 </html>
