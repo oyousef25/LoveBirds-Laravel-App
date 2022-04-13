@@ -89,9 +89,6 @@
                     </div>
                 </div>
             @endforeach
-            {{--    <div class="row pagination-links">--}}
-            {{--        {{$categories->links()}}--}}
-            {{--    </div>--}}
         </div>
 </body>
 </html>
