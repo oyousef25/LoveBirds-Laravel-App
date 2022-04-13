@@ -14,6 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::group(['namespace' => 'Api', 'prefix' => 'v1'], function () {
+    //Custom Vendors Routes
+    Route::apiResource('custom-vendors', 'CustomVendorController');
+    /*
+     * User Authentication Routes
+     */
     Route::post('/login', 'UsersController@login');
     Route::post('/register', 'UsersController@register');
     Route::get('/logout', 'UsersController@logout')->middleware('auth:api');
