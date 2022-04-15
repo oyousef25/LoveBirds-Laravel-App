@@ -23,11 +23,7 @@ class AccountController extends Controller
         if($currentUser->partner_email != null){
             $userPartner = User::where('email', $currentUser->partner_email)->first();
         }else{
-            $userPartner = User::create([
-                'name' => 'N/A',
-                'email' => 'N/A',
-                'password' => 'N/A'
-            ]);
+            $userPartner = new User();
         }
 
         $currentUserTasks = Task::all()->where('user_id', $currentUser->id);
@@ -37,19 +33,17 @@ class AccountController extends Controller
     }
 
     //Editing the current user
-    public function edit($guest){
-//        $relationships = Relationship::all()->pluck('relationship_value', 'id');
-//
-//        $guest = Guest::findOrFail($guest);
-//        return view('guests.edit', compact("guest", "relationships"));
+    public function edit($user_id){
+        $currentUser = User::findOrFail($user_id);
+        return view('account.edit', compact("currentUser"));
     }
 
     //Updating the current user
-    public function update(Request $request, $guest){
-//        $formData = $request->all();
-//        $guest = Guest::findOrFail($guest);
-//        $guest->update($formData);
-//
-//        return redirect('guests');
+    public function update(Request $request, $user_id){
+        $formData = $request->all();
+        $currentUser = User::findOrFail($user_id);
+        $currentUser->update($formData);
+
+        return redirect('account');
     }
 }

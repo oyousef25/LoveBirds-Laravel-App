@@ -80,7 +80,9 @@
             <div class="box user-box">
                 <div class="account-header">
                     <p class="account-header-title">Account Details</p>
-                    <img class="account-header-icon" src="{{asset("./images/ic_edit.png")}}"/>
+                    <a class="" href="{{action('AccountController@edit', $currentUser->id)}}">
+                        <img class="account-header-icon" src="{{asset("./images/ic_edit.png")}}"/>
+                    </a>
                 </div>
                 <div class="account-box">
                     <div class="row">
@@ -120,7 +122,9 @@
             <div class="box partner-box">
                 <div class="account-header">
                     <p class="account-header-title">Partner Details</p>
-                    <img class="account-header-icon" src="{{asset("./images/ic_edit.png")}}"/>
+                    <a class="" href="{{route('invite')}}">
+                        <img class="account-header-icon" src="{{asset("./images/ic_edit.png")}}"/>
+                    </a>
                 </div>
                 <div class="account-box">
                     <div class="row">
