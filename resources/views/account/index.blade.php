@@ -76,7 +76,7 @@
     </div>
     <div class="col-sm-6">
         <div class="main">
-            <h1>Welcome, Omar Yousef!</h1>
+            <h1>Welcome, {{$currentUser->name}}!</h1>
             <div class="box user-box">
                 <div class="account-header">
                     <p class="account-header-title">Account Details</p>
@@ -158,7 +158,7 @@
                 <p class="account-header-title">Partner</p>
             </div>
             <div class="account-box">
-                <p>{{$userPartnerTasks}}</p>
+                <p>{{count($userPartnerTasks)}}</p>
                 <p>remaining</p>
             </div>
         </div>
