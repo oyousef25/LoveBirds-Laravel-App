@@ -88,7 +88,7 @@
                             <p class="account-label">Name</p>
                         </div>
                         <div class="col-sm-6">
-                            <p class="account-value">Omar Yousef</p>
+                            <p class="account-value">{{$currentUser->name}}</p>
                         </div>
                     </div>
                     <div class="row">
@@ -96,7 +96,7 @@
                             <p class="account-label">Email</p>
                         </div>
                         <div class="col-sm-6">
-                            <p class="account-value">omar-yousef88@hotmail.com</p>
+                            <p class="account-value">{{$currentUser->email}}</p>
                         </div>
                     </div>
                     <div class="row">
@@ -104,7 +104,7 @@
                             <p class="account-label">Password</p>
                         </div>
                         <div class="col-sm-6">
-                            <p class="account-value">*********</p>
+                            <p class="account-value">*****</p>
                         </div>
                     </div>
                     <div class="row">
@@ -112,7 +112,7 @@
                             <p class="account-label">Wedding Day</p>
                         </div>
                         <div class="col-sm-6">
-                            <p class="account-value">2002-04-06</p>
+                            <p class="account-value">{{$currentUser->wedding_date}}</p>
                         </div>
                     </div>
                 </div>
@@ -128,7 +128,7 @@
                             <p class="account-label">Name</p>
                         </div>
                         <div class="col-sm-6">
-                            <p class="account-value">Omar Yousef</p>
+                            <p class="account-value">{{$userPartner->name}}</p>
                         </div>
                     </div>
                     <div class="row">
@@ -136,7 +136,7 @@
                             <p class="account-label">Email</p>
                         </div>
                         <div class="col-sm-6">
-                            <p class="account-value">omar-yousef88@hotmail.com</p>
+                            <p class="account-value">{{$userPartner->email}}</p>
                         </div>
                     </div>
                 </div>
@@ -149,7 +149,7 @@
                 <p class="account-header-title">Tasks</p>
             </div>
             <div class="account-box">
-                <p>50</p>
+                <p>{{count($currentUserTasks)}}</p>
                 <p>remaining</p>
             </div>
         </div>
@@ -158,7 +158,7 @@
                 <p class="account-header-title">Partner</p>
             </div>
             <div class="account-box">
-                <p>30</p>
+                <p>{{$userPartnerTasks}}</p>
                 <p>remaining</p>
             </div>
         </div>

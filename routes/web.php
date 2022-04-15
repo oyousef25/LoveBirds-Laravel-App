@@ -107,8 +107,6 @@ Route::get('/home', function () {
     return view('home');
 });
 
-Route::get('/account', function () {
-    return view('account.index');
-});
+Route::get('/account', 'AccountController@index')->name('account.index');
 
 Auth::routes();

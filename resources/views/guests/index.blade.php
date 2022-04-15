@@ -110,7 +110,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Total Guests</h5>
-                        <p class="card-text">{{count($guests)}} Guests</p>
+                        <p class="card-text">{{count($totalGuests)}} Guests</p>
                     </div>
                 </div>
             </div>
