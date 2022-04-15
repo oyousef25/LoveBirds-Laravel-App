@@ -108,7 +108,7 @@ Route::get('/home', function () {
 });
 
 Route::get('/account', function () {
-    return view('account');
+    return view('account.index');
 });
 
 Auth::routes();
