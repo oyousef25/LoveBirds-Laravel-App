@@ -7,8 +7,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <style>
         a, a:hover, a:link, a:active, a:visited {
-            text-underline: none;
-            text-decoration: none;
+            text-underline: none !important;
+            text-decoration: none !important;
         }
 
         .main{
@@ -22,8 +22,26 @@
             transition: all 0.25s ease;
             overflow: hidden;
             cursor: pointer;
-            margin-top: 40px;
+            margin: 5% 5%;
             padding: 10px;
+        }
+
+        .task-title {
+            font-size: 23px;
+        }
+
+        .task-price {
+            display: flex;
+            justify-content: right;
+            font-size: 18px;
+            text-align: right;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .task-date {
+            color: #525252;
+            font-size: 16px;
         }
 
         .task-item:hover {
@@ -31,11 +49,11 @@
             box-shadow: 0 2rem 5rem 0 rgba(0, 0, 0, 0.1);
         }
 
-        .guest-name {
+        .task-title {
             font-size: 20px;
         }
 
-        .guest-relationship {
+        .task-date {
             color: #525252;
             font-size: 15px;
         }
@@ -84,9 +102,13 @@
                 <div class="task-container">
                     <a href="{{action('CustomVendorController@show', $vendor->id)}}">
                         <div class="task-item">
-                            <span aria-hidden="true">&times;</span>
-                            <div class="guest-name">{{$vendor->vendor_name}}</div>
-                            <div class="guest-relationship">{{$vendor->job_title}}</div>
+                            <div class="vendor-details">
+                                <div class="task-title">{{$vendor->vendor_name}}</div>
+                                <div class="task-price">
+                                    <img src="{{asset("/images/item-arrow.png")}}" width="25px" height="25px">
+                                </div>
+                                <div class="task-date">{{$vendor->job_title}}</div>
+                            </div>
                         </div>
                     </a>
                 </div>

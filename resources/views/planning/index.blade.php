@@ -6,12 +6,13 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <style>
-        .header-link a {
-            color: red;
-            text-decoration: none;
+        a, a:link, a:hover, .card-text {
+            color: black;
+            text-decoration: none !important;
         }
 
         .main{
+            color: black;
             margin: 5%;
         }
 
@@ -36,6 +37,8 @@
         }
 
         .task-price {
+            display: flex;
+            justify-content: right;
             font-size: 18px;
             text-align: right;
             font-weight: bold;
@@ -135,12 +138,9 @@
                     <a href="{{action('TaskController@show', $task->id)}}">
                         <div class="task-item">
                             <div class="task-title">{{$task->task_title}}</div>
-                            <div class="task-price align-content-lg-center">${{$task->task_price}}
-                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
-                                     class="bi bi-arrow-right-circle-fill" viewBox="0 0 16 16">
-                                    <path
-                                        d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
-                                </svg>
+                            <div class="task-price">
+                                <p>${{$task->task_price}}</p>
+                                <img src="{{asset("/images/item-arrow.png")}}" width="25px" height="25px">
                             </div>
                             <div class="task-date">Due by {{$task->due_date}}</div>
                         </div>

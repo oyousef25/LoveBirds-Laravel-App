@@ -19,11 +19,12 @@ class GuestController extends Controller
 
     //All tasks
     public function index(){
+        $totalGuests = Guest::all();
         $guests = Guest::paginate(8);
 
         $relationships_table = DB::table('relationships');
 
-        return view('guests.index', compact("guests", "relationships_table"));
+        return view('guests.index', compact("guests", "relationships_table", "totalGuests"));
     }
 
     //A task details

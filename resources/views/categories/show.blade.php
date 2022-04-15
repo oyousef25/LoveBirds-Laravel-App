@@ -6,6 +6,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <style>
+        a, a:link, a:hover, .card-text {
+            color: black;
+            text-decoration: none !important;
+        }
+
         .main {
             min-height: 150px;
             margin: 5%;
@@ -16,11 +21,6 @@
         }
 
         .guest-box {
-<<<<<<< Updated upstream
-=======
-            width: 75%;
-            margin: 0 auto;
->>>>>>> Stashed changes
             text-align: center;
             padding-bottom: 25px;
             border: 1px solid #eaecee;
@@ -85,8 +85,9 @@
             border-radius: 8px;
             min-height: 150px;
             transition: all 0.25s ease;
+            overflow: hidden;
             cursor: pointer;
-            margin-top: 5%;
+            margin: 5% 5%;
             padding: 10px;
         }
 
@@ -96,10 +97,12 @@
         }
 
         .task-title {
-            font-size: 20px;
+            font-size: 23px;
         }
 
         .task-price {
+            display: flex;
+            justify-content: right;
             font-size: 18px;
             text-align: right;
             font-weight: bold;
@@ -108,7 +111,7 @@
 
         .task-date {
             color: #525252;
-            font-size: 15px;
+            font-size: 16px;
         }
 
         .task-container > a {
@@ -118,15 +121,12 @@
     </style>
 </head>
 <body>
-<<<<<<< Updated upstream
 
 <div class="add-post">
     <a href="{{action('GuestController@create')}}">
         <div class="nav-button new-post-button">+</div>
     </a>
 </div>
-=======
->>>>>>> Stashed changes
 <div class="row">
     <div class="col-sm-3">
         <div class="item side-nav">
@@ -134,25 +134,14 @@
         </div>
     </div>
     <div class="col-sm-6">
-<<<<<<< Updated upstream
         <div class="main">
             <div class="main">
                 <div class="guest-box align-items-center">
                     <div class="task-header">
                         Category Information
-                        <span>
-=======
-        <div class="main align-items-center">
-            <div class="guest-box align-items-center">
-                <div class="task-header">
-                    Category Information
-                    <span>
->>>>>>> Stashed changes
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil"
-                     viewBox="0 0 16 16"><path
-                        d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/></svg>
-            </span>
-<<<<<<< Updated upstream
+                        <a class="" href="{{action('BudgetCategoriesController@edit', $category->id)}}">
+                            <img src="{{asset("/images/ic_edit.png")}}"/>
+                        </a>
                     </div>
                     <div class="task-title">
                         <div class="title title-label">Category Name</div>
@@ -174,7 +163,10 @@
                             <a href="{{action('TaskController@show', $task->id)}}">
                                 <div class="task-item">
                                     <div class="task-title">{{$task->task_title}}</div>
-                                    <div class="task-price">${{$task->task_price}} ></div>
+                                    <div class="task-price">
+                                        <p>${{$task->task_price}}</p>
+                                        <img src="{{asset("/images/item-arrow.png")}}" width="25px" height="25px">
+                                    </div>
                                     <div class="task-date">Due by {{$task->due_date}}</div>
                                 </div>
                             </a>
@@ -206,59 +198,6 @@
                                                 class="btn"></div>
                                 </form>
                             </div>
-=======
-                </div>
-                <div class="task-title">
-                    <div class="title title-label">Category Name</div>
-                    <div>{{$category->category_name}}</div>
-                </div>
-            </div>
-            <div class="actions-container align-items-center">
-                <div class="row task-actions">
-                    <div class="col-sm-6">
-                        <button type="button" class="btn" data-toggle="modal" data-target="#exampleModal"
-                                style="background-color: #ff8585">Remove Category
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <div class="task-list">
-                @foreach($category->tasks as $task)
-                    <div class="task-container">
-                        <a href="{{action('TaskController@show', $task->id)}}">
-                            <div class="task-item">
-                                <div class="task-title">{{$task->task_title}}</div>
-                                <div class="task-price">${{$task->task_price}} ></div>
-                                <div class="task-date">Due by {{$task->due_date}}</div>
-                            </div>
-                        </a>
-                    </div>
-                @endforeach
-            </div>
-
-            <!-- Modal -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                 aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Deletion Confirmation</h5>
-                        </div>
-                        <div class="modal-body">
-                            Are you sure you want to delete the category "{{$category->category_name}}"
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" style="background-color: #ff8585" class="btn" data-dismiss="modal">
-                                Cancel
-                            </button>
-                            <form method="post"
-                                  action="{{action('BudgetCategoriesController@destroy', $category->id)}}">
-                                {{method_field('DELETE')}}
-                                {{csrf_field()}}
-                                <div><input type="submit" style="background-color: #95e28e" value="Confirm" class="btn">
-                                </div>
-                            </form>
->>>>>>> Stashed changes
                         </div>
                     </div>
                 </div>

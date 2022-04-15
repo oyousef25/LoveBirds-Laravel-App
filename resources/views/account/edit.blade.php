@@ -40,11 +40,6 @@
     </style>
 </head>
 <body>
-<div class="add-post">
-    <a href="{{action('GuestController@create')}}">
-        <div class="nav-button new-post-button">+</div>
-    </a>
-</div>
 <div class="row">
     <div class="col-sm-3">
         <div class="item side-nav">
@@ -53,16 +48,32 @@
     </div>
     <div class="col-sm-6">
         <div class="main">
-            <h1>New Category</h1>
-            <form method="POST" action="{{ action('BudgetCategoriesController@store') }}">
+            <h1>Edit Account</h1>
+            <form method="POST" action="{{ action('AccountController@update', $currentUser->id) }}">
+                {{method_field('PATCH')}}
                 {{ csrf_field() }}
                 <div class="form-group">
-                    <label for="category_name">Category Name</label>
-                    <input name="category_name" type="text" class="form-control" id="category_name"
-                           placeholder="e.g Food, Venue">
+                    <label for="name">Name</label>
+                    <input name="name" type="text" class="form-control" id="name"
+                           placeholder="e.g john, omar, alex" value="{{$currentUser->name}}">
                 </div>
-                <button type="submit" class="btn">Add Category</button>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input name="email" type="text" class="form-control" id="email"
+                           placeholder="example@lovebirds.ca" value="{{$currentUser->email}}">
+                </div>
+                <div class="form-group">
+                    <label for="wedding_date">Wedding Day</label>
+                    <input name="wedding_date" type="text" class="form-control" id="wedding_date"
+                           placeholder="YYYY-MM-DD" value="{{$currentUser->wedding_date}}">
+                </div>
+                <button type="submit" class="btn">Save Changes</button>
             </form>
+            @if($errors->any())
+                @foreach($errors->all() as $error)
+                    {{$error}}<br>
+                @endforeach
+            @endif
         </div>
     </div>
 </div>

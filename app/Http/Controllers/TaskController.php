@@ -6,6 +6,7 @@ use App\BudgetCategory;
 use App\Task;
 use Faker\Provider\Image;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class TaskController extends Controller
@@ -44,7 +45,7 @@ class TaskController extends Controller
     //Storing a new task
     public function store(Request $request){
         $task = new Task($request->all());
-        $task->user_id = 1;
+        $task->user_id = Auth::user()->id;
         $task->save();
         //Task::create($task);
         return redirect('planning');

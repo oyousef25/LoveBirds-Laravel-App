@@ -6,9 +6,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <style>
-        a, a:hover, a:link, a:active, a:visited {
-            text-underline: none;
-            text-decoration: none;
+        a, a:link, a:hover, .card-text {
+            color: black;
+            text-decoration: none !important;
         }
 
         .main{
@@ -73,10 +73,10 @@
         }
 
         .card {
+            width: 50%;
             padding: 25px;
             background-color: #92dfd8;
             text-align: center;
-            max-width: 500px;
             border: 1px solid transparent;
             border-radius: 10px;
             margin: 25px;
@@ -110,7 +110,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Total Guests</h5>
-                        <p class="card-text">{{count($guests)}} Guests</p>
+                        <p class="card-text">{{count($totalGuests)}} Guests</p>
                     </div>
                 </div>
             </div>
@@ -119,7 +119,13 @@
                     <div class="col-sm-6 task-container">
                         <a href="{{action('GuestController@show', $guest->id)}}">
                             <div class="task-item">
-                                <div><img src="../../../storage/images/ic_edit.png"></div>
+                                @if($guest->guest_relationship == 2 || $guest->guest_relationship == 4 || $guest->guest_relationship == 7)
+                                    <div><img src="{{asset("/images/male.png")}}"></div><br>
+                                @elseif($guest->guest_relationship == 3 || $guest->guest_relationship == 5 || $guest->guest_relationship == 8)
+                                    <div><img src="{{asset("/images/female.png")}}"></div><br>
+                                @else
+                                    <div><img src="{{asset("/images/user.png")}}"></div><br>
+                                @endif
                                 <div class="guest-name">{{$guest->first_name}} {{$guest->last_name}}</div>
                                 <div class="guest-relationship">
                                     {{App\Relationship::find($guest->guest_relationship)->relationship_value}}</div>

@@ -24,10 +24,16 @@
         }
 
         .task-header {
+            display: flex;
+            justify-content: center;
             padding: 15px;
             font-size: 25px;
             font-weight: bold;
             background-color: #92dfd8;
+        }
+
+        .task-header a {
+            right: 0;
         }
 
         .title {
@@ -95,15 +101,14 @@
     <div class="col-sm-6">
         <div class="main">
             <div>
-                <img src="../../../storage/images/ic_edit.png"/>
+                <img src="{{asset("/images/user.png")}}"/><br><br>
             </div>
             <div class="guest-box align-items-center">
                 <div class="task-header">
-                    Guest Information
-                    <link src="{{asset("./images/ic_edit.png")}}"/>
-                    {{--        <button type="button" class="carousel-control-next-icon">--}}
-                    {{--            <span aria-hidden="true">&times;</span>--}}
-                    {{--        </button>--}}
+                    <p>Guest Information</p>
+                        <a class="" href="{{action('GuestController@edit', $guest->id)}}">
+                            <img src="{{asset("/images/ic_edit.png")}}"/>
+                        </a>
                 </div>
                 <div class="task-title">
                     <div class="title title-label">Full Name</div>
