@@ -20,7 +20,7 @@ class GuestController extends Controller
     {
         //
         $totalGuests = Guest::all()->count();
-        $guests = Guest::paginate(8);
+        $guests = Guest::paginate(10);
         $relationships_table = Relationship::get();
 
         return \Response::json([
@@ -40,9 +40,9 @@ class GuestController extends Controller
     {
         //
         $guest = new Guest($request->all());
-        (new GuestConfirmationController)->process($guest->email_address);
+        //(new GuestConfirmationController)->process($guest->email_address);
 
-        return $guest;
+        return Guest::create($request->all());
     }
 
     /**

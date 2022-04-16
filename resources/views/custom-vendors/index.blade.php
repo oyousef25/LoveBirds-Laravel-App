@@ -15,6 +15,16 @@
             margin: 5%;
         }
 
+        .vendors-tabs{
+            width: 75%;
+            font-size: 20px;
+            margin: 45px auto;
+        }
+
+        .active{
+            border-bottom: 4px solid #ff8585;
+        }
+
         .task-item {
             border: 1px solid #eaecee;
             border-radius: 8px;
@@ -97,6 +107,19 @@
         </div>
     </div>
     <div class="col-sm-6">
+        <div class="vendors-tabs">
+            <ul class="nav nav-pills">
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="{{route("vendors")}}">Explore Vendors</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route("saved-vendors.index")}}">Saved Vendors</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">My Vendors</a>
+                </li>
+            </ul>
+        </div>
         <div class="main">
             @foreach($vendors as $vendor)
                 <div class="task-container">

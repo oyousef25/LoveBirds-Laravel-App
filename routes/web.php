@@ -72,19 +72,29 @@ Route::get('guests/{guest}', 'GuestController@show')->name('guests.show');
  * Custom Vendors Routes
  */
 //Edit an existing vendor
-Route::delete('vendors/{vendor}', 'CustomVendorController@destroy')->name('vendors.destroy');
+Route::delete('custom-vendors/{vendor}', 'CustomVendorController@destroy')->name('custom-vendors.destroy');
 //Update an existing vendor
-Route::patch('vendors/{vendor}', 'CustomVendorController@update')->name('vendors.update');
+Route::patch('custom-vendors/{vendor}', 'CustomVendorController@update')->name('custom-vendors.update');
 //Create a new vendor
-Route::get('vendors/create', 'CustomVendorController@create')->name('vendors.create');
+Route::get('custom-vendors/create', 'CustomVendorController@create')->name('custom-vendors.create');
 //Edit an existing vendor
-Route::get('vendors/{vendor}/edit', 'CustomVendorController@edit')->name('vendors.edit');
+Route::get('custom-vendors/{vendor}/edit', 'CustomVendorController@edit')->name('custom-vendors.edit');
 //Create a new vendor
-Route::post('vendors', 'CustomVendorController@store')->name('vendors.store');
+Route::post('custom-vendors', 'CustomVendorController@store')->name('custom-vendors.store');
 //All vendors(index)
-Route::get('vendors', 'CustomVendorController@index')->name('vendors.index');
+Route::get('custom-vendors', 'CustomVendorController@index')->name('custom-vendors.index');
 //Vendor details(show)
-Route::get('vendors/{vendor}', 'CustomVendorController@show')->name('vendors.show');
+Route::get('custom-vendors/{vendor}', 'CustomVendorController@show')->name('custom-vendors.show');
+
+//Route::resource('custom-vendors', 'CustomVendorController');
+
+/*
+ * Saved Vendors Routes
+ */
+//All vendors(index)
+Route::get('saved-vendors', 'CustomVendorController@index')->name('saved-vendors.index');
+//Vendor details(show)
+Route::get('saved-vendors/{vendor}', 'CustomVendorController@show')->name('saved-vendors.show');
 
 //Partner invitation routes
 Route::get('invite', 'InvitePartnerController@invite')->name('invite');
@@ -111,6 +121,8 @@ Route::get('/account', 'AccountController@index')->name('account.index');
 Route::get('account/{user_id}/edit', 'AccountController@edit')->name('account.edit');
 Route::patch('account/{user_id}', 'AccountController@update')->name('account.update');
 
-
+Route::get('/vendors', function () {
+    return view('vendors');
+})->name('vendors');
 
 Auth::routes();
