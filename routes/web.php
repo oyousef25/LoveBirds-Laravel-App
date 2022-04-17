@@ -96,6 +96,14 @@ Route::get('saved-vendors', 'SavedVendorsController@index')->name('saved-vendors
 //Saved Vendor details(show)
 Route::get('saved-vendors/{vendor}', 'SavedVendorsController@show')->name('saved-vendors.show');
 
+/*
+ * Saved Vendors Routes
+ */
+//Saved vendors(index)
+Route::get('explore-vendors', 'ExploreVendorsController@index')->name('explore-vendors.index');
+//Saved Vendor details(show)
+Route::get('explore-vendors/{vendor}', 'SavedVendorsController@show')->name('explore-vendors.show');
+
 //Partner invitation routes
 Route::get('invite', 'InvitePartnerController@invite')->name('invite');
 Route::post('invite', 'InvitePartnerController@process')->name('process');
