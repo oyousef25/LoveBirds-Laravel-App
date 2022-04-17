@@ -11,24 +11,23 @@
             text-decoration: none !important;
         }
 
-        .main{
+        .main {
             margin: 5%;
         }
 
-        .vendors-tabs{
+        .vendors-tabs {
             width: 75%;
             font-size: 20px;
             margin: 45px auto;
         }
 
-        .active{
+        .active {
             border-bottom: 4px solid #ff8585;
         }
 
         .task-item {
             border: 1px solid #eaecee;
             border-radius: 8px;
-            min-height: 150px;
             transition: all 0.25s ease;
             overflow: hidden;
             cursor: pointer;
@@ -40,14 +39,12 @@
             font-size: 23px;
         }
 
-        .task-price {
-            display: flex;
-            justify-content: right;
-            font-size: 18px;
-            text-align: right;
-            font-weight: bold;
-            margin-right: 10px;
-        }
+        /*.task-price {*/
+        /*    font-size: 18px;*/
+        /*    text-align: right;*/
+        /*    font-weight: bold;*/
+        /*    margin-right: 10px;*/
+        /*}*/
 
         .task-date {
             color: #525252;
@@ -73,22 +70,8 @@
             color: black;
         }
 
-        .nav-button.new-post-button {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            font-size: 30px;
-            width: 55px;
-            height: 55px;
-            background-color: #92dfd8;
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            vertical-align: center;
-            transition: all 0.25s ease;
-            z-index: 1;
+        body{
+            color: black;
         }
     </style>
 </head>
@@ -117,16 +100,23 @@
             @foreach($vendors as $vendor)
                 <div class="task-container">
                     <a href="{{action('SavedVendorsController@show', $vendor->id)}}">
-                        <div class="task-item">
-                            <div class="vendor-details">
-                                <div class="task-title">{{$vendor->vendor_name}}</div>
+                    <div class="task-item">
+                        <div class="row">
+                            <div class="col-sm-3">
                                 <div class="task-price">
-                                    <img src="{{asset("/images/item-arrow.png")}}" width="25px" height="25px">
+                                    <img src="{{$vendor->vendor_image}}" width="100px" height="100px">
                                 </div>
-                                <div class="task-date">{{$vendor->vendor_description}}</div>
                             </div>
+                            <div class="col">
+                                <div class="vendor-details">
+                                    <div class="task-title">{{$vendor->vendor_title}}</div>
+                                    <div class="task-date">{{$vendor->vendor_rating}}</div>
+                                    <div class="task-date">{{$vendor->vendor_description}}</div>
+                                </div>
+                            </div>
+                            </a>
                         </div>
-                    </a>
+                    </div>
                 </div>
             @endforeach
         </div>

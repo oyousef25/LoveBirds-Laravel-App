@@ -10,22 +10,6 @@
             font-family: "Lato", sans-serif;
         }
 
-        /*.sidenav {*/
-        /*    height: 100%;*/
-        /*    width: 300px;*/
-        /*    box-shadow: inset 0 0 5px lightgray;*/
-        /*    position: fixed;*/
-        /*    z-index: 1;*/
-        /*    top: 0;*/
-        /*    left: 0;*/
-        /*    overflow-x: hidden;*/
-        /*    padding-top: 50px;*/
-        /*}*/
-
-        /*.main{*/
-        /*    margin-left: 400px;*/
-        /*}*/
-
         .sidenav > a {
             padding: 6px 6px 6px 32px;
             text-decoration: none;

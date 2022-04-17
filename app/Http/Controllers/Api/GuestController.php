@@ -22,11 +22,15 @@ class GuestController extends Controller
         $totalGuests = Guest::all()->count();
         $guests = Guest::paginate(10);
         $relationships_table = Relationship::get();
+        $pendingGuests = Guest::paginate(10)->where("status_id", 1);
+        $confirmedGuests = Guest::paginate(10)->where("status_id", 2);
 
         return \Response::json([
             'total_guests' => $totalGuests,
             'guests' => $guests,
-            'relationships' => $relationships_table
+            'relationships' => $relationships_table,
+            'pending_guests' => $pendingGuests,
+            'confirmed_guests' => $confirmedGuests,
         ]);
     }
 
