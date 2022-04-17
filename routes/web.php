@@ -91,10 +91,10 @@ Route::get('custom-vendors/{vendor}', 'CustomVendorController@show')->name('cust
 /*
  * Saved Vendors Routes
  */
-//All vendors(index)
-Route::get('saved-vendors', 'CustomVendorController@index')->name('saved-vendors.index');
-//Vendor details(show)
-Route::get('saved-vendors/{vendor}', 'CustomVendorController@show')->name('saved-vendors.show');
+//Saved vendors(index)
+Route::get('saved-vendors', 'SavedVendorsController@index')->name('saved-vendors.index');
+//Saved Vendor details(show)
+Route::get('saved-vendors/{vendor}', 'SavedVendorsController@show')->name('saved-vendors.show');
 
 //Partner invitation routes
 Route::get('invite', 'InvitePartnerController@invite')->name('invite');

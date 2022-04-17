@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::group(['namespace' => 'Api', 'prefix' => 'v1'], function () {
     //Custom Vendors Routes
     Route::apiResource('custom-vendors', 'CustomVendorController');
+    Route::apiResource('saved-vendors', 'SavedVendorsController');
     Route::apiResource('planning', 'TaskController');
     Route::apiResource('guests', 'GuestController');
     /*
