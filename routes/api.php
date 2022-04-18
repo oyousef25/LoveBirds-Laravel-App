@@ -34,7 +34,7 @@ Route::group(['namespace' => 'Api', 'prefix' => 'v1'], function () {
 
     //Account
     Route::get('account/{email}', 'AccountController@getUser');
-    Route::patch('account/{data}', 'AccountController@update');
+    Route::put('account/{data}', 'AccountController@updateUser');
 
     //Invite Partner
     Route::post('account/{email}', 'AccountController@updatePartner');

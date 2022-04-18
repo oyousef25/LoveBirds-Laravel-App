@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 class AccountController extends Controller
 {
-    //
+    //Passing the user and partner to the app
     public function getUser($email){
         //get the passed user
         $currentUser = User::where("email", $email)->first();
@@ -26,12 +26,15 @@ class AccountController extends Controller
         ]);
     }
 
-    //
-    public function updateUser(Request $request){
-        
+    //Updating the user with the data passed by the app
+    public function updateUser(Request $request, $id){
+        $currentUser = User::findOrFail($id);
+        $currentUser->update($request->all());
+        $currentUser->save();
+        return $currentUser;
     }
 
-    //
+    //Sending another partner invitation using the
     public function updatePartner($email){
 
     }

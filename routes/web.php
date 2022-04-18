@@ -86,8 +86,6 @@ Route::get('custom-vendors', 'CustomVendorController@index')->name('custom-vendo
 //Vendor details(show)
 Route::get('custom-vendors/{vendor}', 'CustomVendorController@show')->name('custom-vendors.show');
 
-//Route::resource('custom-vendors', 'CustomVendorController');
-
 /*
  * Saved Vendors Routes
  */
