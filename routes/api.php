@@ -31,6 +31,14 @@ Route::group(['namespace' => 'Api', 'prefix' => 'v1'], function () {
     //Guests
     Route::apiResource('guests', 'GuestController');
     Route::get('guest/{email}', 'GuestController@filter');
+
+    //Account
+    Route::get('account/{email}', 'AccountController@getUser');
+    Route::patch('account/{data}', 'AccountController@update');
+
+    //Invite Partner
+    Route::post('account/{email}', 'AccountController@updatePartner');
+
     /*
      * User Authentication Routes
      */

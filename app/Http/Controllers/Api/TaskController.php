@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\BudgetCategory;
 use App\Http\Controllers\Controller;
 use App\Task;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
@@ -19,6 +20,20 @@ class TaskController extends Controller
     public function index()
     {
         $tasks = Task::paginate(8);
+        $categories = BudgetCategory::get();
+
+        return \Response::json([
+            'tasks' => $tasks,
+            'categories' => $categories
+        ]);
+    }
+
+    public function filter($email)
+    {
+        //get the passed user
+        $currentUser = User::where("email", $email)->first();
+
+        $tasks = Task::where("user_id", $currentUser->id)->get();
         $categories = BudgetCategory::get();
 
         return \Response::json([
