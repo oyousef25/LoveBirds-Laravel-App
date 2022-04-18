@@ -6,6 +6,7 @@ use App\Guest;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\GuestConfirmationController;
 use App\Relationship;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -36,13 +37,14 @@ class GuestController extends Controller
 
     public function filter($email)
     {
-        //
-        $guestQuery = Guest::where("email_address", $email);
+        //get the passed user
+        $currentUser = User::where("email", $email)->first();
+
+        $guestQuery = Guest::where("user_id", $currentUser->id);
         $guests = $guestQuery->get();
         $totalGuests = $guests->count();
         $relationships_table = Relationship::get();
         $pendingGuests = $guestQuery->where("status_id", 1)->get();
-
         $confirmedGuests = $guestQuery->where("status_id", 2)->get();
 
         return \Response::json([

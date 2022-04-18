@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Api;
 
 use App\CustomVendor;
 use App\Http\Controllers\Controller;
+use App\User;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CustomVendorController extends Controller
 {
@@ -17,6 +19,14 @@ class CustomVendorController extends Controller
     public function index()
     {
         return CustomVendor::paginate(8);
+    }
+
+    public function filter($email)
+    {
+        //get the passed user
+        $currentUser = User::where("email", $email)->first();
+
+        return CustomVendor::where("user_id", $currentUser->id)->get();
     }
 
     /**

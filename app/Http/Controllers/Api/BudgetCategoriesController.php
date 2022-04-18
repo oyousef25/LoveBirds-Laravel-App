@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\BudgetCategory;
 use App\Http\Controllers\Controller;
 use App\SavedVendor;
+use App\User;
 use Illuminate\Http\Request;
 
 class BudgetCategoriesController extends Controller
@@ -17,6 +18,14 @@ class BudgetCategoriesController extends Controller
     public function index()
     {
         //
+        return BudgetCategory::all();
+    }
+
+    public function filter($email)
+    {
+        //get the passed user
+        $currentUser = User::where('email', $email);
+
         return BudgetCategory::all();
     }
 
