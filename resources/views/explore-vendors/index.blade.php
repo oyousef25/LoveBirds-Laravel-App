@@ -81,7 +81,7 @@
             @include('partials.navigation')
         </div>
     </div>
-    <div class="col-sm-6">
+    <div class="col-sm-8">
         <div class="vendors-tabs">
             <ul class="nav nav-pills">
                 <li class="nav-item">

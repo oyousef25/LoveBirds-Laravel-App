@@ -106,17 +106,17 @@
             @include('partials.navigation')
         </div>
     </div>
-    <div class="col-sm-6">
+    <div class="col-sm-8">
         <div class="vendors-tabs">
             <ul class="nav nav-pills">
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="{{route("vendors")}}">Explore Vendors</a>
+                    <a class="nav-link" href="{{route("vendors")}}">Explore Vendors</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{route("saved-vendors.index")}}">Saved Vendors</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="#">My Vendors</a>
+                    <a class="nav-link active" aria-current="page" href="#">My Vendors</a>
                 </li>
             </ul>
         </div>

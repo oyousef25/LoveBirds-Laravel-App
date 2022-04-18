@@ -4,12 +4,10 @@ namespace App\Http\Controllers\Api;
 
 use App\BudgetCategory;
 use App\Http\Controllers\Controller;
-use App\Task;
+use App\SavedVendor;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
-use Illuminate\Support\Facades\DB;
 
-class TaskController extends Controller
+class BudgetCategoriesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,13 +16,8 @@ class TaskController extends Controller
      */
     public function index()
     {
-        $tasks = Task::paginate(8);
-        $categories = BudgetCategory::get();
-
-        return \Response::json([
-            'tasks' => $tasks,
-            'categories' => $categories
-        ]);
+        //
+        return BudgetCategory::all();
     }
 
     /**
@@ -35,7 +28,11 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-      return Task::create($request->all());
+        //
+        $category = new BudgetCategory($request->all());
+        $category->save();
+
+        return $category;
     }
 
     /**
@@ -47,7 +44,7 @@ class TaskController extends Controller
     public function show($id)
     {
         //
-        return Task::findOrFail($id);
+        return BudgetCategory::findOrFail($id);
     }
 
     /**
@@ -60,10 +57,10 @@ class TaskController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $task = Task::findOrFail($id);
-        $task->update($request->all());
-        $task->save();
-        return $task;
+        $category = BudgetCategory::findOrFail($id);
+        $category->update($request->all());
+        $category->save();
+        return $category;
     }
 
     /**
@@ -75,7 +72,7 @@ class TaskController extends Controller
     public function destroy($id)
     {
         //
-        $task = Task::findOrFail($id);
-        $task->delete();
+        $category = BudgetCategory::findOrFail($id);
+        $category->delete();
     }
 }

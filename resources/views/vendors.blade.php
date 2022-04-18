@@ -52,6 +52,23 @@
             transition: all 0.25s ease;
             z-index: 1;
         }
+
+        .card {
+            width: 50%;
+            margin: 25px auto;
+            display: flex;
+            justify-content: center;
+            padding: 25px;
+            background-color: #92dfd8;
+            text-align: center;
+            border: 1px solid transparent;
+            border-radius: 10px;
+        }
+
+        .card-title {
+            font-size: 25px;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -66,7 +83,7 @@
             @include('partials.navigation')
         </div>
     </div>
-    <div class="col-sm-6">
+    <div class="col-sm-8">
         <div class="vendors-tabs">
             <ul class="nav nav-pills">
                 <li class="nav-item">
@@ -81,6 +98,31 @@
             </ul>
         </div>
         <div class="main">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Wedding Venues</h5>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Boutique</h5>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Photography</h5>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Flower Store</h5>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Wedding Gifts</h5>
+                </div>
+            </div>
         </div>
     </div>
 </div>

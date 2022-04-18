@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\SavedVendor;
+use App\Task;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +25,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        //$tasks = Task::all()->where("user_id", Auth::user()->id)->first(5);
+        $tasks = Task::all()->take(5);
+        $vendors = SavedVendor::all()->take(5);
+        //$exploreCategories = ;
+        return view('home', compact("tasks", "vendors"));
     }
 }

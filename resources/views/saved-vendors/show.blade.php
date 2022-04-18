@@ -30,6 +30,8 @@
         }
 
         .vendor-image {
+            max-width: 300px;
+            max-height: 300px;
             display: flex;
             justify-content: center;
         }

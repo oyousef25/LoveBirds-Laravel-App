@@ -20,10 +20,30 @@ class GuestController extends Controller
     {
         //
         $totalGuests = Guest::all()->count();
-        $guests = Guest::paginate(10);
+        $guests = Guest::all();
         $relationships_table = Relationship::get();
-        $pendingGuests = Guest::paginate(10)->where("status_id", 1);
-        $confirmedGuests = Guest::all()->where("status_id", 2);
+        $pendingGuests = DB::table('guests')->where("status_id", 1)->get();
+        $confirmedGuests = DB::table('guests')->where("status_id", 2)->get();
+
+        return \Response::json([
+            'total_guests' => $totalGuests,
+            'guests' => $guests,
+            'relationships' => $relationships_table,
+            'pending_guests' => $pendingGuests,
+            'confirmed_guests' => $confirmedGuests
+        ]);
+    }
+
+    public function filter($email)
+    {
+        //
+        $guestQuery = Guest::where("email_address", $email);
+        $guests = $guestQuery->get();
+        $totalGuests = $guests->count();
+        $relationships_table = Relationship::get();
+        $pendingGuests = $guestQuery->where("status_id", 1)->get();
+
+        $confirmedGuests = $guestQuery->where("status_id", 2)->get();
 
         return \Response::json([
             'total_guests' => $totalGuests,
