@@ -125,8 +125,7 @@ Route::get('/account', 'AccountController@index')->name('account.index');
 Route::get('account/{user_id}/edit', 'AccountController@edit')->name('account.edit');
 Route::patch('account/{user_id}', 'AccountController@update')->name('account.update');
 
-Route::get('/vendors', function () {
-    return view('vendors');
-})->name('vendors');
+Route::get('vendors', 'ExploreVendorsController@index')->name('explore-vendors.index');
+Route::get('vendors/{vendor}', 'ExploreVendorsController@show')->name('explore-vendors.show');
 
 Auth::routes();

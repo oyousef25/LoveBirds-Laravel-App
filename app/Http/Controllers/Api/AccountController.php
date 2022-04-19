@@ -13,7 +13,12 @@ class AccountController extends Controller
     public function getUser($email){
         //get the passed user
         $currentUser = User::where("email", $email)->first();
-        $userPartner = User::where("email", $currentUser->partner_email)->first();
+
+        if($currentUser->partner_email != null){
+            $userPartner = User::where('email', $currentUser->partner_email)->first();
+        }else{
+            $userPartner = new User();
+        }
 
         $userTasks = Task::where("user_id", $currentUser->id)->get();
         $partnerTasks = Task::where("user_id", $userPartner->id)->get();

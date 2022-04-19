@@ -16,6 +16,8 @@
         }
 
         .vendors-tabs{
+            display: flex;
+            justify-content: center;
             width: 75%;
             font-size: 20px;
             margin: 45px auto;
@@ -110,7 +112,7 @@
         <div class="vendors-tabs">
             <ul class="nav nav-pills">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route("vendors")}}">Explore Vendors</a>
+                    <a class="nav-link" href="{{route("explore-vendors.index")}}">Explore Vendors</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{route("saved-vendors.index")}}">Saved Vendors</a>

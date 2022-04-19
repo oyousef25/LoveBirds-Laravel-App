@@ -37,7 +37,7 @@ Route::group(['namespace' => 'Api', 'prefix' => 'v1'], function () {
     Route::put('account/{data}', 'AccountController@updateUser');
 
     //Invite Partner
-    Route::post('account/{email}', 'AccountController@updatePartner');
+    Route::post('partner/{email}', 'AccountController@updatePartner');
 
     /*
      * User Authentication Routes

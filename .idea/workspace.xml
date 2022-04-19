@@ -7,6 +7,12 @@
     <list default="true" id="02e6af59-c066-4437-a31e-ee90b90427a5" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/AccountController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/AccountController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ExploreVendorsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ExploreVendorsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/custom-vendors/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/custom-vendors/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/explore-vendors/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/explore-vendors/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/explore-vendors/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/explore-vendors/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/saved-vendors/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/saved-vendors/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/vendors.blade.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
@@ -183,11 +189,11 @@
       <recent name="C:\Users\Omar-\OneDrive\Documents\GitHub\LoveBirds-Laravel-App\resources\views\vendors" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/resources/views/explore-vendors" />
+      <recent name="$PROJECT_DIR$/resources/views/vendors" />
       <recent name="$PROJECT_DIR$/public" />
       <recent name="C:\Users\Omar-\OneDrive\Documents\GitHub\LoveBirds-Laravel-App\storage" />
       <recent name="C:\Users\Omar-\OneDrive\Documents\GitHub\LoveBirds-Laravel-App\public" />
-      <recent name="C:\Users\Omar-\OneDrive\Documents\GitHub\LoveBirds-Laravel-App\storage\app" />
-      <recent name="C:\Users\Omar-\OneDrive\Documents\GitHub\LoveBirds-Laravel-App\app\Http\Controllers\Api" />
     </key>
   </component>
   <component name="RunManager">
@@ -214,7 +220,7 @@
       <workItem from="1648908313430" duration="8896000" />
       <workItem from="1649612755937" duration="320000" />
       <workItem from="1649787410351" duration="5220000" />
-      <workItem from="1650224713587" duration="24565000" />
+      <workItem from="1650224713587" duration="30005000" />
     </task>
     <servers />
   </component>
