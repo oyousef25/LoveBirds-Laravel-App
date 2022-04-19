@@ -18,17 +18,17 @@ class CustomVendorController extends Controller
     public function index(){
         $vendors = CustomVendor::get();
 
-        return view('vendors.index', compact("vendors"));
+        return view('custom-vendors.index', compact("vendors"));
     }
 
     //A task details
     public function show(CustomVendor $vendor){
-        return view('vendors.show', compact("vendor"));
+        return view('custom-vendors.show', compact("vendor"));
     }
 
     //Create a new task
     public function create(){
-        return view('vendors.create');
+        return view('custom-vendors.create');
     }
 
     //Storing a new task
@@ -36,13 +36,13 @@ class CustomVendorController extends Controller
         $vendor = new CustomVendor($request->all());
         $vendor->user_id = 1;
         $vendor->save();
-        return redirect('vendors');
+        return redirect('custom-vendors');
     }
 
     //Editing an existing task
     public function edit($task){
         $vendor = CustomVendor::findOrFail($task);
-        return view('vendors.edit', compact("vendor"));
+        return view('custom-vendors.edit', compact("vendor"));
     }
 
     //Updating an existing task
@@ -51,12 +51,12 @@ class CustomVendorController extends Controller
         $vendor = CustomVendor::findOrFail($vendor);
         $vendor->update($formData);
 
-        return redirect('vendors');
+        return redirect('custom-vendors');
     }
 
     //Delete a task
     public function destroy($vendor){
         CustomVendor::destroy($vendor);
-        return redirect('vendors');
+        return redirect('custom-vendors');
     }
 }

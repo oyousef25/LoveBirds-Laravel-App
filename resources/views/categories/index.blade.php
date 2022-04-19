@@ -65,6 +65,25 @@
     </style>
 </head>
 <body>
+<script src="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
+<script>
+    import Chart from 'chart.js';
+    var ctxP = document.getElementById("pieChart");
+    var myPieChart = new Chart(ctxP, {
+        type: 'pie',
+        data: {
+            labels: ["Red", "Green", "Yellow", "Grey", "Dark Grey"],
+            datasets: [{
+                data: [300, 50, 100, 40, 120],
+                backgroundColor: ["#F7464A", "#46BFBD", "#FDB45C", "#949FB1", "#4D5360"],
+                hoverBackgroundColor: ["#FF5A5E", "#5AD3D1", "#FFC870", "#A8B3C5", "#616774"]
+            }]
+        },
+        options: {
+            responsive: true
+        }
+    });
+</script>
 <div class="add-post">
     <a href="{{action('BudgetCategoriesController@create')}}">
         <div class="nav-button new-post-button">+</div>
@@ -76,8 +95,12 @@
             @include('partials.navigation')
         </div>
     </div>
-    <div class="col-sm-6">
+    <div class="col-sm-8">
         <div class="main">
+            <hr class="mb-5"/>
+            <div>
+                <canvas id="pieChart" style="max-width: 500px;"></canvas>
+            </div>
             @foreach($categories as  $category)
                 <div class="row-cols-2">
                     <div class="col-sm-6 task-container">
@@ -90,5 +113,7 @@
                 </div>
             @endforeach
         </div>
+    </div>
+</div>
 </body>
 </html>

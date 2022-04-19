@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\SavedVendor;
+use App\User;
 use Illuminate\Http\Request;
 
 class SavedVendorsController extends Controller
@@ -17,6 +18,14 @@ class SavedVendorsController extends Controller
     {
         //
         return SavedVendor::paginate(8);
+    }
+
+    public function filter($email)
+    {
+        //get the passed user
+        $currentUser = User::where("email", $email)->first();
+
+        return SavedVendor::where("user_id", $currentUser->id)->get();
     }
 
     /**

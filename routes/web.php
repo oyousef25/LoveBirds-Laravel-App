@@ -86,8 +86,6 @@ Route::get('custom-vendors', 'CustomVendorController@index')->name('custom-vendo
 //Vendor details(show)
 Route::get('custom-vendors/{vendor}', 'CustomVendorController@show')->name('custom-vendors.show');
 
-//Route::resource('custom-vendors', 'CustomVendorController');
-
 /*
  * Saved Vendors Routes
  */
@@ -121,16 +119,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/home', function () {
-    return view('home');
-});
+Route::get('home', 'HomeController@index')->name('home.index');
 
 Route::get('/account', 'AccountController@index')->name('account.index');
 Route::get('account/{user_id}/edit', 'AccountController@edit')->name('account.edit');
 Route::patch('account/{user_id}', 'AccountController@update')->name('account.update');
 
-Route::get('/vendors', function () {
-    return view('vendors');
-})->name('vendors');
+Route::get('vendors', 'ExploreVendorsController@index')->name('explore-vendors.index');
+Route::get('vendors/{vendor}', 'ExploreVendorsController@show')->name('explore-vendors.show');
 
 Auth::routes();

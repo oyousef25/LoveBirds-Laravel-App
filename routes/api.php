@@ -16,9 +16,29 @@ use Illuminate\Support\Facades\Route;
 Route::group(['namespace' => 'Api', 'prefix' => 'v1'], function () {
     //Custom Vendors Routes
     Route::apiResource('custom-vendors', 'CustomVendorController');
+    Route::get('custom-vendor/{email}', 'CustomVendorController@filter');
+
     Route::apiResource('saved-vendors', 'SavedVendorsController');
+    Route::get('saved-vendor/{email}', 'SavedVendorsController@filter');
+
+    Route::apiResource('categories', 'BudgetCategoriesController');
+    Route::get('category/{email}', 'BudgetCategoriesController@filter');
+
+    //Tasks
     Route::apiResource('planning', 'TaskController');
+    Route::get('tasks/{email}', 'TaskController@filter');
+
+    //Guests
     Route::apiResource('guests', 'GuestController');
+    Route::get('guest/{email}', 'GuestController@filter');
+
+    //Account
+    Route::get('account/{email}', 'AccountController@getUser');
+    Route::put('account/{data}', 'AccountController@updateUser');
+
+    //Invite Partner
+    Route::post('partner/{email}', 'AccountController@updatePartner');
+
     /*
      * User Authentication Routes
      */

@@ -6,6 +6,7 @@ use App\Guest;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\GuestConfirmationController;
 use App\Relationship;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -20,10 +21,31 @@ class GuestController extends Controller
     {
         //
         $totalGuests = Guest::all()->count();
-        $guests = Guest::paginate(10);
+        $guests = Guest::all();
         $relationships_table = Relationship::get();
-        $pendingGuests = Guest::paginate(10)->where("status_id", 1);
-        $confirmedGuests = Guest::all()->where("status_id", 2);
+        $pendingGuests = DB::table('guests')->where("status_id", 1)->get();
+        $confirmedGuests = DB::table('guests')->where("status_id", 2)->get();
+
+        return \Response::json([
+            'total_guests' => $totalGuests,
+            'guests' => $guests,
+            'relationships' => $relationships_table,
+            'pending_guests' => $pendingGuests,
+            'confirmed_guests' => $confirmedGuests
+        ]);
+    }
+
+    public function filter($email)
+    {
+        //get the passed user
+        $currentUser = User::where("email", $email)->first();
+
+        $guestQuery = Guest::where("user_id", $currentUser->id);
+        $guests = $guestQuery->get();
+        $totalGuests = $guests->count();
+        $relationships_table = Relationship::get();
+        $pendingGuests = $guestQuery->where("status_id", 1)->get();
+        $confirmedGuests = $guestQuery->where("status_id", 2)->get();
 
         return \Response::json([
             'total_guests' => $totalGuests,

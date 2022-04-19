@@ -104,7 +104,7 @@
             @include('partials.navigation')
         </div>
     </div>
-    <div class="col-sm-6">
+    <div class="col-sm-8">
         <div class="main">
             <div class="header">
                 <div class="card">

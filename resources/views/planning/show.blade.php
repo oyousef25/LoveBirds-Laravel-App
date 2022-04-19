@@ -14,7 +14,6 @@
         .main {
             min-height: 150px;
             margin: 45px;
-            flex-basis: 80%;
             border: 1px solid #eaecee;
             border-radius: 8px;
             transition: all 0.25s ease;
@@ -127,7 +126,8 @@
             </div>
 
             <!-- Modal -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                 aria-labelledby="exampleModalLabel"
                  aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -138,13 +138,15 @@
                             Are you sure you want to delete the task "{{$task->task_title}}"
                         </div>
                         <div class="modal-footer">
-                            <button type="button" style="background-color: #ff8585" class="btn" data-dismiss="modal">
+                            <button type="button" style="background-color: #ff8585" class="btn"
+                                    data-dismiss="modal">
                                 Cancel
                             </button>
                             <form method="post" action="{{action('TaskController@destroy', $task->id)}}">
                                 {{method_field('DELETE')}}
                                 {{csrf_field()}}
-                                <div><input type="submit" style="background-color: #95e28e" value="Confirm" class="btn">
+                                <div><input type="submit" style="background-color: #95e28e" value="Confirm"
+                                            class="btn">
                                 </div>
                             </form>
                         </div>

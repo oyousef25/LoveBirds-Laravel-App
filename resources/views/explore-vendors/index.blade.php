@@ -6,26 +6,28 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <style>
-        a, a:link, a:hover{
+        a, a:link, a:hover {
             color: black;
             text-decoration: none !important;
         }
 
-        .main{
+        .main {
             margin-top: 45px;
         }
 
-        .vendors-tabs{
+        .vendors-tabs {
+            display: flex;
+            justify-content: center;
             width: 75%;
             font-size: 20px;
             margin: 45px auto;
         }
 
-        .active{
+        .active {
             border-bottom: 4px solid #ff8585;
         }
 
-        .nav a{
+        .nav a {
             text-align: center;
         }
 
@@ -54,13 +56,15 @@
         }
 
         .card {
+            width: 50%;
+            margin: 25px auto;
+            display: flex;
+            justify-content: center;
             padding: 25px;
             background-color: #92dfd8;
             text-align: center;
-            max-width: 500px;
             border: 1px solid transparent;
             border-radius: 10px;
-            margin: 5%;
         }
 
         .card-title {
@@ -70,18 +74,13 @@
     </style>
 </head>
 <body>
-<div class="add-post">
-    <a href="{{action('GuestController@create')}}">
-        <div class="nav-button new-post-button"></div>
-    </a>
-</div>
 <div class="row">
     <div class="col-sm-3">
         <div class="item side-nav">
             @include('partials.navigation')
         </div>
     </div>
-    <div class="col-sm-6">
+    <div class="col-sm-8">
         <div class="vendors-tabs">
             <ul class="nav nav-pills">
                 <li class="nav-item">
@@ -96,11 +95,15 @@
             </ul>
         </div>
         <div class="main">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Venues</h5>
-                </div>
-            </div>
+            @foreach($vendorCategories as $vendor)
+                <a href="{{action('ExploreVendorsController@show', $vendor)}}">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">{{$vendor}}</h5>
+                        </div>
+                    </div>
+                </a>
+            @endforeach
         </div>
     </div>
 </div>
