@@ -22,13 +22,18 @@ class ExploreVendorsController extends Controller
     }
 
     //A task details
-    public function show(SavedVendor $vendor){
+    public function showVendors(SavedVendor $vendor){
         require_once('vendor/autoload.php');
 
-        $response = Http::get('https://api.foursquare.com/v3/places/search?query=Wedding%20Gift&fields=name%2Clocation%2Cdescription%2Cwebsite%2Crating%2Cphotos&near=Windsor%2C%20ON');
+        $response = Http::withHeaders([
+            'Accept' => 'application/json',
+            'Authorization' => 'fsq3+0NhCeZmuY7A4sPIaenwvm5mBuVG8SA63KcT9o9ZEsE='
+        ])->get('https://api.foursquare.com/v3/places/search?query=Wedding%20Gift&fields=name%2Clocation%2Cdescription%2Cwebsite%2Crating%2Cphotos&near=Windsor%2C%20ON');
 
-        $vendors = $response->getBody();
-        echo $vendors;
+        $results = $response->getBody();
+        echo $vendors = $results;
+        //return view('explore-vendors.show');
+
         return view('explore-vendors.show', compact("vendors"));
     }
 }

@@ -153,7 +153,7 @@
                                 <button type="button" style="background-color: #ff8585" class="btn"
                                         data-dismiss="modal">Cancel
                                 </button>
-                                <form method="post" action="{{action('CustomVendorController@destroy', $vendor->id)}}">
+                                <form method="post" action="{{action('SavedVendorsController@destroy', $vendor->id)}}">
                                     {{method_field('DELETE')}}
                                     {{csrf_field()}}
                                     <div><input type="submit" style="background-color: #95e28e" value="Confirm"

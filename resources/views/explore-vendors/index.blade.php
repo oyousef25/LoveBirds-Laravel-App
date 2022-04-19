@@ -96,7 +96,7 @@
         </div>
         <div class="main">
             @foreach($vendorCategories as $vendor)
-                <a href="{{action('ExploreVendorsController@show', $vendor)}}">
+                <a href="{{action('ExploreVendorsController@showVendors', $vendor)}}">
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">{{$vendor}}</h5>

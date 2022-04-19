@@ -33,7 +33,6 @@ class SavedVendorsController extends Controller
 
     //Storing a new task
     public function store(SavedVendor $vendor){
-        $vendor->user_id = 1;
         $vendor->save();
         return redirect('saved-vendors');
     }
