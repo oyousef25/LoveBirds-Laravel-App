@@ -105,7 +105,7 @@ Route::get('explore-vendors/{vendor}', 'ExploreVendorsController@show')->name('e
 
 //Partner invitation routes
 Route::get('invite', 'InvitePartnerController@invite')->name('invite');
-Route::post('invite', 'InvitePartnerController@process')->name('process');
+Route::post('invite/{email}', 'InvitePartnerController@process')->name('process');
 //{token} a required parameter
 Route::get('accept/{token}', 'InvitePartnerController@accept')->name('accept');
 

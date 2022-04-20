@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Guest;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\InvitePartnerController;
 use App\Task;
 use App\User;
 use Illuminate\Http\Request;
@@ -44,7 +45,8 @@ class AccountController extends Controller
     }
 
     //Sending another partner invitation using the
-    public function updatePartner($email){
-
+    public function updatePartner(Request $request, $email){
+        //Sending a new email invite to the partner
+        (new InvitePartnerController)->process($request, $email);
     }
 }

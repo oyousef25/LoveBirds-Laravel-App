@@ -32,7 +32,7 @@
 </div>
 // make use of the named route so that if the URL ever changes,
 // the form will not break #winning
-<form method="POST" action="{{ route('invite') }}">
+<form method="POST" action="{{ action('InvitePartnerController@process', \Illuminate\Support\Facades\Auth::user()->email) }}">
     {{ csrf_field() }}
     <input type="email" name="email"/>
     <button type="submit">Send invite</button>

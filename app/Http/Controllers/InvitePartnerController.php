@@ -19,7 +19,7 @@ class InvitePartnerController extends Controller
     }
 
     //process the form submission and send the invite by email
-    public function process(Request $request)
+    public function process(Request $request, $email)
     {
         //Validating the incoming request data
         do {
@@ -29,11 +29,12 @@ class InvitePartnerController extends Controller
         }//keep generating a new token if the token already exists
         while (PartnerInvite::where('token', $token)->first());
 
-        $currentUser = Auth::user();
+        //get the passed user
+        $currentUser = User::where("email", $email)->first();
 
         //Create a new invite record and store it in the partner_invites table
         $invite = PartnerInvite::create([
-            'sender_id' => $currentUser->getAuthIdentifier(),
+            'sender_id' => $currentUser->id,
             'partner_email' => $request->get('email'),
             'token' => $token,
         ]);
