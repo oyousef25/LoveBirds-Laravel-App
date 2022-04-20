@@ -99,9 +99,9 @@ Route::delete('saved-vendors/{vendor}', 'SavedVendorsController@destroy')->name(
  * Explore Vendors Routes
  */
 //Explore vendors(index)
-Route::get('vendors', 'ExploreVendorsController@index')->name('explore-vendors.index');
+Route::get('explore-vendors', 'ExploreVendorsController@index')->name('explore-vendors.index');
 //Saved Vendor details(show)
-Route::get('vendors/{vendor}', 'ExploreVendorsController@showVendors')->name('explore-vendors.show');
+Route::get('explore-vendors/{vendor}', 'ExploreVendorsController@show')->name('explore-vendors.show');
 
 //Partner invitation routes
 Route::get('invite', 'InvitePartnerController@invite')->name('invite');

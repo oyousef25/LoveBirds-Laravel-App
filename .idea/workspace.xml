@@ -5,13 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="02e6af59-c066-4437-a31e-ee90b90427a5" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/LoveBirds-Laravel-App.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/LoveBirds-Laravel-App.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ExploreVendorsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ExploreVendorsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SavedVendorsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SavedVendorsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/SavedVendor.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/SavedVendor.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/explore-vendors/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/explore-vendors/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/explore-vendors/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/explore-vendors/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/saved-vendors/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/saved-vendors/show.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -153,6 +152,8 @@
       <path value="$PROJECT_DIR$/vendor/league/oauth2-server" />
       <path value="$PROJECT_DIR$/vendor/league/event" />
       <path value="$PROJECT_DIR$/vendor/nyholm/psr7" />
+      <path value="$PROJECT_DIR$/vendor/league/uri" />
+      <path value="$PROJECT_DIR$/vendor/league/uri-interfaces" />
     </include_path>
   </component>
   <component name="ProjectId" id="26GAItFIJShNgBBzBS4MU8hTA0C" />
@@ -218,7 +219,8 @@
       <workItem from="1648908313430" duration="8896000" />
       <workItem from="1649612755937" duration="320000" />
       <workItem from="1649787410351" duration="5220000" />
-      <workItem from="1650224713587" duration="32988000" />
+      <workItem from="1650224713587" duration="34702000" />
+      <workItem from="1650489418149" duration="294000" />
     </task>
     <servers />
   </component>
