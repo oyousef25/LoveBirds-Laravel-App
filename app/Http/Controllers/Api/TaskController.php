@@ -22,9 +22,12 @@ class TaskController extends Controller
         $tasks = Task::paginate(8);
         $categories = BudgetCategory::get();
 
+        $totalSpent = Task::get()->sum('task_price');
+
         return \Response::json([
             'tasks' => $tasks,
-            'categories' => $categories
+            'categories' => $categories,
+            'total_spent' => $totalSpent
         ]);
     }
 
@@ -33,12 +36,28 @@ class TaskController extends Controller
         //get the passed user
         $currentUser = User::where("email", $email)->first();
 
-        $tasks = Task::where("user_id", $currentUser->id)->get();
+        if($currentUser->partner_email != null){
+            $userPartner = User::where('email', $currentUser->partner_email)->first();
+        }else{
+            $userPartner = new User();
+        }
+
+        $userTasks = Task::where("user_id", $currentUser->id)->get();
+        $partnerTasks = Task::where("user_id", $userPartner->id)->get();
+        $allTasks = $userTasks->merge($partnerTasks);
+
         $categories = BudgetCategory::get();
 
+        $totalSpent = $allTasks->sum('task_price');
+        $budgetTotal = $currentUser->budget + $userPartner->budget;
+
         return \Response::json([
-            'tasks' => $tasks,
-            'categories' => $categories
+            'all_tasks' => $allTasks,
+            'user_tasks' => $userTasks,
+            'partner_tasks' => $partnerTasks,
+            'categories' => $categories,
+            'total_spent' => $totalSpent,
+            'budget_total' => $budgetTotal
         ]);
     }
 
