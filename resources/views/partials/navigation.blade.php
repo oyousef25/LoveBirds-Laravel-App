@@ -60,7 +60,7 @@
     <a href="{{ url('/home') }}">Home</a>
     <a href="{{ url('/planning') }}">Planning</a>
     <a href="{{ url('/guests') }}">Guests</a>
-    <a href="{{ url('/vendors') }}">Vendors</a>
+    <a href="{{ url('/explore-vendors') }}">Vendors</a>
     <a href="{{ url('/account') }}">My Account</a>
     <div class="btn-container">
         <a href="{{ url('/logout') }}">Sign out</a>

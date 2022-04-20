@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Guest;
 use App\Http\Controllers\Controller;
 use App\Task;
 use App\User;
@@ -23,11 +24,14 @@ class AccountController extends Controller
         $userTasks = Task::where("user_id", $currentUser->id)->get();
         $partnerTasks = Task::where("user_id", $userPartner->id)->get();
 
+        $totalGuests = Guest::where("user_id", $currentUser->id)->get();
+
         return \Response::json([
             'user' => $currentUser,
             'partner' => $userPartner,
             'user_tasks' => $userTasks->count(),
             'partner_tasks' => $partnerTasks->count(),
+            'total_guests' => count($totalGuests)
         ]);
     }
 
