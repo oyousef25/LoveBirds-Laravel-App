@@ -11,6 +11,11 @@
             text-decoration: none !important;
         }
 
+        img {
+            border: 0 transparent;
+            border-radius: 5px;
+        }
+
         .main {
             margin: 5%;
         }
@@ -28,17 +33,17 @@
         }
 
         .task-item {
-            border: 1px solid #eaecee;
+            border: 1.5px solid #e1e1e1;
             border-radius: 8px;
             transition: all 0.25s ease;
             overflow: hidden;
             cursor: pointer;
             margin: 15px;
-            padding: 10px;
+            padding: 5px;
         }
 
         .task-title {
-            font-size: 23px;
+            font-size: 1rem;
             font-weight: bold;
         }
 
@@ -63,7 +68,7 @@
             overflow: hidden;
             text-overflow: ellipsis;
             line-height: 1.8em;
-            max-height: 3.6em;
+            max-height: 1.8em;
         }
 
         .task-container > a {
@@ -101,32 +106,34 @@
         <div class="main">
             @foreach($allVendors as $vendor)
                 <div class="task-container">
-                    {{--                    <a href="{{action('SavedVendorsController@show', $vendor->id)}}">--}}
-                    <div class="task-item">
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <div class="vendor-image">
-                                    @if(!empty($vendor->photos))
-                                        <img
-                                            src="{{$vendor->photos[0]->prefix . 'original' . $vendor->photos[0]->suffix}}"
-                                            width="100px" height="100px">
-                                    @else
-                                        <img
-                                            src="https://oyousef.scweb.ca/lovebirds/images/default.png"
-                                            width="100px" height="100px">
-                                    @endif
+                    @if(isset($vendor->name))
+                        <a href="{{action('ExploreVendorsController@showDetails', $vendor->name)}}">
+                            @endif
+                            <div class="task-item">
+                                <div class="row">
+                                    <div class="col-sm-2">
+                                        <div class="vendor-image">
+                                            @if(!empty($vendor->photos))
+                                                <img
+                                                    src="{{$vendor->photos[0]->prefix . 'original' . $vendor->photos[0]->suffix}}"
+                                                    width="110px" height="110px">
+                                            @else
+                                                <img
+                                                    src="https://oyousef.scweb.ca/lovebirds/images/default.png"
+                                                    width="110px" height="110px">
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="vendor-details">
+                                            <div class="task-title">{{$vendor->name ?? "N/A"}}</div>
+                                            <div class="task-date">{{$vendor->rating ?? "N/A"}}</div>
+                                            <div class="task-date">{{$vendor->description ?? "N/A"}}</div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col">
-                                <div class="vendor-details">
-                                    <div class="task-title">{{$vendor->name ?? "N/A"}}</div>
-                                    <div class="task-date">{{$vendor->rating ?? "N/A"}}</div>
-                                    <div class="task-date">{{$vendor->description ?? "N/A"}}</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    {{--                    </a>--}}
+                        </a>
                 </div>
             @endforeach
         </div>

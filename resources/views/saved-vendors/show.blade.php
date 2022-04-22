@@ -147,7 +147,7 @@
                                 <h5 class="modal-title" id="exampleModalLabel">Deletion Confirmation</h5>
                             </div>
                             <div class="modal-body">
-                                Are you sure you want to delete the vendor "{{$vendor->vendor_name}}"
+                                Are you sure you want to delete the vendor "{{$vendor->vendor_title}}"
                             </div>
                             <div class="modal-footer">
                                 <button type="button" style="background-color: #ff8585" class="btn"

@@ -102,6 +102,7 @@ Route::delete('saved-vendors/{vendor}', 'SavedVendorsController@destroy')->name(
 Route::get('explore-vendors', 'ExploreVendorsController@index')->name('explore-vendors.index');
 //Saved Vendor details(show)
 Route::get('explore-vendors/{vendor}', 'ExploreVendorsController@show')->name('explore-vendors.show');
+Route::get('vendorDetails/{vendor}', 'ExploreVendorsController@showDetails')->name('explore-vendors.details');
 
 //Partner invitation routes
 Route::get('invite', 'InvitePartnerController@invite')->name('invite');
