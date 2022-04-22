@@ -33,20 +33,14 @@
             transition: all 0.25s ease;
             overflow: hidden;
             cursor: pointer;
-            margin: 5% 5%;
+            margin: 15px;
             padding: 10px;
         }
 
         .task-title {
             font-size: 23px;
+            font-weight: bold;
         }
-
-        /*.task-price {*/
-        /*    font-size: 18px;*/
-        /*    text-align: right;*/
-        /*    font-weight: bold;*/
-        /*    margin-right: 10px;*/
-        /*}*/
 
         .task-date {
             color: #525252;
@@ -65,6 +59,11 @@
         .task-date {
             color: #525252;
             font-size: 15px;
+            max-width: 65%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            line-height: 1.8em;
+            max-height: 3.6em;
         }
 
         .task-container > a {
@@ -100,26 +99,34 @@
             </ul>
         </div>
         <div class="main">
-            @foreach($vendors as $vendor)
+            @foreach($allVendors as $vendor)
                 <div class="task-container">
-                    <a href="{{action('SavedVendorsController@show', $vendor->id)}}">
-                        <div class="task-item">
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <div class="task-price">
-                                        <img src="{{$vendor->vendor_image}}" width="100px" height="100px">
-                                    </div>
+                    {{--                    <a href="{{action('SavedVendorsController@show', $vendor->id)}}">--}}
+                    <div class="task-item">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <div class="vendor-image">
+                                    @if(!empty($vendor->photos))
+                                        <img
+                                            src="{{$vendor->photos[0]->prefix . 'original' . $vendor->photos[0]->suffix}}"
+                                            width="100px" height="100px">
+                                    @else
+                                        <img
+                                            src="https://oyousef.scweb.ca/lovebirds/images/default.png"
+                                            width="100px" height="100px">
+                                    @endif
                                 </div>
-                                <div class="col">
-                                    <div class="vendor-details">
-                                        <div class="task-title">{{$vendor->vendor_title}}</div>
-                                        <div class="task-date">{{$vendor->vendor_rating}}</div>
-                                        <div class="task-date">{{$vendor->vendor_description}}</div>
-                                    </div>
+                            </div>
+                            <div class="col">
+                                <div class="vendor-details">
+                                    <div class="task-title">{{$vendor->name ?? "N/A"}}</div>
+                                    <div class="task-date">{{$vendor->rating ?? "N/A"}}</div>
+                                    <div class="task-date">{{$vendor->description ?? "N/A"}}</div>
                                 </div>
                             </div>
                         </div>
-                    </a>
+                    </div>
+                    {{--                    </a>--}}
                 </div>
             @endforeach
         </div>

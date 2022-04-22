@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\SavedVendor;
-use Illuminate\Http\Request;
 use GuzzleHttp;
+use Illuminate\Support\Facades\Http;
 
 class ExploreVendorsController extends Controller
 {
@@ -16,14 +15,16 @@ class ExploreVendorsController extends Controller
     }
 
     //All tasks
-    public function index(){
+    public function index()
+    {
         $vendorCategories = ["Venues", "Boutiques", "Photography", "Flower Stores", "Gifts"];
 
         return view('explore-vendors.index', compact("vendorCategories"));
     }
 
     //A task details
-    public function show(){
+    public function show()
+    {
 
         $client = new GuzzleHttp\Client();
 
@@ -34,11 +35,14 @@ class ExploreVendorsController extends Controller
             ],
         ]);
 
-        $results = $response->getBody();
-        echo $results;
-        $vendors = $results;
-        return view('explore-vendors.show', compact("vendors"));
+        $results = json_decode($response->getBody());
+        $allVendors = array();
 
-        //return view('explore-vendors.show', compact("vendors"));
+        foreach ($results as $vendors){
+            foreach ($vendors as $vendor){
+                array_push($allVendors, $vendor);
+            }
+        }
+        return view('explore-vendors.show', compact("allVendors"));
     }
 }

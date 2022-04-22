@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\BudgetCategory;
 use App\Http\Controllers\Controller;
 use App\SavedVendor;
+use App\Task;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -32,7 +33,7 @@ class BudgetCategoriesController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -47,20 +48,25 @@ class BudgetCategoriesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
         //
-        return BudgetCategory::findOrFail($id);
+        $category = BudgetCategory::findOrFail($id);
+        $tasks = Task::where('budget_category_id', $id)->get();
+        return \Response::json([
+            'category' => $category,
+            'tasks' => $tasks
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -75,7 +81,7 @@ class BudgetCategoriesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

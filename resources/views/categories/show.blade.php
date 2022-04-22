@@ -121,7 +121,6 @@
     </style>
 </head>
 <body>
-
 <div class="add-post">
     <a href="{{action('GuestController@create')}}">
         <div class="nav-button new-post-button">+</div>
