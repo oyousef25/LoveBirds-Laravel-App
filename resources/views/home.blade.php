@@ -18,8 +18,28 @@
             text-decoration: none !important;
         }
 
-        .home-image {
-            /*margin-top: 45px;*/
+        .header-container {
+            position: relative;
+            text-align: center;
+            font-family: 'Roboto Slab';
+            color: white;
+        }
+
+        .header-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .header-title{
+            font-size: 45px;
+            font-weight:bold;
+            margin-bottom: 15px;
+        }
+
+        .header-subtext{
+            font-size: 30px;
         }
 
         .home-image img {
@@ -86,9 +106,16 @@
             color: black;
             text-align: center;
             max-width: 300px;
-            /*border: 1px solid gray;*/
-            border-radius: 10px;
             margin: 5%;
+            border: 0px transparent;
+            border-radius: 10px;
+            box-shadow: 2px 1rem 1rem 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-body{
+            border: 0.5px solid #969696;
+            border-radius: 10px;
+            border-top: transparent;
         }
 
         .card-title {
@@ -96,6 +123,9 @@
             font-size: 25px;
             font-weight: bold;
             background-color: #92dfd8;
+            border-top: 0.5px solid #969696;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
         }
 
         .card-text {
@@ -111,8 +141,14 @@
         </div>
     </div>
     <div class="col-sm-9">
-        <div class="home-image">
-            <img src="{{asset("/images/welcome-header.png")}}"/>
+        <div class="header-container">
+            <div class="home-image">
+                <img src="{{asset("/images/welcome-header.png")}}"/>
+            </div>
+            <div class="header-text">
+                <div class="header-title">Wedding Day</div>
+                <div class="header-subtext">{{\Illuminate\Support\Facades\Auth::user()->wedding_date}}</div>
+            </div>
         </div>
         <div class="main">
             <h2>Overview</h2>

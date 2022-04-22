@@ -62,6 +62,10 @@
         .pagination-links {
             text-align: center;
         }
+
+        #chartContainer{
+            margin-top: 35px;
+        }
     </style>
 </head>
 <body>
@@ -102,7 +106,6 @@
         </div>
     </div>
     <div class="col-sm-8">
-        <hr class="mb-5"/>
         <div>
             <div id="chartContainer" style="height: 300px; width: 100%;"></div>
         </div>
