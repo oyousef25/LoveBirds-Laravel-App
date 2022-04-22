@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\DB;
 
 class GuestController extends Controller
 {
+    protected $currentUser = "";
     /**
      * Display a listing of the resource.
      *
@@ -39,6 +40,7 @@ class GuestController extends Controller
     {
         //get the passed user
         $currentUser = User::where("email", $email)->first();
+        $this->currentUser = $currentUser;
 
         $guestQuery = Guest::where("user_id", $currentUser->id);
         $guests = $guestQuery->get();
@@ -66,7 +68,7 @@ class GuestController extends Controller
     {
         //
         $guest = new Guest($request->all());
-        //(new GuestConfirmationController)->process($guest->email_address);
+        (new GuestConfirmationController)->process($guest->email_address, $this->currentUser->email);
 
         return Guest::create($request->all());
     }
