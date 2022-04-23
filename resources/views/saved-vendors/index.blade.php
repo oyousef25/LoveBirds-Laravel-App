@@ -122,9 +122,6 @@
         </div>
     </div>
     @endforeach
-    <div class="row pagination-links">
-        {{$guests->links()}}
-    </div>
 </div>
 </div>
 </div>

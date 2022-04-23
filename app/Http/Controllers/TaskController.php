@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\BudgetCategory;
 use App\Task;
+use App\User;
 use Faker\Provider\Image;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -39,7 +40,18 @@ class TaskController extends Controller
     public function create(){
         $categories = BudgetCategory::all()->pluck('category_name', 'id');
 
-        return view('planning.create', compact("categories"));
+        $currentUser = Auth::user();
+
+        $firstUser = User::where('email', Auth::user()->email)->pluck('name', 'id');;
+        if($currentUser->partner_email != null){
+            $userPartner = User::where('email', $currentUser->partner_email)->pluck('name', 'id');
+        }else{
+            $userPartner = new User();
+        }
+
+        $users = [$firstUser, $userPartner];
+
+        return view('planning.create', compact("categories", "users"));
     }
 
     //Storing a new task

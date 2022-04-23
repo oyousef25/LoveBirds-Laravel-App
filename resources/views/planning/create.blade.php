@@ -73,10 +73,20 @@
                     <input name="due_date" type="text" class="form-control" id="due_date" placeholder="YYYY-MM-DD">
                 </div>
                 <div class="form-group">
-                    <label for="assigned_user">Assigned to</label>
-                    <input name="assigned_user" type="text" class="form-control" id="assigned_user"
-                           placeholder="Choose One">
+                    <div class="dropdown">
+                        <label for="assigned_user">Assigned to</label>
+                        <select class="form-control" name="assigned_user">
+                            @foreach ($users as $id => $user)
+                                <option value="{{$id}}">{{$user}}</option>
+                            @endforeach
+                        </select>
+                    </div>
                 </div>
+{{--                <div class="form-group">--}}
+{{--                    <label for="assigned_user">Assigned to</label>--}}
+{{--                    <input name="assigned_user" type="text" class="form-control" id="assigned_user"--}}
+{{--                           placeholder="Choose One">--}}
+{{--                </div>--}}
                 <div class="form-group">
                     <label for="task_price">Cost</label>
                     <input name="task_price" type="text" class="form-control" id="task_price"

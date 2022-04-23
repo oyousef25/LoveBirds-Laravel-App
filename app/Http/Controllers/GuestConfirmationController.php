@@ -23,11 +23,11 @@ class GuestConfirmationController extends Controller
         }//keep generating a new token if the token already exists
         while(GuestConfirmation::where('token', $token)->first());
 
-        //$currentUser = Auth::user();
+        $currentUser = Auth::user();
 
         //Create a new invite record and store it in the partner_invites table
         $guest = GuestConfirmation::create([
-//            'sender_id' => $currentUser->id,
+            'sender_id' => $currentUser->id,
             'guest_email' => $email,
             'token' => $token,
         ]);
