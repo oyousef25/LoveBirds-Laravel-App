@@ -10,22 +10,6 @@
             font-family: "Lato", sans-serif;
         }
 
-        .sidenav {
-            height: 100%;
-            width: 300px;
-            box-shadow: inset 0 0 5px lightgray;
-            position: fixed;
-            z-index: 1;
-            top: 0;
-            left: 0;
-            overflow-x: hidden;
-            padding-top: 50px;
-        }
-
-        /*.main{*/
-        /*    margin-left: 400px;*/
-        /*}*/
-
         .sidenav > a {
             padding: 6px 6px 6px 32px;
             text-decoration: none;
@@ -71,12 +55,12 @@
 </head>
 <body>
 
-<div class="sidenav">
-    <img src=""/>
+<div class="sidenav align-items-center">
+    <img src="{{asset("/images/ic_logo.png")}}" width="75%" height="75%"/>
     <a href="{{ url('/home') }}">Home</a>
     <a href="{{ url('/planning') }}">Planning</a>
     <a href="{{ url('/guests') }}">Guests</a>
-    <a href="{{ url('/vendors') }}">Vendors</a>
+    <a href="{{ url('/explore-vendors') }}">Vendors</a>
     <a href="{{ url('/account') }}">My Account</a>
     <div class="btn-container">
         <a href="{{ url('/logout') }}">Sign out</a>
