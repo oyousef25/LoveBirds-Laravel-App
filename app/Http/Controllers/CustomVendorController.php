@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\CustomVendor;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CustomVendorController extends Controller
 {
@@ -16,7 +17,7 @@ class CustomVendorController extends Controller
 
     //All tasks
     public function index(){
-        $vendors = CustomVendor::get();
+        $vendors = CustomVendor::where('user_id', Auth::user()->id)->paginate(6);
 
         return view('custom-vendors.index', compact("vendors"));
     }

@@ -49,12 +49,12 @@
             justify-content: center;
         }
 
-        .register-text{
+        .register-text {
             margin: 10px;
             font-size: 16px;
         }
 
-        .register-btn{
+        .register-btn {
             border: 1px solid lightgray;
             box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, 0.1);
             color: #ff8585;
@@ -71,36 +71,49 @@
 <body>
 <div class="main">
     <h1>Register</h1>
-    <form method="POST">
-        {{method_field('PATCH')}}
-        {{ csrf_field() }}
+    <form method="POST" action="{{ route('register') }}">
+        @csrf
         <div class="form-group">
-            <label for="exampleInputEmail1">Username</label>
-            <input name="task_title" type="text" class="form-control" id="task_title">
+            <label for="name">Username</label>
+            <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name"
+                   value="{{ old('name') }}" required autocomplete="name" autofocus>
+            @if ($errors->has('name'))
+                <span class="invalid-feedback">
+            <strong>{{ $errors->first('name') }}</strong>
+        </span>
+            @endif
         </div>
         <div class="form-group">
-            <label for="task_description">E-Mail Address</label>
-            <input name="task_description" type="text" class="description form-control" id="task_description">
+            <label for="email">E-Mail Address</label>
+            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email"
+                   value="{{ old('email') }}" required autocomplete="email">
+            @error('email')
+            <span class="invalid-feedback" role="alert">
+        <strong>{{ $message }}</strong>
+    </span>
+            @enderror
         </div>
         <div class="form-group">
             <label for="task_description">Password</label>
-            <input name="task_description" type="text" class="description form-control" id="task_description">
+            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror"
+                   name="password" required autocomplete="new-password">
+            @error('password')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+            @enderror
         </div>
         <div class="form-group">
-            <label for="task_description">Confirm Password</label>
-            <input name="task_description" type="text" class="description form-control" id="task_description">
+            <label for="password-confirm">Confirm Password</label>
+            <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required
+                   autocomplete="new-password">
         </div>
         <button type="submit" class="btn login-btn">Register</button>
         <div class="row register-box align-items-center">
             <p class="register-text">Already have an account?</p>
-            <button onclick="{{action()}}" class="btn register-btn">Login</button>
+            <a href="{{route('login')}}" class="btn register-btn">Login</a>
         </div>
     </form>
-    @if($errors->any())
-        @foreach($errors->all() as $error)
-            {{$error}}<br>
-        @endforeach
-    @endif
 </div>
 </body>
 </html>

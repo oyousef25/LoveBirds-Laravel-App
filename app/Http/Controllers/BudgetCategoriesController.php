@@ -17,7 +17,7 @@ class BudgetCategoriesController extends Controller
 
     //All categories
     public function index(){
-        $categories = BudgetCategory::get();
+        $categories = BudgetCategory::paginate(6);
 
         return view('categories.index', compact("categories"));
     }

@@ -148,6 +148,9 @@
                 </div>
             @endforeach
         </div>
+        <div class="row pagination-links">
+            {{$tasks->links()}}
+        </div>
     </div>
 </div>
 </body>

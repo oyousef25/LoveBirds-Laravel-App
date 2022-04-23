@@ -121,6 +121,9 @@
             </div>
         @endforeach
     </div>
+    <div class="row pagination-links">
+        {{$categories->links()}}
+    </div>
 </div>
 </div>
 <script type="text/javascript" src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>

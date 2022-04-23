@@ -20,7 +20,7 @@ class TaskController extends Controller
 
     //All tasks
     public function index(){
-        $tasks = Task::get();
+        $tasks = Task::where('user_id', Auth::user()->id)->paginate(6);
         $categories = DB::table('budget_categories');
 
         return view('planning.index', compact("tasks", "categories"));
@@ -45,7 +45,7 @@ class TaskController extends Controller
     //Storing a new task
     public function store(Request $request){
         $task = new Task($request->all());
-        $task->user_id = Auth::user()->id;
+        $task->user_id = Auth::user()->getAuthIdentifier();
         $task->save();
         //Task::create($task);
         return redirect('planning');

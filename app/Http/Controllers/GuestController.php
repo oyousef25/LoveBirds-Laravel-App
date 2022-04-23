@@ -20,7 +20,7 @@ class GuestController extends Controller
     //All tasks
     public function index(){
         $totalGuests = Guest::all();
-        $guests = Guest::paginate(8);
+        $guests = Guest::where('user_id', Auth::user()->id)->paginate(6);
 
         $relationships_table = DB::table('relationships');
 
@@ -46,7 +46,7 @@ class GuestController extends Controller
     //Storing a new task
     public function store(Request $request){
         $guest = new Guest($request->all());
-        $guest->user_id = auth()->user()->id;
+        $guest->user_id = Auth::user()->id;
         $guest->save();
 
         (new GuestConfirmationController)->process($guest->email_address);
