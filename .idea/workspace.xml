@@ -6,15 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="02e6af59-c066-4437-a31e-ee90b90427a5" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/AccountController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/AccountController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ExploreVendorsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ExploreVendorsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/custom-vendors/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/custom-vendors/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/explore-vendors/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/explore-vendors/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/explore-vendors/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/explore-vendors/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/saved-vendors/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/saved-vendors/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/vendors.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -155,6 +147,8 @@
       <path value="$PROJECT_DIR$/vendor/league/oauth2-server" />
       <path value="$PROJECT_DIR$/vendor/league/event" />
       <path value="$PROJECT_DIR$/vendor/nyholm/psr7" />
+      <path value="$PROJECT_DIR$/vendor/league/uri" />
+      <path value="$PROJECT_DIR$/vendor/league/uri-interfaces" />
     </include_path>
   </component>
   <component name="ProjectId" id="26GAItFIJShNgBBzBS4MU8hTA0C" />
@@ -220,7 +214,10 @@
       <workItem from="1648908313430" duration="8896000" />
       <workItem from="1649612755937" duration="320000" />
       <workItem from="1649787410351" duration="5220000" />
-      <workItem from="1650224713587" duration="30005000" />
+      <workItem from="1650224713587" duration="34702000" />
+      <workItem from="1650489418149" duration="5498000" />
+      <workItem from="1650542698569" duration="181000" />
+      <workItem from="1650636559157" duration="39245000" />
     </task>
     <servers />
   </component>

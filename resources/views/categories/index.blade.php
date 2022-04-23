@@ -62,27 +62,37 @@
         .pagination-links {
             text-align: center;
         }
+
+        #chartContainer{
+            margin-top: 35px;
+        }
     </style>
 </head>
 <body>
 <script src="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
-<script>
-    import Chart from 'chart.js';
-    var ctxP = document.getElementById("pieChart");
-    var myPieChart = new Chart(ctxP, {
-        type: 'pie',
-        data: {
-            labels: ["Red", "Green", "Yellow", "Grey", "Dark Grey"],
-            datasets: [{
-                data: [300, 50, 100, 40, 120],
-                backgroundColor: ["#F7464A", "#46BFBD", "#FDB45C", "#949FB1", "#4D5360"],
-                hoverBackgroundColor: ["#FF5A5E", "#5AD3D1", "#FFC870", "#A8B3C5", "#616774"]
+<script type="text/javascript">
+    window.onload = function () {
+        var data = [];
+        @foreach($categories as $category)
+            data.push({label: "{{$category->category_name}}", y: {{$category->tasks()->count()}}})
+        @endforeach
+        var options = {
+            title: {
+                text: "Budget Categories"
+            },
+            data: [{
+                type: "pie",
+                startAngle: 45,
+                showInLegend: "true",
+                legendText: "{label}",
+                indexLabel: "{label} ({y})",
+                yValueFormatString: "#,##0.#" % "",
+                dataPoints: data
             }]
-        },
-        options: {
-            responsive: true
-        }
-    });
+        };
+        $("#chartContainer").CanvasJSChart(options);
+
+    }
 </script>
 <div class="add-post">
     <a href="{{action('BudgetCategoriesController@create')}}">
@@ -96,24 +106,27 @@
         </div>
     </div>
     <div class="col-sm-8">
-        <div class="main">
-            <hr class="mb-5"/>
-            <div>
-                <canvas id="pieChart" style="max-width: 500px;"></canvas>
-            </div>
-            @foreach($categories as  $category)
-                <div class="row-cols-2">
-                    <div class="col-sm-6 task-container">
-                        <a href="{{action('BudgetCategoriesController@show', $category->id)}}">
-                            <div class="task-item">
-                                <div class="guest-name">{{$category->category_name}}</div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            @endforeach
+        <div>
+            <div id="chartContainer" style="height: 300px; width: 100%;"></div>
         </div>
+        @foreach($categories as  $category)
+            <div class="row-cols-2">
+                <div class="col-sm-6 task-container">
+                    <a href="{{action('BudgetCategoriesController@show', $category->id)}}">
+                        <div class="task-item">
+                            <div class="guest-name">{{$category->category_name}}</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        @endforeach
+    </div>
+    <div class="row pagination-links">
+        {{$categories->links()}}
     </div>
 </div>
+</div>
+<script type="text/javascript" src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
 </body>
 </html>

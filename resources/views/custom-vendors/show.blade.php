@@ -6,6 +6,12 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <style>
+        a, a:hover, a:link, a:active, a:visited {
+            text-underline: none !important;
+            text-decoration: none !important;
+            color: white;
+        }
+
         .main {
             min-height: 150px;
             margin: 45px;
@@ -52,7 +58,7 @@
             color: white;
         }
 
-        .task-actions button {
+        .task-actions .btn {
             padding: 16px;
             width: 300px;
             margin: 4px;
@@ -114,7 +120,7 @@
                         style="background-color: #ff8585">Delete Vendor
                 </button>
                 <div>
-                    <button class="btn" style="background-color: #95e28e">Contact Vendor</button>
+                    <a href="tel:{{$vendor->phone_number}}" class="btn" style="background-color: #95e28e">Contact Vendor</a>
                 </div>
             </div>
 

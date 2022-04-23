@@ -11,11 +11,11 @@
             text-decoration: none !important;
         }
 
-        .main{
+        .main {
             margin: 5%;
         }
 
-        .vendors-tabs{
+        .vendors-tabs {
             display: flex;
             justify-content: center;
             width: 75%;
@@ -23,7 +23,7 @@
             margin: 45px auto;
         }
 
-        .active{
+        .active {
             border-bottom: 4px solid #ff8585;
         }
 
@@ -138,6 +138,9 @@
                     </a>
                 </div>
             @endforeach
+        </div>
+        <div class="row pagination-links">
+            {{$vendors->links()}}
         </div>
     </div>
 </div>

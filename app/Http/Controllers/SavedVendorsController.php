@@ -17,6 +17,7 @@ class SavedVendorsController extends Controller
     //All tasks
     public function index(){
         $vendors = SavedVendor::get();
+        //$vendors = SavedVendor::where('user_id', Auth::user()->id)->paginate(3);
 
         return view('saved-vendors.index', compact("vendors"));
     }
@@ -33,7 +34,6 @@ class SavedVendorsController extends Controller
 
     //Storing a new task
     public function store(SavedVendor $vendor){
-        $vendor->user_id = 1;
         $vendor->save();
         return redirect('saved-vendors');
     }

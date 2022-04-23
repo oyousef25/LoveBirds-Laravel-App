@@ -6,6 +6,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <style>
+        a, a:link, a:hover, .card-text {
+            color: white;
+            text-decoration: none !important;
+        }
+
         .main {
             min-height: 150px;
             margin: 45px;
@@ -67,7 +72,7 @@
             margin: 30px auto 30px auto;
         }
 
-        .task-actions button {
+        .task-actions .btn {
             padding: 16px;
             width: 300px;
             margin: 4px;
@@ -101,7 +106,13 @@
     <div class="col-sm-6">
         <div class="main">
             <div>
-                <img src="{{asset("/images/user.png")}}"/><br><br>
+                @if($guest->guest_relationship == 2 || $guest->guest_relationship == 4 || $guest->guest_relationship == 7)
+                    <div><img src="{{asset("/images/male.png")}}"></div><br>
+                @elseif($guest->guest_relationship == 3 || $guest->guest_relationship == 5 || $guest->guest_relationship == 8)
+                    <div><img src="{{asset("/images/female.png")}}"></div><br>
+                @else
+                    <div><img src="{{asset("/images/user.png")}}"></div><br>
+                @endif
             </div>
             <div class="guest-box align-items-center">
                 <div class="task-header">
@@ -135,7 +146,7 @@
                         </button>
                     </div>
                     <div class="col-sm-6">
-                        <button class="btn" style="background-color: #95e28e">Contact Guest</button>
+                        <a href="mailto:{{$guest->email_address}}" class="btn" style="background-color: #95e28e">Contact Guest</a>
                     </div>
                 </div>
             </div>

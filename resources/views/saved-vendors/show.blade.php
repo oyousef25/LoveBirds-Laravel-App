@@ -147,13 +147,13 @@
                                 <h5 class="modal-title" id="exampleModalLabel">Deletion Confirmation</h5>
                             </div>
                             <div class="modal-body">
-                                Are you sure you want to delete the vendor "{{$vendor->vendor_name}}"
+                                Are you sure you want to delete the vendor "{{$vendor->vendor_title}}"
                             </div>
                             <div class="modal-footer">
                                 <button type="button" style="background-color: #ff8585" class="btn"
                                         data-dismiss="modal">Cancel
                                 </button>
-                                <form method="post" action="{{action('CustomVendorController@destroy', $vendor->id)}}">
+                                <form method="post" action="{{action('SavedVendorsController@destroy', $vendor->id)}}">
                                     {{method_field('DELETE')}}
                                     {{csrf_field()}}
                                     <div><input type="submit" style="background-color: #95e28e" value="Confirm"

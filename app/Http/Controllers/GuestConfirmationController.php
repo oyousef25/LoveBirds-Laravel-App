@@ -27,7 +27,7 @@ class GuestConfirmationController extends Controller
 
         //Create a new invite record and store it in the partner_invites table
         $guest = GuestConfirmation::create([
-            'sender_id' => $currentUser->getAuthIdentifier(),
+            'sender_id' => $currentUser->id,
             'guest_email' => $email,
             'token' => $token,
         ]);

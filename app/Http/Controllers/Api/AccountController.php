@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Guest;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\InvitePartnerController;
 use App\Task;
 use App\User;
 use Illuminate\Http\Request;
@@ -23,11 +25,14 @@ class AccountController extends Controller
         $userTasks = Task::where("user_id", $currentUser->id)->get();
         $partnerTasks = Task::where("user_id", $userPartner->id)->get();
 
+        $totalGuests = Guest::where("user_id", $currentUser->id)->get();
+
         return \Response::json([
             'user' => $currentUser,
             'partner' => $userPartner,
             'user_tasks' => $userTasks->count(),
             'partner_tasks' => $partnerTasks->count(),
+            'total_guests' => count($totalGuests)
         ]);
     }
 
@@ -40,7 +45,8 @@ class AccountController extends Controller
     }
 
     //Sending another partner invitation using the
-    public function updatePartner($email){
-
+    public function updatePartner(Request $request, $email){
+        //Sending a new email invite to the partner
+        (new InvitePartnerController)->process($request, $email);
     }
 }

@@ -12,7 +12,7 @@
             font-family: 'Roboto Slab';
         }
 
-        .main{
+        .main {
             margin: 45px;
         }
 
@@ -40,11 +40,6 @@
     </style>
 </head>
 <body>
-<div class="add-post">
-    <a href="{{action('GuestController@create')}}">
-        <div class="nav-button new-post-button">+</div>
-    </a>
-</div>
 <div class="row">
     <div class="col-sm-3">
         <div class="item side-nav">

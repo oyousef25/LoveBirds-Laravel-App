@@ -14,6 +14,7 @@ class SavedVendor extends Model
         'vendor_website',
         'vendor_location',
         'vendor_phone',
-        'vendor_image'
+        'vendor_image',
+        'user_id'
     ];
 }

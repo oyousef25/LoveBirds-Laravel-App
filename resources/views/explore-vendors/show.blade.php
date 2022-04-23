@@ -11,6 +11,11 @@
             text-decoration: none !important;
         }
 
+        img {
+            border: 0 transparent;
+            border-radius: 5px;
+        }
+
         .main {
             margin: 5%;
         }
@@ -28,25 +33,19 @@
         }
 
         .task-item {
-            border: 1px solid #eaecee;
+            border: 1.5px solid #e1e1e1;
             border-radius: 8px;
             transition: all 0.25s ease;
             overflow: hidden;
             cursor: pointer;
-            margin: 5% 5%;
-            padding: 10px;
+            margin: 15px;
+            padding: 5px;
         }
 
         .task-title {
-            font-size: 23px;
+            font-size: 1rem;
+            font-weight: bold;
         }
-
-        /*.task-price {*/
-        /*    font-size: 18px;*/
-        /*    text-align: right;*/
-        /*    font-weight: bold;*/
-        /*    margin-right: 10px;*/
-        /*}*/
 
         .task-date {
             color: #525252;
@@ -65,6 +64,11 @@
         .task-date {
             color: #525252;
             font-size: 15px;
+            max-width: 65%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            line-height: 1.8em;
+            max-height: 1.8em;
         }
 
         .task-container > a {
@@ -88,11 +92,11 @@
         <div class="vendors-tabs">
             <ul class="nav nav-pills">
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="{{route("explore-vendors.index")}}">Explore
+                    <a class="nav-link active" aria-current="page" href="{{route("explore-vendors.index")}}">Explore
                         Vendors</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="#">Saved Vendors</a>
+                    <a class="nav-link" href="{{route("saved-vendors.index")}}">Saved Vendors</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{route("custom-vendors.index")}}">My Vendors</a>
@@ -100,26 +104,36 @@
             </ul>
         </div>
         <div class="main">
-            @foreach($vendors as $vendor)
+            @foreach($allVendors as $vendor)
                 <div class="task-container">
-                    <a href="{{action('SavedVendorsController@show', $vendor->id)}}">
-                        <div class="task-item">
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <div class="task-price">
-                                        <img src="{{$vendor->vendor_image}}" width="100px" height="100px">
+                    @if(isset($vendor->name))
+                        <a href="{{action('ExploreVendorsController@showDetails', $vendor->name)}}">
+                            @endif
+                            <div class="task-item">
+                                <div class="row">
+                                    <div class="col-sm-2">
+                                        <div class="vendor-image">
+                                            @if(!empty($vendor->photos))
+                                                <img
+                                                    src="{{$vendor->photos[0]->prefix . 'original' . $vendor->photos[0]->suffix}}"
+                                                    width="110px" height="110px">
+                                            @else
+                                                <img
+                                                    src="https://oyousef.scweb.ca/lovebirds/images/default.png"
+                                                    width="110px" height="110px">
+                                            @endif
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col">
-                                    <div class="vendor-details">
-                                        <div class="task-title">{{$vendor->vendor_title}}</div>
-                                        <div class="task-date">{{$vendor->vendor_rating}}</div>
-                                        <div class="task-date">{{$vendor->vendor_description}}</div>
+                                    <div class="col">
+                                        <div class="vendor-details">
+                                            <div class="task-title">{{$vendor->name ?? "N/A"}}</div>
+                                            <div class="task-date">{{$vendor->rating ?? "N/A"}}</div>
+                                            <div class="task-date">{{$vendor->description ?? "N/A"}}</div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </a>
+                        </a>
                 </div>
             @endforeach
         </div>

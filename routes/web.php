@@ -93,18 +93,20 @@ Route::get('custom-vendors/{vendor}', 'CustomVendorController@show')->name('cust
 Route::get('saved-vendors', 'SavedVendorsController@index')->name('saved-vendors.index');
 //Saved Vendor details(show)
 Route::get('saved-vendors/{vendor}', 'SavedVendorsController@show')->name('saved-vendors.show');
+Route::delete('saved-vendors/{vendor}', 'SavedVendorsController@destroy')->name('saved-vendors.destroy');
 
 /*
- * Saved Vendors Routes
+ * Explore Vendors Routes
  */
-//Saved vendors(index)
+//Explore vendors(index)
 Route::get('explore-vendors', 'ExploreVendorsController@index')->name('explore-vendors.index');
 //Saved Vendor details(show)
-Route::get('explore-vendors/{vendor}', 'SavedVendorsController@show')->name('explore-vendors.show');
+Route::get('explore-vendors/{vendor}', 'ExploreVendorsController@show')->name('explore-vendors.show');
+Route::get('vendorDetails/{vendor}', 'ExploreVendorsController@showDetails')->name('explore-vendors.details');
 
 //Partner invitation routes
 Route::get('invite', 'InvitePartnerController@invite')->name('invite');
-Route::post('invite', 'InvitePartnerController@process')->name('process');
+Route::post('invite/{email}', 'InvitePartnerController@process')->name('process');
 //{token} a required parameter
 Route::get('accept/{token}', 'InvitePartnerController@accept')->name('accept');
 
@@ -124,8 +126,5 @@ Route::get('home', 'HomeController@index')->name('home.index');
 Route::get('/account', 'AccountController@index')->name('account.index');
 Route::get('account/{user_id}/edit', 'AccountController@edit')->name('account.edit');
 Route::patch('account/{user_id}', 'AccountController@update')->name('account.update');
-
-Route::get('vendors', 'ExploreVendorsController@index')->name('explore-vendors.index');
-Route::get('vendors/{vendor}', 'ExploreVendorsController@show')->name('explore-vendors.show');
 
 Auth::routes();
